@@ -17,55 +17,81 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.registries.RegistryObject;
 
-public class NELItemGroup extends CreativeModeTab {
+/*@formatter:off*/
 
-    private static final Marker MARKER = LogUtil.getMarker(NELItemGroup.class);
+public class NELItemGroup extends CreativeModeTab                              {
+
+    private static final Marker MARKER = LogUtil.getMarker(
+        NELItemGroup.class
+    )                                                                          ;
 
     private static final List<Item> potionBasedItems = List.of(
         Items.POTION,
         Items.SPLASH_POTION,
         Items.LINGERING_POTION,
         Items.TIPPED_ARROW
-    );
+    )                                                                          ;
 
-    public NELItemGroup() {
-        super(NotEnoughLuck.MOD_ID);
-    }
+    public NELItemGroup()                                                      {
+        super(NotEnoughLuck.MOD_ID)                                           ;}
 
     @Override
-    public ItemStack makeIcon() {
-        return new ItemStack(Items.POTION);
-    }
+    public ItemStack makeIcon()                                                {
+        return new ItemStack(Items.POTION)                                    ;}
 
     @Override
     @SuppressWarnings("unchecked")
-    public void fillItemList(NonNullList<ItemStack> list) {
-        Field[] fields = PotionRegistry.class.getDeclaredFields();
-        // int index = 0;
-        for (int i = 0; i < fields.length; i++) {
-            Field field = fields[i];
-            if ((Modifier.isFinal(field.getModifiers()))) {
-                try {
-                    Object value = field.get(null);
-                    if (!(value instanceof RegistryObject)) {
-                        continue;
-                    }
-                    for (Item item : potionBasedItems) {
-                        ItemStack potion = PotionUtils.setPotion(
-                            new ItemStack(item),
-                            ((RegistryObject<Potion>) value).get()
-                        );
-                        list.add(potion);
-                    }
-                    // if (index % 2 == 0) {
-                    //     list.add(ItemStack.EMPTY);
-                    // }
-                    // index++;
-                } catch (Exception e) {
-                    LOGGER.error(MARKER, "Failed to add item to group.", e);
-                }
-            }
-        }
-    }
+    public void fillItemList(NonNullList<ItemStack> list)                      {
+        Field[] fields = PotionRegistry.class.getDeclaredFields()              ;
+        int index = 0                                                          ;
+        for (int i = 0; i < fields.length; i++)                                {
+            Field field = fields[i]                                            ;
+            if (!(Modifier.isFinal(field.getModifiers())))                     {
+                continue                                                      ;}
+            try                                                                {
+                Object value = field.get(null)                                 ;
+                if (!(value instanceof RegistryObject))                        {
+                    continue                                                  ;}
+                for (Item item : potionBasedItems)                             {
+                    ItemStack potion = PotionUtils.setPotion(
+                        new ItemStack(item),
+                        ((RegistryObject<Potion>) value).get()
+                    )                                                          ;
+                    list.add(potion)                                          ;}
+                    if (index % 2 == 0)                                        {
+                        list.add(ItemStack.EMPTY)                             ;}
+                    index++                                                   ;}
+            catch (Exception e)                                                {
+                LOGGER.error(
+                    MARKER,
+                    "Failed to add item to group.", e
+                )                                                          ;}}}}
 
-}
+
+/*@formatter:on*/
+/*
+                           ####            ####                                .
+                           ####            ####                                .
+             ################################################                  .
+             ################################################                  .
+                           ####            ####                                .
+                           ####            ####                                .
+                   ####################################                        .
+                   ####################################                        .
+                   ####                            ####                        .
+                   ####                            ####                        .
+                   ####################################                        .
+                   ####################################                        .
+                   ####                            ####                        .
+                   ####                            ####                        .
+                   ####################################                        .
+                   ####################################                        .
+                   ####            ####            ####                        .
+                                   ####                                        .
+             ################################################                  .
+             ################################################                  .
+                                   ####                                        .
+                                   ####                                        .
+                                   ####                                        .
+                                   ####                                        .
+*/
