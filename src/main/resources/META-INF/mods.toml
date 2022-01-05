@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="GNU GPLv3"
+issueTrackerURL="https://github.com/WakelessSloth56/NotEnoughLuck/issues"
+
+[[mods]]
+modId="notenoughluck"
+version="${file.jarVersion}"
+updateJSONURL="https://hi.auioc.org/NotEnoughLuck/update/1.18.1.json"
+displayName="NotEnoughLuck"
+displayURL="http://hi.auioc.org/NotEnoughLuck/"
+credits="AUIOC"
+authors="WakelssSloth56"
+description='''
+Not Enough Luck
+'''
+
+[[dependencies.notenoughluck]]
+    modId="forge"
+    mandatory=true
+    versionRange="[39,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.notenoughluck]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.1,1.19)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.notenoughluck]]
+    modId="arnicalib"
+    mandatory=true
+    versionRange="[4.1.1,)"
+    ordering="NONE"
+    side="BOTH"
