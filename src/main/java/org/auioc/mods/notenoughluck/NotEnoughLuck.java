@@ -6,6 +6,7 @@ import org.auioc.mods.arnicalib.api.java.data.Tuple;
 import org.auioc.mods.arnicalib.utils.LogUtil;
 import org.auioc.mods.arnicalib.utils.java.JarUtils;
 import org.auioc.mods.notenoughluck.common.alchemy.PotionRegistry;
+import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
 import org.auioc.mods.notenoughluck.server.event.ServerEventHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -43,6 +44,7 @@ public final class NotEnoughLuck {
 
     private void forgeSetup(final IEventBus forgeEventBus) {
         forgeEventBus.register(ServerEventHandler.class);
+        ItemGroupRegistry.init();
     }
 
 }
