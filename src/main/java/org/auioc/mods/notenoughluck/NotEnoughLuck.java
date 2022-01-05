@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Marker;
 import org.auioc.mods.arnicalib.api.java.data.Tuple;
 import org.auioc.mods.arnicalib.utils.LogUtil;
 import org.auioc.mods.arnicalib.utils.java.JarUtils;
+import org.auioc.mods.notenoughluck.server.event.ServerEventHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -36,6 +37,8 @@ public final class NotEnoughLuck {
 
     private void modSetup(final IEventBus modEventBus) {}
 
-    private void forgeSetup(final IEventBus forgeEventBus) {}
+    private void forgeSetup(final IEventBus forgeEventBus) {
+        forgeEventBus.register(ServerEventHandler.class);
+    }
 
 }
