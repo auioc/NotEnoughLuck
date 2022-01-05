@@ -69,7 +69,11 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
     testAnnotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
-    implementation "org.auioc.mods.arnicalib:arnicalib-${minecraft_version}:${arnicalib_version}:forgelib"
+    if (local_debug.toBoolean()){
+        implementation fileTree(dir: 'libs', include: ['*/*-forgelib.jar', '*/*-api.jar'])
+    } else {
+        implementation "org.auioc.mods.arnicalib:arnicalib-${minecraft_version}:${arnicalib_version}:forgelib"
+    }
 }
 
 mixin {

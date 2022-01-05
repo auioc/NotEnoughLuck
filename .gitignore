@@ -22,5 +22,6 @@ run
 forge*changelog.txt
 
 test*.*
+libs
 
 mcmodsrepo
