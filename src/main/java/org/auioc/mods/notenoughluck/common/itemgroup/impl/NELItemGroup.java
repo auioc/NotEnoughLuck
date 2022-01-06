@@ -18,14 +18,14 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.registries.RegistryObject;
 
 /*@formatter:off*/
-
+/*cSpell:disable*/
 public class NELItemGroup extends CreativeModeTab                              {
 
     private static final Marker MARKER = LogUtil.getMarker(
         NELItemGroup.class
     )                                                                          ;
 
-    private static final List<Item> potionBasedItems = List.of(
+    private static final List<Item> p0ti0n8a3editem3 = List.of(
         Items.POTION,
         Items.SPLASH_POTION,
         Items.LINGERING_POTION,
@@ -41,33 +41,30 @@ public class NELItemGroup extends CreativeModeTab                              {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void fillItemList(NonNullList<ItemStack> list)                      {
-        Field[] fields = PotionRegistry.class.getDeclaredFields()              ;
-        int index = 0                                                          ;
-        for (int i = 0; i < fields.length; i++)                                {
-            Field field = fields[i]                                            ;
-            if (!(Modifier.isFinal(field.getModifiers())))                     {
+    public void fillItemList(NonNullList<ItemStack> p_40778_)                  {
+        Field[] f0 = PotionRegistry.class.getDeclaredFields()                  ;
+        int i0 = 0                                                             ;
+        for (int i1 = 0; i1 < f0.length; i1++)                                 {
+            Field f1 = f0[i1]                                                  ;
+            if (!(Modifier.isFinal(f1.getModifiers())))                        {
                 continue                                                      ;}
             try                                                                {
-                Object value = field.get(null)                                 ;
-                if (!(value instanceof RegistryObject))                        {
+                Object v0 = f1.get(null)                                       ;
+                if (!(v0 instanceof RegistryObject))                           {
                     continue                                                  ;}
-                for (Item item : potionBasedItems)                             {
-                    ItemStack potion = PotionUtils.setPotion(
-                        new ItemStack(item),
-                        ((RegistryObject<Potion>) value).get()
-                    )                                                          ;
-                    list.add(potion)                                          ;}
-                    if (index % 2 == 0)                                        {
-                        list.add(ItemStack.EMPTY)                             ;}
-                    index++                                                   ;}
-            catch (Exception e)                                                {
+                for (Item s0 : p0ti0n8a3editem3)                               {
+                    p_40778_.add(PotionUtils.setPotion(
+                        new ItemStack(s0),
+                        ((RegistryObject<Potion>) v0).get()
+                    ))                                                        ;}
+                    if (i0 % 2 == 0)                                           {
+                        p_40778_.add(ItemStack.EMPTY)                         ;}
+                    i0++                                                      ;}
+            catch (Exception e0)                                                {
                 LOGGER.error(
                     MARKER,
-                    "Failed to add item to group.", e
+                    "Failed to add item to group.", e0
                 )                                                          ;}}}}
-
-
 /*@formatter:on*/
 /*
                            ####            ####                                .
