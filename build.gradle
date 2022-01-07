@@ -111,7 +111,7 @@ artifacts {
     archives forgelibJar
 }
 
-tasks.build.dependsOn('sourcesJar', 'deobfJar', 'forgelibJar')
+tasks.build.dependsOn('forgelibJar')
 
 publishing {
     publications {
