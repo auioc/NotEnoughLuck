@@ -2,7 +2,7 @@
     "required": true,
     "package": "org.auioc.mods.notenoughluck.mixin",
     "compatibilityLevel": "JAVA_17",
-    "mixins": ["common.MixinAbstractArrow"],
+    "mixins": ["server.MixinAbstractArrow"],
     "client": [],
     "server": [],
     "injectors": {
