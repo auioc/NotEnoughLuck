@@ -7,8 +7,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -29,14 +31,27 @@ public abstract class MixinAbstractArrow extends Projectile {
         allow = 1
     )
     protected void onHitBlock(BlockHitResult p_36755_, CallbackInfo ci) {
-        if (!this.level.isClientSide() && this.getPierceLevel() > 0 && this.piercingIgnoreEntityIds != null && this.piercingIgnoreEntityIds.size() > 0) {
-            this.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+        if (
+            (((AbstractArrow) (Object) this) instanceof Arrow)
+                && !this.level.isClientSide()
+                && this.getPierceLevel() > 0
+                && this.piercingIgnoreEntityIds != null
+                && this.piercingIgnoreEntityIds.size() > 0
+        ) {
+            CompoundTag nbt = new CompoundTag();
+            this.addAdditionalSaveData(nbt);
+            if (nbt.contains("Potion") || nbt.contains("CustomPotionEffects")) {
+                this.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+            }
         }
     }
 
 
     @Shadow
     protected abstract byte getPierceLevel();
+
+    @Shadow
+    protected abstract void addAdditionalSaveData(CompoundTag p_36772_);
 
     @Nullable
     @Shadow
