@@ -6,5 +6,9 @@
     "item.minecraft.potion.effect.unluck": "霉运药水",
     "item.minecraft.splash_potion.effect.unluck": "喷溅型霉运药水",
     "item.minecraft.lingering_potion.effect.unluck": "滞留型霉运药水",
-    "item.minecraft.tipped_arrow.effect.unluck": "霉运之箭"
+    "item.minecraft.tipped_arrow.effect.unluck": "霉运之箭",
+    "item.minecraft.potion.effect.incurable_unluck": "无法治愈的霉运药水",
+    "item.minecraft.splash_potion.effect.incurable_unluck": "喷溅型无法治愈的霉运药水",
+    "item.minecraft.lingering_potion.effect.incurable_unluck": "滞留型无法治愈的霉运药水",
+    "item.minecraft.tipped_arrow.effect.incurable_unluck": "无法治愈的霉运之箭"
 }

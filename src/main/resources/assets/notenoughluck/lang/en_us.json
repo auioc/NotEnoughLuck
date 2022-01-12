@@ -6,5 +6,9 @@
     "item.minecraft.potion.effect.unluck": "Potion of Bad Luck",
     "item.minecraft.splash_potion.effect.unluck": "Splash Potion of Bad Luck",
     "item.minecraft.lingering_potion.effect.unluck": "Lingering Potion of Bad Luck",
-    "item.minecraft.tipped_arrow.effect.unluck": "Arrow of Bad Luck"
+    "item.minecraft.tipped_arrow.effect.unluck": "Arrow of Bad Luck",
+    "item.minecraft.potion.effect.incurable_unluck": "Potion of Incurable Bad Luck",
+    "item.minecraft.splash_potion.effect.incurable_unluck": "Splash Potion of Incurable Bad Luck",
+    "item.minecraft.lingering_potion.effect.incurable_unluck": "Lingering Potion of Incurable Bad Luck",
+    "item.minecraft.tipped_arrow.effect.incurable_unluck": "Arrow of Incurable Bad Luck"
 }

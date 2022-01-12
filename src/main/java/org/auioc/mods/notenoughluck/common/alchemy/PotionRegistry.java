@@ -1,6 +1,7 @@
 package org.auioc.mods.notenoughluck.common.alchemy;
 
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
+import org.auioc.mods.notenoughluck.common.alchemy.impl.IncurableUnluckPotion;
 import org.auioc.mods.notenoughluck.common.alchemy.impl.LuckPotion;
 import org.auioc.mods.notenoughluck.common.alchemy.impl.UnluckPotion;
 import net.minecraft.world.item.alchemy.Potion;
@@ -25,6 +26,9 @@ public class PotionRegistry {
     public static final RegistryObject<Potion> UNLUCK = UnluckPotion.Common.register();
     public static final RegistryObject<Potion> LONG_UNLUCK = UnluckPotion.Long.register();
     public static final RegistryObject<Potion> STRONG_UNLUCK = UnluckPotion.Strong.register();
+    public static final RegistryObject<Potion> INCURABLE_UNLUCK = IncurableUnluckPotion.Common.register();
+    public static final RegistryObject<Potion> INCURABLE_LONG_UNLUCK = IncurableUnluckPotion.Long.register();
+    public static final RegistryObject<Potion> INCURABLE_STRONG_UNLUCK = IncurableUnluckPotion.Strong.register();
 
     private static void registerBrewingRecipes() {
         LuckPotion.Long.registerBrewingRecipe();
