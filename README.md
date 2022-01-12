@@ -3,7 +3,7 @@
 <div align="center">
 
 [![GitHub license](https://img.shields.io/github/license/WakelessSloth56/NotEnoughLuck?style=flat-square)](/LICENSE)
-<!-- [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/WakelessSloth56/NotEnoughLuck/gradle-ci?style=flat-square)](https://github.com/WakelessSloth56/NotEnoughLuck/actions) -->
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/WakelessSloth56/NotEnoughLuck/dev-build?style=flat-square)](https://github.com/WakelessSloth56/NotEnoughLuck/actions/workflows/dev-build.yml)
 &nbsp;
 ![Minecraft](https://img.shields.io/static/v1?label=Minecraft&message=1.18.1&color=00aa00&style=flat-square)
 [![Forge](https://img.shields.io/static/v1?label=Forge&message=39.0.19&color=e04e14&logo=Conda-Forge&style=flat-square)](http://files.minecraftforge.net/net/minecraftforge/forge/index_1.18.1.html)
