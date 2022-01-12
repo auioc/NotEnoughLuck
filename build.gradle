@@ -15,8 +15,6 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-println("CI: ${getVar('CI')}")
-
 version = "${notenoughluck_version}"
 group = 'org.auioc.mods.notenoughluck'
 archivesBaseName = "notenoughluck-${minecraft_version}"
@@ -29,6 +27,8 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
+            property 'file.encoding', 'UTF-8'
+            property 'user.language', 'en'
             property 'log4j.configurationFile', 'log4j2.xml'
             property 'mixin.debug', 'true'
             arg '-mixin.config=notenoughluck.mixin.json'
@@ -41,6 +41,8 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
+            property 'file.encoding', 'UTF-8'
+            property 'user.language', 'en'
             property 'log4j.configurationFile', 'log4j2.xml'
             property 'mixin.debug', 'true'
             arg '-mixin.config=notenoughluck.mixin.json'
@@ -126,14 +128,6 @@ publishing {
         }
     }
     repositories {
-        maven {
-            name = 'GitHubPackages'
-            url = uri('https://maven.pkg.github.com/wakelesssloth56/NotEnoughLuck')
-            credentials {
-                username = getVar('GITHUB_ACTOR')
-                password = getVar('GITHUB_TOKEN')
-            }
-        }
         maven {
             name = 'McmodsRepo'
             url "file://${project.projectDir}/mcmodsrepo"
