@@ -35,6 +35,8 @@ jobs:
                   architecture: x64
 
             - name: Set up Gradlew and build
+              env:
+                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
               run: |
                   chmod +x ./gradlew
                   ./gradlew clean build
