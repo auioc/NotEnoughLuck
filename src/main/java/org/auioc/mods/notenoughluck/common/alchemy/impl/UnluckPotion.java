@@ -16,7 +16,7 @@ public class UnluckPotion extends NELPotion {
 
     public static class Common extends UnluckPotion {
         protected Common() {
-            super(5 * 60 * 20, 0);
+            super(6000, 0); // 5 min
         }
 
         public static RegistryObject<Potion> register() {
@@ -30,7 +30,7 @@ public class UnluckPotion extends NELPotion {
 
     public static class Long extends UnluckPotion {
         protected Long() {
-            super(10 * 60 * 20, 0);
+            super(16000, 0); // 6000 * (8/3)
         }
 
         public static RegistryObject<Potion> register() {
@@ -44,7 +44,7 @@ public class UnluckPotion extends NELPotion {
 
     public static class Strong extends UnluckPotion {
         protected Strong() {
-            super((int) 2.5 * 60 * 20, 1);
+            super(3000, 1); // 6000 * (1/2)
         }
 
         public static RegistryObject<Potion> register() {

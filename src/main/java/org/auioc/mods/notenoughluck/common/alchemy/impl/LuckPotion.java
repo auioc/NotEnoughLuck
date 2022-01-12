@@ -16,7 +16,7 @@ public class LuckPotion extends NELPotion {
 
     public static class Long extends LuckPotion {
         protected Long() {
-            super(10 * 60 * 20, 0);
+            super(16000, 0); // 6000 * (8/3)
         }
 
         public static RegistryObject<Potion> register() {
@@ -30,7 +30,7 @@ public class LuckPotion extends NELPotion {
 
     public static class Strong extends LuckPotion {
         protected Strong() {
-            super((int) 2.5 * 60 * 20, 1);
+            super(3000, 1); // 6000 * (1/2)
         }
 
         public static RegistryObject<Potion> register() {
