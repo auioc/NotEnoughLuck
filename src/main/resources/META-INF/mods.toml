@@ -9,6 +9,7 @@ version="${file.jarVersion}"
 updateJSONURL="https://hi.auioc.org/NotEnoughLuck/update/1.18.1.json"
 displayName="NotEnoughLuck"
 displayURL="http://hi.auioc.org/NotEnoughLuck/"
+logoFile="icon.png"
 credits="AUIOC"
 authors="WakelssSloth56"
 description='''
