@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="[39,)"
 license="GNU GPLv3"
-issueTrackerURL="https://github.com/WakelessSloth56/NotEnoughLuck/issues"
+issueTrackerURL="https://github.com/auioc/NotEnoughLuck/issues"
 
 [[mods]]
 modId="notenoughluck"
 version="${file.jarVersion}"
 updateJSONURL="https://hi.auioc.org/NotEnoughLuck/update/1.18.1.json"
 displayName="NotEnoughLuck"
-displayURL="http://hi.auioc.org/NotEnoughLuck/"
+displayURL="https://hi.auioc.org/NotEnoughLuck/"
 logoFile="icon.png"
 credits="AUIOC"
 authors="WakelssSloth56"
@@ -31,6 +31,6 @@ Not Enough Luck
 [[dependencies.notenoughluck]]
     modId="arnicalib"
     mandatory=true
-    versionRange="[4.1.1,)"
+    versionRange="[4.1.6,)"
     ordering="NONE"
     side="BOTH"
