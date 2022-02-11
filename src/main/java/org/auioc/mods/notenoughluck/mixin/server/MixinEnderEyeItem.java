@@ -23,10 +23,10 @@ import net.minecraft.world.phys.HitResult;
 @Mixin(value = EnderEyeItem.class)
 public abstract class MixinEnderEyeItem {
 
-    private static final float DEFAULT_CHANCE = 0.8F;
-    private static final float LUCK_MULTIPLIER = 1.0F;
-    private static final float UNLUCK_MULTIPLIER = -4.0F;
-    private static final float BONUS_MULTIPLIER = 0.04F;
+    private static final int DEFAULT_CHANCE = 80;
+    private static final int LUCK_MULTIPLIER = 1;
+    private static final int UNLUCK_MULTIPLIER = -4;
+    private static final int BONUS_MULTIPLIER = 4;
 
     @SuppressWarnings("rawtypes")
     @Inject(
@@ -41,11 +41,11 @@ public abstract class MixinEnderEyeItem {
         allow = 1
     )
     private void use(Level p_41184_, Player p_41185_, InteractionHand p_41186_, CallbackInfoReturnable<InteractionResultHolder> cir, ItemStack itemstack, HitResult hitresult, BlockPos blockpos, EyeOfEnder eyeofender) {
-        float luckBonus = ((float) EffectUtils.getEffectLevel(p_41185_, MobEffects.LUCK)) * LUCK_MULTIPLIER;
-        float unluckBonus = ((float) EffectUtils.getEffectLevel(p_41185_, MobEffects.UNLUCK)) * UNLUCK_MULTIPLIER;
-        float bonus = luckBonus + unluckBonus;
-        float chance = Mth.clamp((DEFAULT_CHANCE + (bonus * BONUS_MULTIPLIER)), 0.0F, 1.0F);
-        ((IMixinEyeOfEnder) eyeofender).setSurviveChance(chance);
+        int luckBonus = EffectUtils.getEffectLevel(p_41185_, MobEffects.LUCK) * LUCK_MULTIPLIER;
+        int unluckBonus = EffectUtils.getEffectLevel(p_41185_, MobEffects.UNLUCK) * UNLUCK_MULTIPLIER;
+        int bonus = luckBonus + unluckBonus;
+        int chance = Mth.clamp((DEFAULT_CHANCE + (bonus * BONUS_MULTIPLIER)), 0, 100);
+        ((IMixinEyeOfEnder) eyeofender).setSurvivalChance(chance);
     }
 
 }

@@ -23,8 +23,8 @@ public abstract class MixinEyeOfEnder extends Entity implements IMixinEyeOfEnder
     private boolean surviveAfterDeath;
 
     @Override
-    public void setSurviveChance(float chance) {
-        this.surviveAfterDeath = this.random.nextFloat() < chance;
+    public void setSurvivalChance(int chance) {
+        this.surviveAfterDeath = this.random.nextInt(0, 100) < chance;
     }
 
 
