@@ -12,7 +12,7 @@ public class SetEyeOfEnderSurvivableHandler {
     private static final int DEFAULT_CHANCE = 80;
     private static final int LUCK_MULTIPLIER = 1;
     private static final int UNLUCK_MULTIPLIER = -4;
-    private static final int BONUS_MULTIPLIER = 4;
+    private static final int BONUS_MULTIPLIER = 5;
 
     public static void handle(final SetEyeOfEnderSurvivableEvent event) {
         ServerPlayer player = (ServerPlayer) event.getPlayer();
