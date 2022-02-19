@@ -5,12 +5,9 @@ import java.util.List;
 import java.util.Map;
 import com.mojang.datafixers.util.Pair;
 import org.auioc.mods.arnicalib.server.event.impl.LivingEatAddEffectEvent;
-import org.auioc.mods.arnicalib.utils.game.EffectUtils;
-import org.auioc.mods.arnicalib.utils.java.RandomUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
-import net.minecraft.util.Mth;
+import org.auioc.mods.notenoughluck.utils.LuckUtils;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -70,11 +67,7 @@ public class EatAddEffectHandler {
         }
 
         public boolean shouldAddEffect(LivingEntity living) {
-            int luckBonus = EffectUtils.getEffectLevel(living, MobEffects.LUCK) * this.luckMultiplier;
-            int unluckBonus = EffectUtils.getEffectLevel(living, MobEffects.UNLUCK) * this.unluckMultiplier;
-            int bonus = luckBonus + unluckBonus;
-            int chance = Mth.clamp(this.defaultChance + (bonus * this.bonusMultiplier), 0, 100);
-            return RandomUtils.percentageChance(chance, living.getRandom());
+            return LuckUtils.getRandomBoolean(living, this.defaultChance, this.luckMultiplier, this.unluckMultiplier, this.bonusMultiplier);
         }
 
     }
