@@ -63,14 +63,16 @@ public class FourLeafCloverItem extends Item {
             return stack;
         }
 
-        int i = lengthOfYear();
-        if (ItemUtils.clearItem(player.getInventory(), IS_PAPER, i, true) != i) {
-            return stack;
+        if (!player.getAbilities().instabuild) {
+            int i = lengthOfYear();
+            if (ItemUtils.clearItem(player.getInventory(), IS_PAPER, i, true) != i) {
+                return stack;
+            }
+
+            stack.shrink(1);
         }
 
         PlayerUtils.giveItem(player, Items.ACACIA_BOAT);
-
-        stack.shrink(1);
 
         return stack;
     }
@@ -80,7 +82,7 @@ public class FourLeafCloverItem extends Item {
     }
 
     private static boolean canUse(Player player) {
-        return ItemUtils.countItem(player.getInventory(), IS_PAPER) >= lengthOfYear();
+        return player.getAbilities().instabuild || ItemUtils.countItem(player.getInventory(), IS_PAPER) >= lengthOfYear();
     }
 
 }
