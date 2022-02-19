@@ -10,5 +10,7 @@
     "item.minecraft.potion.effect.incurable_unluck": "无法治愈的霉运药水",
     "item.minecraft.splash_potion.effect.incurable_unluck": "喷溅型无法治愈的霉运药水",
     "item.minecraft.lingering_potion.effect.incurable_unluck": "滞留型无法治愈的霉运药水",
-    "item.minecraft.tipped_arrow.effect.incurable_unluck": "无法治愈的霉运之箭"
+    "item.minecraft.tipped_arrow.effect.incurable_unluck": "无法治愈的霉运之箭",
+
+    "item.notenoughluck.tung_shing": "老黄历"
 }
