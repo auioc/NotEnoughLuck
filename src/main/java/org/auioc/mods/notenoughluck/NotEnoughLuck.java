@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Marker;
 import org.auioc.mods.arnicalib.utils.LogUtil;
 import org.auioc.mods.arnicalib.utils.java.VersionUtils;
 import org.auioc.mods.notenoughluck.common.alchemy.PotionRegistry;
+import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
 import org.auioc.mods.notenoughluck.server.event.ServerEventHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -40,6 +41,7 @@ public final class NotEnoughLuck {
     }
 
     private void modSetup(final IEventBus modEventBus) {
+        ItemRegistry.ITEMS.register(modEventBus);
         PotionRegistry.POTIONS.register(modEventBus);
         modEventBus.register(PotionRegistry.class);
     }
