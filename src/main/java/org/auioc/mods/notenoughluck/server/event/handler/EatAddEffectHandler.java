@@ -52,19 +52,7 @@ public class EatAddEffectHandler {
         MAP.put(item.getFoodProperties(), dataList);
     }
 
-    private static class Data {
-
-        private final int defaultChance;
-        private final int luckMultiplier;
-        private final int unluckMultiplier;
-        private final int bonusMultiplier;
-
-        public Data(int defaultChance, int luckMultiplier, int unluckMultiplier, int bonusMultiplier) {
-            this.defaultChance = defaultChance;
-            this.luckMultiplier = luckMultiplier;
-            this.unluckMultiplier = unluckMultiplier;
-            this.bonusMultiplier = bonusMultiplier;
-        }
+    private static record Data(int defaultChance, int luckMultiplier, int unluckMultiplier, int bonusMultiplier) {
 
         public boolean shouldAddEffect(LivingEntity living) {
             return LuckUtils.getRandomBoolean(living, this.defaultChance, this.luckMultiplier, this.unluckMultiplier, this.bonusMultiplier);
