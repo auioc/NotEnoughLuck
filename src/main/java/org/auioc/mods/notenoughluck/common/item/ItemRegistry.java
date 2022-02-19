@@ -2,6 +2,7 @@ package org.auioc.mods.notenoughluck.common.item;
 
 import java.util.function.Supplier;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
+import org.auioc.mods.notenoughluck.common.item.impl.FourLeafCloverItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -16,5 +17,7 @@ public final class ItemRegistry {
     }
 
     public static final RegistryObject<Item> ICON_ITEM = register("icon", () -> new Item((new Item.Properties())));
+
+    public static final RegistryObject<Item> FOUR_LEAF_CLOVER_ITEM = register("four_leaf_clover", FourLeafCloverItem::new);
 
 }
