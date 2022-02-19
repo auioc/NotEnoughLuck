@@ -19,10 +19,10 @@ import net.minecraftforge.registries.RegistryObject;
 
 /*@formatter:off*/
 /*cSpell:disable*/
-public class NELItemGroup extends CreativeModeTab                              {
+public class NELPotionGroup extends CreativeModeTab                            {
 
     private static final Marker MARKER = LogUtil.getMarker(
-        NELItemGroup.class
+        NELPotionGroup.class
     )                                                                          ;
 
     private static final List<Item> p0ti0n8a3editem3 = List.of(
@@ -32,7 +32,7 @@ public class NELItemGroup extends CreativeModeTab                              {
         Items.TIPPED_ARROW
     )                                                                          ;
 
-    public NELItemGroup()                                                      {
+    public NELPotionGroup()                                                    {
         super(NotEnoughLuck.MOD_ID)                                           ;}
 
     @Override
@@ -60,7 +60,7 @@ public class NELItemGroup extends CreativeModeTab                              {
                     if (i0 % 2 == 0)                                           {
                         p_40778_.add(ItemStack.EMPTY)                         ;}
                     i0++                                                      ;}
-            catch (Exception e0)                                                {
+            catch (Exception e0)                                               {
                 LOGGER.error(
                     MARKER,
                     "Failed to add item to group.", e0
