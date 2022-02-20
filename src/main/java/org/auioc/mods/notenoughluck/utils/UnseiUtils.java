@@ -1,4 +1,4 @@
-package org.auioc.mods.notenoughluck.server.unsei;
+package org.auioc.mods.notenoughluck.utils;
 
 import java.util.Random;
 import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
