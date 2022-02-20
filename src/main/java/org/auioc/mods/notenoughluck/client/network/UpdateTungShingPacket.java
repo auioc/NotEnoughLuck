@@ -8,11 +8,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkEvent.Context;
 
-public class UpdateTungShingScreenPacket implements IHPacket {
+public class UpdateTungShingPacket implements IHPacket {
 
     private final Map<Integer, Integer> unseiMap;
 
-    public UpdateTungShingScreenPacket(Map<Integer, Integer> unseiMap) {
+    public UpdateTungShingPacket(Map<Integer, Integer> unseiMap) {
         this.unseiMap = unseiMap;
     }
 
@@ -28,8 +28,8 @@ public class UpdateTungShingScreenPacket implements IHPacket {
         buffer.writeMap(this.unseiMap, FriendlyByteBuf::writeInt, FriendlyByteBuf::writeInt);
     }
 
-    public static UpdateTungShingScreenPacket decode(FriendlyByteBuf buffer) {
-        return new UpdateTungShingScreenPacket(buffer.readMap(FriendlyByteBuf::readInt, FriendlyByteBuf::readInt));
+    public static UpdateTungShingPacket decode(FriendlyByteBuf buffer) {
+        return new UpdateTungShingPacket(buffer.readMap(FriendlyByteBuf::readInt, FriendlyByteBuf::readInt));
     }
 
 }

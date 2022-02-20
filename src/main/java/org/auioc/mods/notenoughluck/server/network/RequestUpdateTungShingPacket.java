@@ -3,7 +3,7 @@ package org.auioc.mods.notenoughluck.server.network;
 import java.util.Map;
 import java.util.UUID;
 import org.auioc.mods.arnicalib.api.game.network.IHPacket;
-import org.auioc.mods.notenoughluck.client.network.UpdateTungShingScreenPacket;
+import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.network.FriendlyByteBuf;
@@ -11,12 +11,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent.Context;
 import net.minecraftforge.server.ServerLifecycleHooks;
 
-public class RequestUpdateTungShingScreenPacket implements IHPacket {
+public class RequestUpdateTungShingPacket implements IHPacket {
 
     private final UUID playerUUID;
     private final int day;
 
-    public RequestUpdateTungShingScreenPacket(UUID playerUUID, int day) {
+    public RequestUpdateTungShingPacket(UUID playerUUID, int day) {
         this.playerUUID = playerUUID;
         this.day = day;
     }
@@ -29,7 +29,7 @@ public class RequestUpdateTungShingScreenPacket implements IHPacket {
         }
 
         PacketHandler.sendToClient(
-            ((ServerPlayer) player), new UpdateTungShingScreenPacket(
+            ((ServerPlayer) player), new UpdateTungShingPacket(
                 Map.of(this.day, UnseiUtils.getUnseiValue(player.getLevel().getSeed(), day))
             )
         );
@@ -41,8 +41,8 @@ public class RequestUpdateTungShingScreenPacket implements IHPacket {
         buffer.writeInt(this.day);
     }
 
-    public static RequestUpdateTungShingScreenPacket decode(FriendlyByteBuf buffer) {
-        return new RequestUpdateTungShingScreenPacket(buffer.readUUID(), buffer.readInt());
+    public static RequestUpdateTungShingPacket decode(FriendlyByteBuf buffer) {
+        return new RequestUpdateTungShingPacket(buffer.readUUID(), buffer.readInt());
     }
 
 }

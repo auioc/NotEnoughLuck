@@ -3,8 +3,8 @@ package org.auioc.mods.notenoughluck.common.network;
 import org.auioc.mods.arnicalib.api.game.network.HPacketHandler;
 import org.auioc.mods.arnicalib.api.game.network.IHPacket;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
-import org.auioc.mods.notenoughluck.client.network.UpdateTungShingScreenPacket;
-import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingScreenPacket;
+import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
+import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.server.level.ServerPlayer;
 
 public class PacketHandler {
@@ -18,8 +18,8 @@ public class PacketHandler {
     }
 
     private static void registerMessage() {
-        HANDLER.registerServerToClient(UpdateTungShingScreenPacket.class, UpdateTungShingScreenPacket::decode);
-        HANDLER.registerClientToServer(RequestUpdateTungShingScreenPacket.class, RequestUpdateTungShingScreenPacket::decode);
+        HANDLER.registerServerToClient(UpdateTungShingPacket.class, UpdateTungShingPacket::decode);
+        HANDLER.registerClientToServer(RequestUpdateTungShingPacket.class, RequestUpdateTungShingPacket::decode);
     }
 
     public static <MSG extends IHPacket> void sendToServer(MSG msg) {

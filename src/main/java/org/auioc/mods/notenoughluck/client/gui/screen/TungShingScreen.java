@@ -8,7 +8,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.notenoughluck.Reference;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
-import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingScreenPacket;
+import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
@@ -88,7 +88,7 @@ public class TungShingScreen extends Screen {
             (button) -> {
                 String day = this.editbox.getValue();
                 if (!day.isEmpty()) {
-                    PacketHandler.sendToServer(new RequestUpdateTungShingScreenPacket(this.minecraft.player.getUUID(), Integer.valueOf(day)));
+                    PacketHandler.sendToServer(new RequestUpdateTungShingPacket(this.minecraft.player.getUUID(), Integer.valueOf(day)));
                 }
             }
         );

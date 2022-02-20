@@ -2,7 +2,7 @@ package org.auioc.mods.notenoughluck.common.item.impl;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.auioc.mods.notenoughluck.client.network.UpdateTungShingScreenPacket;
+import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
@@ -37,7 +37,7 @@ public class TungShingItem extends Item {
                     put(day + 1, UnseiUtils.getUnseiValue(seed, day + 1));
                 }
             };
-            PacketHandler.sendToClient(((ServerPlayer) player), new UpdateTungShingScreenPacket(unseiMap));
+            PacketHandler.sendToClient(((ServerPlayer) player), new UpdateTungShingPacket(unseiMap));
             // DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreen::open);
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
