@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.function.Predicate;
 import org.auioc.mods.arnicalib.utils.game.ItemUtils;
 import org.auioc.mods.arnicalib.utils.game.PlayerUtils;
+import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -72,7 +73,7 @@ public class FourLeafCloverItem extends Item {
             stack.shrink(1);
         }
 
-        PlayerUtils.giveItem(player, Items.ACACIA_BOAT);
+        PlayerUtils.giveItem(player, ItemRegistry.TUNG_SHING_ITEM.get());
 
         return stack;
     }
