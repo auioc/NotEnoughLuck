@@ -2,12 +2,18 @@ package org.auioc.mods.notenoughluck.client.gui.screen;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Predicate;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.notenoughluck.Reference;
+import org.auioc.mods.notenoughluck.common.network.PacketHandler;
+import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingScreenPacket;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -24,11 +30,36 @@ public class TungShingScreen extends Screen {
     private static final int UNSEI_LINE_X_OFFSET = 16;
     private static final int UNSEI_LINE_Y_ADDEND = 16;
     private static final int UNSEI_LINE_COLOR = 0xFFFFFF;
+    private static final int EDITBOX_WIDTH = 140;
+    private static final int EDITBOX_HEIGHT = 20;
+    private static final int EDITBOX_X_OFFSET = 20;
+    private static final int EDITBOX_Y_OFFSET = 130;
+    private static final int BUTTON_WIDTH = 60;
+    private static final int BUTTON_HEIGHT = 20;
+    private static final int BUTTON_X_OFFSET = 170;
+    private static final int BUTTON_Y_OFFSET = 130;
+
+    private static final Predicate<String> IS_INTEGER_STRING = (string) -> {
+        if (string.isEmpty()) {
+            return true;
+        }
+        try {
+            int n = Integer.valueOf(string);
+            return n >= 0 ? true : false;
+        } catch (
+            Exception e
+        ) {
+            return false;
+        }
+    };
+
+    private EditBox editbox;
+    private Button button;
 
     private final Map<Integer, Integer> unseiMap = new HashMap<Integer, Integer>();
 
     protected TungShingScreen() {
-        super(TextUtils.I18nText(Reference.I18nKey("gui.tung_shing.title")));
+        super(i18n("title"));
     }
 
     @Override
@@ -38,23 +69,50 @@ public class TungShingScreen extends Screen {
 
     @Override
     protected void init() {
+        int divX = center(this.width, BG_WIDTH);
+        int divY = center(this.height, BG_HEIGHT);
+
+        this.editbox = new EditBox(
+            this.font,
+            divX + EDITBOX_X_OFFSET, divY + EDITBOX_Y_OFFSET,
+            EDITBOX_WIDTH, EDITBOX_HEIGHT,
+            i18n("editbox")
+        );
+        this.editbox.setFilter(IS_INTEGER_STRING);
+        this.addWidget(this.editbox);
+
+        this.button = new Button(
+            divX + BUTTON_X_OFFSET, divY + BUTTON_Y_OFFSET,
+            BUTTON_WIDTH, BUTTON_HEIGHT,
+            i18n("button"),
+            (button) -> {
+                String day = this.editbox.getValue();
+                if (!day.isEmpty()) {
+                    PacketHandler.sendToServer(new RequestUpdateTungShingScreenPacket(this.minecraft.player.getUUID(), Integer.valueOf(day)));
+                }
+            }
+        );
+        this.addWidget(this.button);
+
         super.init();
     }
 
     @Override
     public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+        int divX = center(this.width, BG_WIDTH);
+        int divY = center(this.height, BG_HEIGHT);
+
         this.renderBackground(poseStack);
 
         RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         // X, Y, U, V, W, H, TW, TH
-        blit(poseStack, center(this.width, BG_WIDTH), center(this.height, BG_HEIGHT), 0, 0, BG_WIDTH, BG_HEIGHT, BG_TEXTURE_SIZE, BG_TEXTURE_SIZE);
+        blit(poseStack, divX, divY, 0, 0, BG_WIDTH, BG_HEIGHT, BG_TEXTURE_SIZE, BG_TEXTURE_SIZE);
 
-        drawCenteredString(poseStack, this.font, this.title, center(this.width), center(this.height, BG_HEIGHT) + TITLE_Y_OFFSET, TITLE_COLOR);
+        drawCenteredString(poseStack, this.font, this.title, center(this.width), divY + TITLE_Y_OFFSET, TITLE_COLOR);
 
-
-        int unseiLineX = center(this.width, BG_WIDTH) + UNSEI_LINE_X_OFFSET;
-        int unseiLineY = center(this.height, BG_HEIGHT);
+        int unseiLineX = divX + UNSEI_LINE_X_OFFSET;
+        int unseiLineY = divY;
         int i = 0;
         for (Map.Entry<Integer, Integer> entry : this.unseiMap.entrySet()) {
             int day = entry.getKey();
@@ -62,7 +120,14 @@ public class TungShingScreen extends Screen {
             i++;
         }
 
+        this.editbox.render(poseStack, mouseX, mouseY, partialTicks);
+        this.button.render(poseStack, mouseX, mouseY, partialTicks);
+
         super.render(poseStack, mouseX, mouseY, partialTicks);
+    }
+
+    private static Component i18n(String key) {
+        return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing." + key));
     }
 
     public void updateUnsei(Map<Integer, Integer> newUnseiMap) {
