@@ -2,18 +2,13 @@ package org.auioc.mods.notenoughluck.client.gui.screen;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Predicate;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.auioc.mods.arnicalib.utils.game.TextUtils;
-import org.auioc.mods.notenoughluck.Reference;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -21,10 +16,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class TungShingScreen extends Screen {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation("minecraft:textures/gui/demo_background.png");
-    private static final int BG_WIDTH = 248;
-    private static final int BG_HEIGHT = 166;
-    private static final int BG_TEXTURE_SIZE = 256;
+    private static final ResourceLocation BACKGROUND_TEXTURE = TungShingScreenUtils.texture("background");
+    private static final int BG_WIDTH = 180;
+    private static final int BG_HEIGHT = 180;
+    private static final int BG_TEXTURE_SIZE = 180;
     private static final int TITLE_Y_OFFSET = -16;
     private static final int TITLE_COLOR = 0xFFFFFF;
     private static final int UNSEI_LINE_X_OFFSET = 16;
@@ -39,19 +34,6 @@ public class TungShingScreen extends Screen {
     private static final int BUTTON_X_OFFSET = 170;
     private static final int BUTTON_Y_OFFSET = 130;
 
-    private static final Predicate<String> IS_INTEGER_STRING = (string) -> {
-        if (string.isEmpty()) {
-            return true;
-        }
-        try {
-            int n = Integer.valueOf(string);
-            return n >= 0 ? true : false;
-        } catch (
-            Exception e
-        ) {
-            return false;
-        }
-    };
 
     private EditBox editbox;
     private Button button;
@@ -59,7 +41,7 @@ public class TungShingScreen extends Screen {
     private final Map<Integer, Integer> unseiMap = new HashMap<Integer, Integer>();
 
     protected TungShingScreen() {
-        super(i18n("title"));
+        super(TungShingScreenUtils.i18n("title"));
     }
 
     @Override
@@ -76,15 +58,15 @@ public class TungShingScreen extends Screen {
             this.font,
             divX + EDITBOX_X_OFFSET, divY + EDITBOX_Y_OFFSET,
             EDITBOX_WIDTH, EDITBOX_HEIGHT,
-            i18n("editbox")
+            TungShingScreenUtils.i18n("editbox")
         );
-        this.editbox.setFilter(IS_INTEGER_STRING);
+        this.editbox.setFilter(TungShingScreenUtils.IS_INTEGER_STRING);
         this.addWidget(this.editbox);
 
         this.button = new Button(
             divX + BUTTON_X_OFFSET, divY + BUTTON_Y_OFFSET,
             BUTTON_WIDTH, BUTTON_HEIGHT,
-            i18n("button"),
+            TungShingScreenUtils.i18n("button"),
             (button) -> {
                 String day = this.editbox.getValue();
                 if (!day.isEmpty()) {
@@ -126,14 +108,12 @@ public class TungShingScreen extends Screen {
         super.render(poseStack, mouseX, mouseY, partialTicks);
     }
 
-    private static Component i18n(String key) {
-        return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing." + key));
-    }
 
     public void updateUnsei(Map<Integer, Integer> newUnseiMap) {
         this.unseiMap.clear();
         this.unseiMap.putAll(newUnseiMap);
     }
+
 
     private static int center(int size) {
         return size / 2;
@@ -141,16 +121,6 @@ public class TungShingScreen extends Screen {
 
     private static int center(int screen, int b) {
         return (screen - b) / 2;
-    }
-
-
-    public static TungShingScreen open(boolean reuse) {
-        Minecraft mc = Minecraft.getInstance();
-        if (reuse && mc.screen instanceof TungShingScreen) {
-            return (TungShingScreen) mc.screen;
-        }
-        mc.setScreen(new TungShingScreen());
-        return (TungShingScreen) mc.screen;
     }
 
 }
