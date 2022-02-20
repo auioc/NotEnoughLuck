@@ -6,11 +6,13 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.java.Validate;
+import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -18,7 +20,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class TungShingScreen extends Screen {
 
+    private static final int REQUEST_COOLDOWN = 10 * 20;
+
     private static final ResourceLocation BACKGROUND_TEXTURE = TungShingScreenUtils.texture("background");
+
     private static final int BG_TEXTURE_SIZE = 180;
     private static final int EDITBOX_WIDTH = 95;
     private static final int EDITBOX_HEIGHT = 20;
@@ -35,8 +40,6 @@ public class TungShingScreen extends Screen {
     private static final int LEFT_UNSEI_X_OFFSET = 10;
     private static final int CENTER_UNSEI_X_OFFSET = 50;
     private static final int CENTER_UNSEI_Y_OFFSET = 118;
-
-
 
     private EditBox editbox;
     private Button button;
@@ -72,9 +75,15 @@ public class TungShingScreen extends Screen {
             TungShingScreenUtils.i18n("button"),
             (button) -> {
                 String day = this.editbox.getValue();
-                if (!day.isEmpty()) {
-                    PacketHandler.sendToServer(new RequestUpdateTungShingPacket(this.minecraft.player.getUUID(), Integer.valueOf(day)));
+                if (day.isEmpty()) {
+                    return;
                 }
+                LocalPlayer player = this.minecraft.player;
+                if (player.getCooldowns().isOnCooldown(ItemRegistry.TUNG_SHING_ITEM.get())) {
+                    System.out.println("x");
+                    return;
+                }
+                PacketHandler.sendToServer(new RequestUpdateTungShingPacket(player.getUUID(), Integer.valueOf(day)));
             }
         );
         this.addWidget(this.button);
@@ -123,6 +132,7 @@ public class TungShingScreen extends Screen {
         Validate.isTrue(newUnseiMap.size() == 3);
         this.unseiMap.clear();
         this.unseiMap.putAll(newUnseiMap);
+        this.minecraft.player.getCooldowns().addCooldown(ItemRegistry.TUNG_SHING_ITEM.get(), REQUEST_COOLDOWN);
     }
 
     private static int center(int screen, int b) {
