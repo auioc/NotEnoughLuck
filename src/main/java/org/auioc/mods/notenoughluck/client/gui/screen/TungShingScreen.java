@@ -1,7 +1,5 @@
 package org.auioc.mods.notenoughluck.client.gui.screen;
 
-import java.util.HashMap;
-import java.util.Map;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
@@ -44,7 +42,8 @@ public class TungShingScreen extends Screen {
     private EditBox editbox;
     private Button button;
 
-    private final Map<Integer, Integer> unseiMap = new HashMap<Integer, Integer>();
+    private int[] dayArray;
+    private int[] unseiArray;
 
     protected TungShingScreen() {
         super(TungShingScreenUtils.i18n("title"));
@@ -102,11 +101,10 @@ public class TungShingScreen extends Screen {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         blit(poseStack, divX, divY, BG_TEXTURE_SIZE);
 
-        int i = 0;
-        for (Map.Entry<Integer, Integer> entry : this.unseiMap.entrySet()) {
+        for (int i = 0, l = this.unseiArray.length; i < l; i++) {
             boolean small = i != 1;
 
-            Pair<ResourceLocation, ResourceLocation> textures = TungShingScreenUtils.getUnseiTexture(entry.getValue(), small);
+            Pair<ResourceLocation, ResourceLocation> textures = TungShingScreenUtils.getUnseiTexture(this.unseiArray[i], small);
 
             int size = small ? SMALL_UNSEI_TEXTURE_SIZE : BIG_UNSEI_TEXTURE_SIZE;
             int offsetX = i == 0 ? LEFT_UNSEI_X_OFFSET : (i == 1 ? CENTER_UNSEI_X_OFFSET : RIGHT_UNSEI_X_OFFSET);
@@ -117,8 +115,6 @@ public class TungShingScreen extends Screen {
 
             RenderSystem.setShaderTexture(0, textures.getRight());
             blit(poseStack, divX + offsetX + (small ? 0 : BIG_UNSEI_TEXTURE_SIZE), divY + offsetY + (small ? SMALL_UNSEI_TEXTURE_SIZE : 0), size);
-
-            i++;
         }
 
         this.editbox.render(poseStack, mouseX, mouseY, partialTicks);
@@ -128,10 +124,11 @@ public class TungShingScreen extends Screen {
     }
 
 
-    public void updateUnsei(Map<Integer, Integer> newUnseiMap) {
-        Validate.isTrue(newUnseiMap.size() == 3);
-        this.unseiMap.clear();
-        this.unseiMap.putAll(newUnseiMap);
+    public void updateUnsei(int[] dayArray, int[] unseiArray) {
+        Validate.isTrue(dayArray.length == 3);
+        Validate.isTrue(unseiArray.length == 3);
+        this.dayArray = dayArray;
+        this.unseiArray = unseiArray;
         this.minecraft.player.getCooldowns().addCooldown(ItemRegistry.TUNG_SHING_ITEM.get(), REQUEST_COOLDOWN);
     }
 

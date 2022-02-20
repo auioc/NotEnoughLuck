@@ -1,7 +1,5 @@
 package org.auioc.mods.notenoughluck.server.network;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 import org.auioc.mods.arnicalib.api.game.network.IHPacket;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
@@ -28,15 +26,21 @@ public class RequestUpdateTungShingPacket implements IHPacket {
 
         int day = this.day;
         long seed = player.getLevel().getSeed();
-        Map<Integer, Integer> unseiMap = new HashMap<Integer, Integer>() {
-            {
-                put(day - 1, UnseiUtils.getUnseiValue(seed, day - 1));
-                put(day, UnseiUtils.getUnseiValue(seed, day));
-                put(day + 1, UnseiUtils.getUnseiValue(seed, day + 1));
-            }
-        };
 
-        PacketHandler.sendToClient(((ServerPlayer) player), new UpdateTungShingPacket(unseiMap));
+        PacketHandler.sendToClient(
+            ((ServerPlayer) player), new UpdateTungShingPacket(
+                new int[] {
+                    day - 1,
+                    day,
+                    day + 1
+                },
+                new int[] {
+                    UnseiUtils.getUnseiValue(seed, day - 1),
+                    UnseiUtils.getUnseiValue(seed, day),
+                    UnseiUtils.getUnseiValue(seed, day + 1)
+                }
+            )
+        );
     }
 
     @Override

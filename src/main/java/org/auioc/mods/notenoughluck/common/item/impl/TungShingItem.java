@@ -1,7 +1,5 @@
 package org.auioc.mods.notenoughluck.common.item.impl;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
@@ -30,15 +28,22 @@ public class TungShingItem extends Item {
         if (!level.isClientSide) {
             int day = UnseiUtils.getDay(level.getDayTime());
             long seed = ((ServerLevel) level).getSeed();
-            Map<Integer, Integer> unseiMap = new HashMap<Integer, Integer>() {
-                {
-                    put(day - 1, UnseiUtils.getUnseiValue(seed, day - 1));
-                    put(day, UnseiUtils.getUnseiValue(seed, day));
-                    put(day + 1, UnseiUtils.getUnseiValue(seed, day + 1));
-                }
-            };
-            PacketHandler.sendToClient(((ServerPlayer) player), new UpdateTungShingPacket(unseiMap));
-            // DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreen::open);
+
+            PacketHandler.sendToClient(
+                ((ServerPlayer) player),
+                new UpdateTungShingPacket(
+                    new int[] {
+                        day - 1,
+                        day,
+                        day + 1
+                    },
+                    new int[] {
+                        UnseiUtils.getUnseiValue(seed, day - 1),
+                        UnseiUtils.getUnseiValue(seed, day),
+                        UnseiUtils.getUnseiValue(seed, day + 1)
+                    }
+                )
+            );
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
     }
