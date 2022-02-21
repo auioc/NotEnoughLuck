@@ -129,7 +129,8 @@ public class TungShingScreen extends Screen {
         Validate.isTrue(unseiArray.length == 3);
         this.dayArray = dayArray;
         this.unseiArray = unseiArray;
-        this.minecraft.player.getCooldowns().addCooldown(ItemRegistry.TUNG_SHING_ITEM.get(), REQUEST_COOLDOWN);
+        this.editbox.setValue("" + dayArray[1]);
+        TungShingScreenUtils.addCooldown(REQUEST_COOLDOWN);
     }
 
     private static int center(int screen, int b) {
