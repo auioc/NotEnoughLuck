@@ -1,5 +1,6 @@
 package org.auioc.mods.notenoughluck.common.item.impl;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
@@ -29,24 +30,12 @@ public class TungShingItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (!level.isClientSide && !player.getCooldowns().isOnCooldown(this)) {
-            int day = UnseiUtils.getDay(level.getDayTime());
-            long seed = ((ServerLevel) level).getSeed();
-
             addCooldown(player);
+
+            Pair<int[], int[]> unsei = UnseiUtils.getThreeDaysUnsei(((ServerLevel) level).getSeed(), UnseiUtils.getDay(level.getDayTime()));
             PacketHandler.sendToClient(
                 ((ServerPlayer) player),
-                new UpdateTungShingPacket(
-                    new int[] {
-                        day - 1,
-                        day,
-                        day + 1
-                    },
-                    new int[] {
-                        UnseiUtils.getUnseiValue(seed, day - 1),
-                        UnseiUtils.getUnseiValue(seed, day),
-                        UnseiUtils.getUnseiValue(seed, day + 1)
-                    }
-                )
+                new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight())
             );
         }
 
