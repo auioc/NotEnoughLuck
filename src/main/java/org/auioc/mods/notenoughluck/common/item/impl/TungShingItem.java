@@ -25,7 +25,7 @@ public class TungShingItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide && !player.getCooldowns().isOnCooldown(this)) {
             int day = UnseiUtils.getDay(level.getDayTime());
             long seed = ((ServerLevel) level).getSeed();
 
@@ -45,6 +45,7 @@ public class TungShingItem extends Item {
                 )
             );
         }
+
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
     }
 

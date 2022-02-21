@@ -4,13 +4,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.java.Validate;
-import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -77,12 +75,10 @@ public class TungShingScreen extends Screen {
                 if (day.isEmpty()) {
                     return;
                 }
-                LocalPlayer player = this.minecraft.player;
-                if (player.getCooldowns().isOnCooldown(ItemRegistry.TUNG_SHING_ITEM.get())) {
-                    System.out.println("x");
+                if (TungShingScreenUtils.isOnCooldown()) {
                     return;
                 }
-                PacketHandler.sendToServer(new RequestUpdateTungShingPacket(player.getUUID(), Integer.valueOf(day)));
+                PacketHandler.sendToServer(new RequestUpdateTungShingPacket(this.minecraft.player.getUUID(), Integer.valueOf(day)));
             }
         );
         this.addWidget(this.button);
@@ -115,6 +111,12 @@ public class TungShingScreen extends Screen {
 
             RenderSystem.setShaderTexture(0, textures.getRight());
             blit(poseStack, divX + offsetX + (small ? 0 : BIG_UNSEI_TEXTURE_SIZE), divY + offsetY + (small ? SMALL_UNSEI_TEXTURE_SIZE : 0), size);
+        }
+
+        if (TungShingScreenUtils.isOnCooldown()) {
+            this.button.active = false;
+        } else {
+            this.button.active = true;
         }
 
         this.editbox.render(poseStack, mouseX, mouseY, partialTicks);

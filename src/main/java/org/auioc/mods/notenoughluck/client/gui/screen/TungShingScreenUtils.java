@@ -5,6 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.Reference;
+import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -44,6 +45,17 @@ public class TungShingScreenUtils {
             return false;
         }
     };
+
+
+    protected static boolean isOnCooldown() {
+        Minecraft mc = Minecraft.getInstance();
+        return mc.player.getCooldowns().isOnCooldown(ItemRegistry.TUNG_SHING_ITEM.get());
+    }
+
+    protected static void addCooldown(int tick) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.player.getCooldowns().addCooldown(ItemRegistry.TUNG_SHING_ITEM.get(), tick);
+    }
 
     protected static enum UnseiTexture {
         DAI("prefixes", "dai"), CHUU("prefixes", "chuu"), SHOU("prefixes", "shou"), SUE("prefixes", "sue"), //
