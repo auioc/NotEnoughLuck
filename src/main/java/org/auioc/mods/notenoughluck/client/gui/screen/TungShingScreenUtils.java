@@ -11,7 +11,6 @@ import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -29,10 +28,6 @@ public class TungShingScreenUtils {
         }
         mc.setScreen(new TungShingScreen());
         return (TungShingScreen) mc.screen;
-    }
-
-    protected static ResourceLocation texture(String key) {
-        return Reference.ResourceId("textures/gui/tung_shing/" + key + ".png");
     }
 
     protected static Component i18n(String key) {
@@ -88,53 +83,57 @@ public class TungShingScreenUtils {
 
 
     protected static enum UnseiTexture {
-        DAI("prefix", "dai"), CHUU("prefix", "chuu"), SHOU("prefix", "shou"), SUE("prefix", "sue"), //
-        HEI_A("fortune", "hei_a"), HEI_B("fortune", "hei_b"), //
-        KICHI("fortune", "kichi"), KYOU("fortune", "kyou");
+        DAI(180, 0, 220, 0), CHUU(180, 40, 220, 20), SHOU(180, 80, 220, 40), SUE(180, 120, 220, 60), //
+        HEI_A(0, 180, 160, 180), HEI_B(40, 180, 160, 200), //
+        KICHI(80, 180, 180, 160), KYOU(120, 180, 200, 160);
 
-        public final ResourceLocation bigTexture;
-        public final ResourceLocation smallTexture;
+        public final Pair<Integer, Integer> bigUV;
+        public final Pair<Integer, Integer> smallUV;
 
-        private UnseiTexture(String type, String name) {
-            this.bigTexture = texture(type + "/" + name + "_big");
-            this.smallTexture = texture(type + "/" + name + "_small");
+        private UnseiTexture(int bigU, int bigV, int smallU, int smallV) {
+            this.bigUV = Pair.of(bigU, bigV);
+            this.smallUV = Pair.of(smallU, smallV);
         }
     }
 
-    private static Pair<ResourceLocation, ResourceLocation> getUnseiTexture(Pair<UnseiTexture, UnseiTexture> unsei, boolean small) {
+    private static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiTextureUV(UnseiTexture unseiPrefix, UnseiTexture unseiFortune, boolean small) {
         return Pair.of(
-            small ? unsei.getLeft().smallTexture : unsei.getLeft().bigTexture,
-            small ? unsei.getRight().smallTexture : unsei.getRight().bigTexture
+            small ? unseiPrefix.smallUV : unseiPrefix.bigUV,
+            small ? unseiFortune.smallUV : unseiFortune.bigUV
         );
     }
 
-    protected static Pair<ResourceLocation, ResourceLocation> getUnseiTexture(int unsei, boolean small) {
+
+    /**
+     * @return {@code <PrefixU, PrefixV>, <FortuneU, FortuneV>}
+     */
+    protected static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiTextureUV(int unsei, boolean small) {
         Validate.isInCloseInterval(0, 36, unsei);
         if (unsei < 1) {
-            return getUnseiTexture(Pair.of(UnseiTexture.DAI, UnseiTexture.KICHI), small);
+            return getUnseiTextureUV(UnseiTexture.DAI, UnseiTexture.KICHI, small);
         }
         if (unsei < 3) {
-            return getUnseiTexture(Pair.of(UnseiTexture.CHUU, UnseiTexture.KICHI), small);
+            return getUnseiTextureUV(UnseiTexture.CHUU, UnseiTexture.KICHI, small);
         }
         if (unsei < 7) {
-            return getUnseiTexture(Pair.of(UnseiTexture.SHOU, UnseiTexture.KICHI), small);
+            return getUnseiTextureUV(UnseiTexture.SHOU, UnseiTexture.KICHI, small);
         }
         if (unsei < 15) {
-            return getUnseiTexture(Pair.of(UnseiTexture.SUE, UnseiTexture.KICHI), small);
+            return getUnseiTextureUV(UnseiTexture.SUE, UnseiTexture.KICHI, small);
         }
         if (unsei < 25) {
-            return getUnseiTexture(Pair.of(UnseiTexture.HEI_A, UnseiTexture.HEI_B), small);
+            return getUnseiTextureUV(UnseiTexture.HEI_A, UnseiTexture.HEI_B, small);
         }
         if (unsei < 31) {
-            return getUnseiTexture(Pair.of(UnseiTexture.SUE, UnseiTexture.KYOU), small);
+            return getUnseiTextureUV(UnseiTexture.SUE, UnseiTexture.KYOU, small);
         }
         if (unsei < 34) {
-            return getUnseiTexture(Pair.of(UnseiTexture.SHOU, UnseiTexture.KYOU), small);
+            return getUnseiTextureUV(UnseiTexture.SHOU, UnseiTexture.KYOU, small);
         }
         if (unsei < 36) {
-            return getUnseiTexture(Pair.of(UnseiTexture.CHUU, UnseiTexture.KYOU), small);
+            return getUnseiTextureUV(UnseiTexture.CHUU, UnseiTexture.KYOU, small);
         }
-        return getUnseiTexture(Pair.of(UnseiTexture.DAI, UnseiTexture.KYOU), small);
+        return getUnseiTextureUV(UnseiTexture.DAI, UnseiTexture.KYOU, small);
 
         // 1   2     4         8                      10                              6                   3          2       1
         // (0) (1 2) (3 4 5 6) (7 8 9 10 11 12 13 14) (15 16 17 18 19 20 21 22 23 24) (25 26 27 28 29 30) (31 32 33) (34 35) (36)
