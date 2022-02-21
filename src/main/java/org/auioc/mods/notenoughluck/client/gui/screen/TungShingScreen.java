@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.java.Validate;
+import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -76,6 +77,8 @@ public class TungShingScreen extends Screen {
         );
         this.addWidget(this.button);
 
+        TungShingScreenUtils.requestUpdate(this, UnseiUtils.getDay(this.minecraft.level.getDayTime()));
+
         super.init();
     }
 
@@ -89,6 +92,11 @@ public class TungShingScreen extends Screen {
         RenderSystem.setShaderTexture(0, BACKGROUND_TEXTURE);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         blit(poseStack, divX, divY, BG_TEXTURE_SIZE);
+
+        if (unseiArray == null || dayArray == null) {
+            super.render(poseStack, mouseX, mouseY, partialTicks);
+            return;
+        }
 
         for (int i = 0, l = this.unseiArray.length; i < l; i++) {
             boolean small = i != 1;

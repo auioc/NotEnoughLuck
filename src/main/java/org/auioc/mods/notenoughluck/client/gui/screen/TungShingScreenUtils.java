@@ -18,6 +18,10 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class TungShingScreenUtils {
 
+    public static void open() {
+        Minecraft.getInstance().setScreen(new TungShingScreen());
+    }
+
     public static TungShingScreen open(boolean reuse) {
         Minecraft mc = Minecraft.getInstance();
         if (reuse && mc.screen instanceof TungShingScreen) {
