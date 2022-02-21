@@ -129,7 +129,7 @@ public class TungShingScreen extends Screen {
         Validate.isTrue(unseiArray.length == 3);
         this.dayArray = dayArray;
         this.unseiArray = unseiArray;
-        this.editbox.setValue("" + dayArray[1]);
+        this.editbox.setValue("" + this.dayArray[1]);
     }
 
     private static int center(int screen, int b) {

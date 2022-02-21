@@ -4,6 +4,7 @@ import java.util.List;
 import org.auioc.mods.arnicalib.utils.game.RegistryUtils;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.common.alchemy.PotionRegistry;
+import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -27,7 +28,7 @@ public class NELPotionGroup extends CreativeModeTab {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(Items.POTION);
+        return new ItemStack(ItemRegistry.ICON_ITEM.get());
     }
 
     @Override

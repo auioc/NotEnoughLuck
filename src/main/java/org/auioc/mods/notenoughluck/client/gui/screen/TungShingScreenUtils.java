@@ -54,9 +54,9 @@ public class TungShingScreenUtils {
 
 
     protected static enum UnseiTexture {
-        DAI("prefixes", "dai"), CHUU("prefixes", "chuu"), SHOU("prefixes", "shou"), SUE("prefixes", "sue"), //
-        HEI_A("fortunes", "hei_a"), HEI_B("fortunes", "hei_b"), //
-        KICHI("fortunes", "kichi"), KYOU("fortunes", "kyou");
+        DAI("prefix", "dai"), CHUU("prefix", "chuu"), SHOU("prefix", "shou"), SUE("prefix", "sue"), //
+        HEI_A("fortune", "hei_a"), HEI_B("fortune", "hei_b"), //
+        KICHI("fortune", "kichi"), KYOU("fortune", "kyou");
 
         public final ResourceLocation bigTexture;
         public final ResourceLocation smallTexture;
