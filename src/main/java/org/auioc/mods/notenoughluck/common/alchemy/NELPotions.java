@@ -12,13 +12,13 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class PotionRegistry implements IHRegistry {
+public class NELPotions implements IHRegistry {
 
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, NotEnoughLuck.MOD_ID);
 
     @SubscribeEvent
     public static void onSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(PotionRegistry::registerBrewingRecipes);
+        event.enqueueWork(NELPotions::registerBrewingRecipes);
     }
 
 

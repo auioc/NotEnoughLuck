@@ -4,7 +4,7 @@ import org.auioc.mods.notenoughluck.common.itemgroup.impl.NELItemGroup;
 import org.auioc.mods.notenoughluck.common.itemgroup.impl.NELPotionGroup;
 import net.minecraft.world.item.CreativeModeTab;
 
-public class ItemGroupRegistry {
+public class NELItemGroups {
 
     public static void init() {}
 

@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.function.Predicate;
 import org.auioc.mods.arnicalib.utils.game.ItemUtils;
 import org.auioc.mods.arnicalib.utils.game.PlayerUtils;
-import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
-import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
+import org.auioc.mods.notenoughluck.common.item.NELItems;
+import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -25,7 +25,7 @@ public class FourLeafCloverItem extends Item {
     public FourLeafCloverItem() {
         super(
             new Item.Properties()
-                .tab(ItemGroupRegistry.NELItemGroup)
+                .tab(NELItemGroups.NELItemGroup)
                 .stacksTo(16)
         );
     }
@@ -73,7 +73,7 @@ public class FourLeafCloverItem extends Item {
             stack.shrink(1);
         }
 
-        PlayerUtils.giveItem(player, ItemRegistry.TUNG_SHING_ITEM.get());
+        PlayerUtils.giveItem(player, NELItems.TUNG_SHING_ITEM.get());
 
         return stack;
     }

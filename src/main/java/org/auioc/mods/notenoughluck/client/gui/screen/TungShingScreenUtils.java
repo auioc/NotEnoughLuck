@@ -5,7 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.Reference;
-import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
+import org.auioc.mods.notenoughluck.common.item.NELItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -49,7 +49,7 @@ public class TungShingScreenUtils {
 
     protected static boolean isOnCooldown() {
         Minecraft mc = Minecraft.getInstance();
-        return mc.player.getCooldowns().isOnCooldown(ItemRegistry.TUNG_SHING_ITEM.get());
+        return mc.player.getCooldowns().isOnCooldown(NELItems.TUNG_SHING_ITEM.get());
     }
 
 

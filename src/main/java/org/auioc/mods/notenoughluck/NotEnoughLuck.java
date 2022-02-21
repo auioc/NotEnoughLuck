@@ -5,11 +5,11 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mods.arnicalib.utils.LogUtil;
 import org.auioc.mods.arnicalib.utils.java.VersionUtils;
-import org.auioc.mods.notenoughluck.common.alchemy.PotionRegistry;
-import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
-import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
-import org.auioc.mods.notenoughluck.common.network.PacketHandler;
-import org.auioc.mods.notenoughluck.server.event.ServerEventHandler;
+import org.auioc.mods.notenoughluck.common.alchemy.NELPotions;
+import org.auioc.mods.notenoughluck.common.item.NELItems;
+import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
+import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
+import org.auioc.mods.notenoughluck.server.event.NELServerEventHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -42,15 +42,15 @@ public final class NotEnoughLuck {
     }
 
     private void modSetup(final IEventBus modEventBus) {
-        PacketHandler.init();
-        ItemRegistry.ITEMS.register(modEventBus);
-        PotionRegistry.POTIONS.register(modEventBus);
-        modEventBus.register(PotionRegistry.class);
+        NELPacketHandler.init();
+        NELItems.ITEMS.register(modEventBus);
+        NELPotions.POTIONS.register(modEventBus);
+        modEventBus.register(NELPotions.class);
     }
 
     private void forgeSetup(final IEventBus forgeEventBus) {
-        forgeEventBus.register(ServerEventHandler.class);
-        ItemGroupRegistry.init();
+        forgeEventBus.register(NELServerEventHandler.class);
+        NELItemGroups.init();
     }
 
 }

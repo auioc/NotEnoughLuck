@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.common.item.impl;
 
-import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
-import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
+import org.auioc.mods.notenoughluck.common.item.NELItems;
+import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,7 +19,7 @@ public class TungShingItem extends Item {
     public TungShingItem() {
         super(
             new Item.Properties()
-                .tab(ItemGroupRegistry.NELItemGroup)
+                .tab(NELItemGroups.NELItemGroup)
                 .stacksTo(1)
         );
     }
@@ -34,7 +34,7 @@ public class TungShingItem extends Item {
     }
 
     public static void addCooldown(Player player) {
-        player.getCooldowns().addCooldown(ItemRegistry.TUNG_SHING_ITEM.get(), COOLDOWN);
+        player.getCooldowns().addCooldown(NELItems.TUNG_SHING_ITEM.get(), COOLDOWN);
     }
 
 }

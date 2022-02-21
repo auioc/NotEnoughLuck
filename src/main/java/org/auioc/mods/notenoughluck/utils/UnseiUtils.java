@@ -5,7 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
-import org.auioc.mods.notenoughluck.common.network.PacketHandler;
+import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -42,7 +42,7 @@ public class UnseiUtils {
         TungShingItem.addCooldown(player);
 
         Pair<int[], int[]> unsei = UnseiUtils.getThreeDaysUnsei(seed, today);
-        PacketHandler.sendToClient(
+        NELPacketHandler.sendToClient(
             ((ServerPlayer) player),
             new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight())
         );

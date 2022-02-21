@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.common.itemgroup.impl;
 
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
-import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
+import org.auioc.mods.notenoughluck.common.item.NELItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -13,7 +13,7 @@ public class NELItemGroup extends CreativeModeTab {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(ItemRegistry.ICON_ITEM.get());
+        return new ItemStack(NELItems.ICON_ITEM.get());
     }
 
 }

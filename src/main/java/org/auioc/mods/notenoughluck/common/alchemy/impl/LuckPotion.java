@@ -1,6 +1,6 @@
 package org.auioc.mods.notenoughluck.common.alchemy.impl;
 
-import org.auioc.mods.notenoughluck.common.alchemy.PotionRegistry;
+import org.auioc.mods.notenoughluck.common.alchemy.NELPotions;
 import org.auioc.mods.notenoughluck.common.alchemy.base.NELPotion;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
@@ -24,7 +24,7 @@ public class LuckPotion extends NELPotion {
         }
 
         public static boolean registerBrewingRecipe() {
-            return registerBrewingRecipe(Potions.LUCK, Items.REDSTONE, PotionRegistry.LONG_LUCK);
+            return registerBrewingRecipe(Potions.LUCK, Items.REDSTONE, NELPotions.LONG_LUCK);
         }
     }
 
@@ -38,7 +38,7 @@ public class LuckPotion extends NELPotion {
         }
 
         public static boolean registerBrewingRecipe() {
-            return registerBrewingRecipe(Potions.LUCK, Items.GLOWSTONE_DUST, PotionRegistry.STRONG_LUCK);
+            return registerBrewingRecipe(Potions.LUCK, Items.GLOWSTONE_DUST, NELPotions.STRONG_LUCK);
         }
     }
 

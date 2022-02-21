@@ -3,8 +3,8 @@ package org.auioc.mods.notenoughluck.common.itemgroup.impl;
 import java.util.List;
 import org.auioc.mods.arnicalib.utils.game.RegistryUtils;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
-import org.auioc.mods.notenoughluck.common.alchemy.PotionRegistry;
-import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
+import org.auioc.mods.notenoughluck.common.alchemy.NELPotions;
+import org.auioc.mods.notenoughluck.common.item.NELItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -28,12 +28,12 @@ public class NELPotionGroup extends CreativeModeTab {
 
     @Override
     public ItemStack makeIcon() {
-        return new ItemStack(ItemRegistry.ICON_ITEM.get());
+        return new ItemStack(NELItems.ICON_ITEM.get());
     }
 
     @Override
     public void fillItemList(NonNullList<ItemStack> list) {
-        List<Potion> potions = RegistryUtils.getAllRegistryObjects(PotionRegistry.class, Potion.class);
+        List<Potion> potions = RegistryUtils.getAllRegistryObjects(NELPotions.class, Potion.class);
         for (int i = 0, l = potions.size(); i < l; i++) {
             for (Item potionItem : POTION_ITEMS) {
                 list.add(PotionUtils.setPotion(new ItemStack(potionItem), potions.get(i)));

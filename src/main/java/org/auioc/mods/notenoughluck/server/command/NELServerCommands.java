@@ -8,7 +8,7 @@ import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.server.command.impl.TungShingCommand;
 import net.minecraft.commands.CommandSourceStack;
 
-public class ServerCommandRegistry {
+public class NELServerCommands {
 
     public static final CommandNode<CommandSourceStack> NODE = literal(NotEnoughLuck.MOD_ID).build();
 

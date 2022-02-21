@@ -7,7 +7,7 @@ import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.server.level.ServerPlayer;
 
-public class PacketHandler {
+public class NELPacketHandler {
 
     private static final String PROTOCOL_VERSION = Integer.toString(1);
     private static HPacketHandler HANDLER;
