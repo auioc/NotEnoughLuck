@@ -20,10 +20,10 @@ public class TungShingScreen extends Screen {
     protected static final ResourceLocation TEXTURE = Reference.ResourceId("textures/gui/tung_shing.png");
     protected static final int TEXTURE_SIZE = 256;
 
-    private static final int EDITBOX_WIDTH = 95;
-    private static final int EDITBOX_HEIGHT = 20;
-    private static final int EDITBOX_X_OFFSET = 10;
-    private static final int EDITBOX_Y_OFFSET = 180;
+    private static final int EDITBOX_WIDTH = 20;
+    private static final int EDITBOX_HEIGHT = 8;
+    private static final int EDITBOX_X_OFFSET = 80;
+    private static final int EDITBOX_Y_OFFSET = 92;
 
     private static final int BUTTON_X_OFFSET = 71;
     private static final int BUTTON_Y_OFFSET = 104;
@@ -128,8 +128,10 @@ public class TungShingScreen extends Screen {
 
         if (TungShingScreenUtils.isOnCooldown()) {
             this.button.active = false;
+            this.editbox.setEditable(false);
         } else {
             this.button.active = true;
+            this.editbox.setEditable(true);
         }
 
         this.editbox.render(poseStack, mouseX, mouseY, partialTicks);
