@@ -1,11 +1,7 @@
 package org.auioc.mods.notenoughluck.server.network;
 
 import java.util.UUID;
-import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.api.game.network.IHPacket;
-import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
-import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
-import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,14 +21,7 @@ public class RequestUpdateTungShingPacket implements IHPacket {
     @Override
     public void handle(Context ctx) {
         ServerPlayer player = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayer(this.playerUUID);
-
-        TungShingItem.addCooldown(player);
-
-        Pair<int[], int[]> unsei = UnseiUtils.getThreeDaysUnsei(player.getLevel().getSeed(), this.day);
-        PacketHandler.sendToClient(
-            ((ServerPlayer) player),
-            new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight())
-        );
+        UnseiUtils.sendUpdateTungShingPacket(player, player.getLevel().getSeed(), this.day);
     }
 
     @Override

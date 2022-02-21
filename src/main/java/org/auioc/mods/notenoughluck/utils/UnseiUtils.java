@@ -3,7 +3,11 @@ package org.auioc.mods.notenoughluck.utils;
 import java.util.Random;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
+import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
+import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
+import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 
 public class UnseiUtils {
 
@@ -31,6 +35,16 @@ public class UnseiUtils {
                 UnseiUtils.getUnseiValue(seed, today),
                 UnseiUtils.getUnseiValue(seed, today + 1)
             }
+        );
+    }
+
+    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today) {
+        TungShingItem.addCooldown(player);
+
+        Pair<int[], int[]> unsei = UnseiUtils.getThreeDaysUnsei(seed, today);
+        PacketHandler.sendToClient(
+            ((ServerPlayer) player),
+            new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight())
         );
     }
 

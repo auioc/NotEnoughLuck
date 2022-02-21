@@ -1,10 +1,7 @@
 package org.auioc.mods.notenoughluck.common.item.impl;
 
-import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
-import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,7 +14,7 @@ import net.minecraft.world.level.Level;
 
 public class TungShingItem extends Item {
 
-    public static final int COOLDOWN = 10 * 20;
+    public static final int COOLDOWN = 1 * 20;
 
     public TungShingItem() {
         super(
@@ -30,13 +27,7 @@ public class TungShingItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (!level.isClientSide && !player.getCooldowns().isOnCooldown(this)) {
-            addCooldown(player);
-
-            Pair<int[], int[]> unsei = UnseiUtils.getThreeDaysUnsei(((ServerLevel) level).getSeed(), UnseiUtils.getDay(level.getDayTime()));
-            PacketHandler.sendToClient(
-                ((ServerPlayer) player),
-                new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight())
-            );
+            UnseiUtils.sendUpdateTungShingPacket(((ServerPlayer) player), ((ServerLevel) level).getSeed(), UnseiUtils.getDay(level.getDayTime()));
         }
 
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
