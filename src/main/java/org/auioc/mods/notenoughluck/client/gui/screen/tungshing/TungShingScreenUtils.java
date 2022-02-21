@@ -1,4 +1,4 @@
-package org.auioc.mods.notenoughluck.client.gui.screen;
+package org.auioc.mods.notenoughluck.client.gui.screen.tungshing;
 
 import java.util.function.Predicate;
 import org.apache.commons.lang3.tuple.Pair;

@@ -1,4 +1,4 @@
-package org.auioc.mods.notenoughluck.client.gui.screen;
+package org.auioc.mods.notenoughluck.client.gui.screen.tungshing;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;

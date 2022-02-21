@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.client.network;
 
 import org.auioc.mods.arnicalib.api.game.network.IHPacket;
-import org.auioc.mods.notenoughluck.client.gui.screen.TungShingScreenUtils;
+import org.auioc.mods.notenoughluck.client.gui.screen.tungshing.TungShingScreenUtils;
 import org.auioc.mods.notenoughluck.client.unsei.ClientUnseiCache;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;

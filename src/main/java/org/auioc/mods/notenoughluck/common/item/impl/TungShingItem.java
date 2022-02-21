@@ -1,6 +1,6 @@
 package org.auioc.mods.notenoughluck.common.item.impl;
 
-import org.auioc.mods.notenoughluck.client.gui.screen.TungShingScreenUtils;
+import org.auioc.mods.notenoughluck.client.gui.screen.tungshing.TungShingScreenUtils;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.world.InteractionHand;
