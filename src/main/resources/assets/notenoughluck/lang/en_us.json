@@ -10,5 +10,10 @@
     "item.minecraft.potion.effect.incurable_unluck": "Potion of Incurable Bad Luck",
     "item.minecraft.splash_potion.effect.incurable_unluck": "Splash Potion of Incurable Bad Luck",
     "item.minecraft.lingering_potion.effect.incurable_unluck": "Lingering Potion of Incurable Bad Luck",
-    "item.minecraft.tipped_arrow.effect.incurable_unluck": "Arrow of Incurable Bad Luck"
+    "item.minecraft.tipped_arrow.effect.incurable_unluck": "Arrow of Incurable Bad Luck",
+
+    "item.notenoughluck.four_leaf_clover": "Four-Leaf Clover",
+    "item.notenoughluck.tung_shing": "Tung Shing",
+
+    "notenoughluck.gui.tung_shing.title": "Tung Shing"
 }
