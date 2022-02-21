@@ -5,7 +5,10 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.Reference;
+import org.auioc.mods.notenoughluck.client.unsei.ClientUnseiCache;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
+import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
+import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -50,6 +53,33 @@ public class TungShingScreenUtils {
     protected static boolean isOnCooldown() {
         Minecraft mc = Minecraft.getInstance();
         return mc.player.getCooldowns().isOnCooldown(NELItems.TUNG_SHING_ITEM.get());
+    }
+
+
+    protected static void requestUpdate(TungShingScreen screen, int day) {
+        if (isOnCooldown()) {
+            return;
+        }
+
+        int[] dayArray = new int[] {day - 1, day, day + 1};
+        int[] unseiArray = new int[3];
+
+        boolean hasCached = true;
+        for (int i = 0; i < 3; i++) {
+            int cachedUnsei = ClientUnseiCache.get(dayArray[i]);
+            if (cachedUnsei == -1) {
+                hasCached = false;
+                break;
+            }
+            unseiArray[i] = cachedUnsei;
+        }
+
+        if (hasCached) {
+            screen.updateUnsei(dayArray, unseiArray);
+        } else {
+            Minecraft mc = Minecraft.getInstance();
+            NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(mc.player.getUUID(), day));
+        }
     }
 
 

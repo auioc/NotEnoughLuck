@@ -4,8 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.java.Validate;
-import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
-import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -73,10 +71,7 @@ public class TungShingScreen extends Screen {
                 if (day.isEmpty()) {
                     return;
                 }
-                if (TungShingScreenUtils.isOnCooldown()) {
-                    return;
-                }
-                NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(this.minecraft.player.getUUID(), Integer.valueOf(day)));
+                TungShingScreenUtils.requestUpdate(this, Integer.valueOf(day));
             }
         );
         this.addWidget(this.button);
