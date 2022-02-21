@@ -38,14 +38,22 @@ public class UnseiUtils {
         );
     }
 
-    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today) {
-        TungShingItem.addCooldown(player);
+    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today, int cooldown) {
+        if (cooldown > 0) {
+            TungShingItem.addCooldown(player, cooldown);
+        } else {
+            TungShingItem.removeCooldown(player);
+        }
 
         Pair<int[], int[]> unsei = UnseiUtils.getThreeDaysUnsei(seed, today);
         NELPacketHandler.sendToClient(
             ((ServerPlayer) player),
             new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight())
         );
+    }
+
+    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today) {
+        sendUpdateTungShingPacket(player, seed, today, TungShingItem.COOLDOWN);
     }
 
 }

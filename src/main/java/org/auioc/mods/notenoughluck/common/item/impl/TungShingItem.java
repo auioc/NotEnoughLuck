@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 
 public class TungShingItem extends Item {
 
-    public static final int COOLDOWN = 1 * 20;
+    public static final int COOLDOWN = 10 * 20;
 
     public TungShingItem() {
         super(
@@ -33,8 +33,12 @@ public class TungShingItem extends Item {
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
     }
 
-    public static void addCooldown(Player player) {
-        player.getCooldowns().addCooldown(NELItems.TUNG_SHING_ITEM.get(), COOLDOWN);
+    public static void addCooldown(Player player, int cooldown) {
+        player.getCooldowns().addCooldown(NELItems.TUNG_SHING_ITEM.get(), cooldown);
+    }
+
+    public static void removeCooldown(Player player) {
+        player.getCooldowns().removeCooldown(NELItems.TUNG_SHING_ITEM.get());
     }
 
 }
