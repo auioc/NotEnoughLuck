@@ -3,6 +3,7 @@ package org.auioc.mods.notenoughluck.common.network;
 import org.auioc.mods.arnicalib.api.game.network.HPacketHandler;
 import org.auioc.mods.arnicalib.api.game.network.IHPacket;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
+import org.auioc.mods.notenoughluck.client.network.ClearClientUnseiCachePacket;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,6 +19,7 @@ public class NELPacketHandler {
     }
 
     private static void registerMessage() {
+        HANDLER.registerServerToClient(ClearClientUnseiCachePacket.class, ClearClientUnseiCachePacket::decode);
         HANDLER.registerServerToClient(UpdateTungShingPacket.class, UpdateTungShingPacket::decode);
         HANDLER.registerClientToServer(RequestUpdateTungShingPacket.class, RequestUpdateTungShingPacket::decode);
     }
