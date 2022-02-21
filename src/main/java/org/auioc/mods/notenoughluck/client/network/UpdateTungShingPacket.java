@@ -2,6 +2,7 @@ package org.auioc.mods.notenoughluck.client.network;
 
 import org.auioc.mods.arnicalib.api.game.network.IHPacket;
 import org.auioc.mods.notenoughluck.client.gui.screen.TungShingScreenUtils;
+import org.auioc.mods.notenoughluck.client.unsei.ClientUnseiCache;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -20,6 +21,9 @@ public class UpdateTungShingPacket implements IHPacket {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void handle(Context ctx) {
+        for (int i = 0; i < 3; i++) {
+            ClientUnseiCache.set(this.day[i], this.unsei[i]);
+        }
         TungShingScreenUtils.open(true).updateUnsei(this.day, this.unsei);
     }
 
