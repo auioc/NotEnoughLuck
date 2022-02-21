@@ -1,16 +1,16 @@
 package org.auioc.mods.notenoughluck.common.item.impl;
 
+import org.auioc.mods.notenoughluck.client.gui.screen.TungShingScreenUtils;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
-import org.auioc.mods.notenoughluck.utils.UnseiUtils;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 
 public class TungShingItem extends Item {
 
@@ -26,11 +26,19 @@ public class TungShingItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (!level.isClientSide && !player.getCooldowns().isOnCooldown(this)) {
-            UnseiUtils.sendUpdateTungShingPacket(((ServerPlayer) player), ((ServerLevel) level).getSeed(), UnseiUtils.getDay(level.getDayTime()));
+        ItemStack stack = player.getItemInHand(hand);
+
+        if (player.getCooldowns().isOnCooldown(this)) {
+            return InteractionResultHolder.pass(stack);
         }
 
-        return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
+        if (level.isClientSide) {
+            DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreenUtils::open);
+        } else {
+            addCooldown(player, COOLDOWN);
+        }
+
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
     public static void addCooldown(Player player, int cooldown) {
