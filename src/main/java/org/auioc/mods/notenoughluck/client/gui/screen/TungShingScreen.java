@@ -16,8 +16,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class TungShingScreen extends Screen {
 
-    private static final int REQUEST_COOLDOWN = 10 * 20;
-
     private static final ResourceLocation BACKGROUND_TEXTURE = TungShingScreenUtils.texture("background");
 
     private static final int BG_TEXTURE_SIZE = 180;
@@ -132,7 +130,6 @@ public class TungShingScreen extends Screen {
         this.dayArray = dayArray;
         this.unseiArray = unseiArray;
         this.editbox.setValue("" + dayArray[1]);
-        TungShingScreenUtils.addCooldown(REQUEST_COOLDOWN);
     }
 
     private static int center(int screen, int b) {

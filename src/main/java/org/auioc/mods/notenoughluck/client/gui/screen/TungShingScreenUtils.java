@@ -52,10 +52,6 @@ public class TungShingScreenUtils {
         return mc.player.getCooldowns().isOnCooldown(ItemRegistry.TUNG_SHING_ITEM.get());
     }
 
-    protected static void addCooldown(int tick) {
-        Minecraft mc = Minecraft.getInstance();
-        mc.player.getCooldowns().addCooldown(ItemRegistry.TUNG_SHING_ITEM.get(), tick);
-    }
 
     protected static enum UnseiTexture {
         DAI("prefixes", "dai"), CHUU("prefixes", "chuu"), SHOU("prefixes", "shou"), SUE("prefixes", "sue"), //

@@ -1,6 +1,7 @@
 package org.auioc.mods.notenoughluck.common.item.impl;
 
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
+import org.auioc.mods.notenoughluck.common.item.ItemRegistry;
 import org.auioc.mods.notenoughluck.common.itemgroup.ItemGroupRegistry;
 import org.auioc.mods.notenoughluck.common.network.PacketHandler;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
@@ -14,6 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class TungShingItem extends Item {
+
+    public static final int COOLDOWN = 10 * 20;
 
     public TungShingItem() {
         super(
@@ -29,6 +32,7 @@ public class TungShingItem extends Item {
             int day = UnseiUtils.getDay(level.getDayTime());
             long seed = ((ServerLevel) level).getSeed();
 
+            addCooldown(player);
             PacketHandler.sendToClient(
                 ((ServerPlayer) player),
                 new UpdateTungShingPacket(
@@ -47,6 +51,10 @@ public class TungShingItem extends Item {
         }
 
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
+    }
+
+    public static void addCooldown(Player player) {
+        player.getCooldowns().addCooldown(ItemRegistry.TUNG_SHING_ITEM.get(), COOLDOWN);
     }
 
 }
