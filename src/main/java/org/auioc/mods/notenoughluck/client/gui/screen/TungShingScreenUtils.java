@@ -76,8 +76,7 @@ public class TungShingScreenUtils {
         if (hasCached) {
             screen.updateUnsei(dayArray, unseiArray);
         } else {
-            Minecraft mc = Minecraft.getInstance();
-            NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(mc.player.getUUID(), day));
+            NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(day));
         }
     }
 
