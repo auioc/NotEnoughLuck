@@ -6,7 +6,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.Reference;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
@@ -18,28 +17,27 @@ public class TungShingScreen extends Screen {
 
     private static final int DIV_SIZE = 180;
 
-    private static final ResourceLocation TEXTURE = Reference.ResourceId("textures/gui/tung_shing.png");
-    private static final int TEXTURE_SIZE = 256;
+    protected static final ResourceLocation TEXTURE = Reference.ResourceId("textures/gui/tung_shing.png");
+    protected static final int TEXTURE_SIZE = 256;
 
     private static final int EDITBOX_WIDTH = 95;
     private static final int EDITBOX_HEIGHT = 20;
     private static final int EDITBOX_X_OFFSET = 10;
     private static final int EDITBOX_Y_OFFSET = 180;
-    private static final int BUTTON_WIDTH = 60;
-    private static final int BUTTON_HEIGHT = 20;
-    private static final int BUTTON_X_OFFSET = 110;
-    private static final int BUTTON_Y_OFFSET = 180;
+
+    private static final int BUTTON_X_OFFSET = 71;
+    private static final int BUTTON_Y_OFFSET = 104;
 
     private static final int BIG_UNSEI_TEXTURE_SIZE = 40;
     private static final int SMALL_UNSEI_TEXTURE_SIZE = 20;
-    private static final int SIDE_UNSEI_Y_OFFSET = 120;
+    private static final int SIDE_UNSEI_Y_OFFSET = 125;
     private static final int RIGHT_UNSEI_X_OFFSET = 150;
     private static final int LEFT_UNSEI_X_OFFSET = 10;
     private static final int CENTER_UNSEI_X_OFFSET = 50;
-    private static final int CENTER_UNSEI_Y_OFFSET = 118;
+    private static final int CENTER_UNSEI_Y_OFFSET = 120;
 
     private EditBox editbox;
-    private Button button;
+    private TungShingRequestButton button;
 
     private int[] dayArray;
     private int[] unseiArray;
@@ -67,10 +65,8 @@ public class TungShingScreen extends Screen {
         this.editbox.setFilter(TungShingScreenUtils.IS_INTEGER_STRING);
         this.addWidget(this.editbox);
 
-        this.button = new Button(
+        this.button = new TungShingRequestButton(
             divX + BUTTON_X_OFFSET, divY + BUTTON_Y_OFFSET,
-            BUTTON_WIDTH, BUTTON_HEIGHT,
-            TungShingScreenUtils.i18n("button"),
             (button) -> {
                 String day = this.editbox.getValue();
                 if (day.isEmpty()) {
