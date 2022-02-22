@@ -81,7 +81,7 @@ public class TungShingScreenUtils {
     }
 
 
-    protected static enum UnseiTexture {
+    protected static enum UnseiMarkTexture {
         DAI(180, 0, 220, 0), CHUU(180, 40, 220, 20), SHOU(180, 80, 220, 40), SUE(180, 120, 220, 60), //
         HEI_A(0, 180, 160, 180), HEI_B(40, 180, 160, 200), //
         KICHI(80, 180, 180, 160), KYOU(120, 180, 200, 160);
@@ -89,13 +89,13 @@ public class TungShingScreenUtils {
         public final Pair<Integer, Integer> bigUV;
         public final Pair<Integer, Integer> smallUV;
 
-        private UnseiTexture(int bigU, int bigV, int smallU, int smallV) {
+        private UnseiMarkTexture(int bigU, int bigV, int smallU, int smallV) {
             this.bigUV = Pair.of(bigU, bigV);
             this.smallUV = Pair.of(smallU, smallV);
         }
     }
 
-    private static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiTextureUV(UnseiTexture unseiPrefix, UnseiTexture unseiFortune, boolean small) {
+    private static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiMarkUV(UnseiMarkTexture unseiPrefix, UnseiMarkTexture unseiFortune, boolean small) {
         return Pair.of(
             small ? unseiPrefix.smallUV : unseiPrefix.bigUV,
             small ? unseiFortune.smallUV : unseiFortune.bigUV
@@ -105,37 +105,35 @@ public class TungShingScreenUtils {
 
     /**
      * @return {@code <PrefixU, PrefixV>, <FortuneU, FortuneV>}
+     * @see org.auioc.mods.notenoughluck.utils.UnseiUtils#getUnseiPair(int)
      */
-    protected static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiTextureUV(int unsei, boolean small) {
+    protected static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiMarkUV(int unsei, boolean small) {
         Validate.isInCloseInterval(0, 36, unsei);
         if (unsei < 1) {
-            return getUnseiTextureUV(UnseiTexture.DAI, UnseiTexture.KICHI, small);
+            return getUnseiMarkUV(UnseiMarkTexture.DAI, UnseiMarkTexture.KICHI, small);
         }
         if (unsei < 3) {
-            return getUnseiTextureUV(UnseiTexture.CHUU, UnseiTexture.KICHI, small);
+            return getUnseiMarkUV(UnseiMarkTexture.CHUU, UnseiMarkTexture.KICHI, small);
         }
         if (unsei < 7) {
-            return getUnseiTextureUV(UnseiTexture.SHOU, UnseiTexture.KICHI, small);
+            return getUnseiMarkUV(UnseiMarkTexture.SHOU, UnseiMarkTexture.KICHI, small);
         }
         if (unsei < 15) {
-            return getUnseiTextureUV(UnseiTexture.SUE, UnseiTexture.KICHI, small);
+            return getUnseiMarkUV(UnseiMarkTexture.SUE, UnseiMarkTexture.KICHI, small);
         }
         if (unsei < 25) {
-            return getUnseiTextureUV(UnseiTexture.HEI_A, UnseiTexture.HEI_B, small);
+            return getUnseiMarkUV(UnseiMarkTexture.HEI_A, UnseiMarkTexture.HEI_B, small);
         }
         if (unsei < 31) {
-            return getUnseiTextureUV(UnseiTexture.SUE, UnseiTexture.KYOU, small);
+            return getUnseiMarkUV(UnseiMarkTexture.SUE, UnseiMarkTexture.KYOU, small);
         }
         if (unsei < 34) {
-            return getUnseiTextureUV(UnseiTexture.SHOU, UnseiTexture.KYOU, small);
+            return getUnseiMarkUV(UnseiMarkTexture.SHOU, UnseiMarkTexture.KYOU, small);
         }
         if (unsei < 36) {
-            return getUnseiTextureUV(UnseiTexture.CHUU, UnseiTexture.KYOU, small);
+            return getUnseiMarkUV(UnseiMarkTexture.CHUU, UnseiMarkTexture.KYOU, small);
         }
-        return getUnseiTextureUV(UnseiTexture.DAI, UnseiTexture.KYOU, small);
-
-        // 1   2     4         8                      10                              6                   3          2       1
-        // (0) (1 2) (3 4 5 6) (7 8 9 10 11 12 13 14) (15 16 17 18 19 20 21 22 23 24) (25 26 27 28 29 30) (31 32 33) (34 35) (36)
+        return getUnseiMarkUV(UnseiMarkTexture.DAI, UnseiMarkTexture.KYOU, small);
     }
 
 }

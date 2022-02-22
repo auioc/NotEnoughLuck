@@ -103,7 +103,7 @@ public class TungShingScreen extends HScreen {
             boolean small = i != 1;
 
             //        PrefixU  PrefixV        FortuneU FortuneV
-            Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> uv = TungShingScreenUtils.getUnseiTextureUV(this.unseiArray[i], small);
+            Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> uv = TungShingScreenUtils.getUnseiMarkUV(this.unseiArray[i], small);
 
             int size = small ? SMALL_UNSEI_TEXTURE_SIZE : BIG_UNSEI_TEXTURE_SIZE;
             int offsetX = i == 0 ? LEFT_UNSEI_X_OFFSET : (i == 1 ? CENTER_UNSEI_X_OFFSET : RIGHT_UNSEI_X_OFFSET);
