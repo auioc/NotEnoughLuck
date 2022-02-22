@@ -34,7 +34,7 @@ public class TungShingCommand {
             .build();
 
     private static int open(CommandContext<CommandSourceStack> ctx, int day, boolean classic) throws CommandSyntaxException {
-        UnseiUtils.sendUpdateTungShingPacket(ctx.getSource().getPlayerOrException(), ctx.getSource().getLevel().getSeed(), day, 0, classic);
+        UnseiUtils.sendUpdateTungShingPacket(ctx.getSource().getPlayerOrException(), ctx.getSource().getLevel().getSeed(), day, classic);
 
         return Command.SINGLE_SUCCESS;
     }

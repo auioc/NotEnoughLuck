@@ -15,5 +15,17 @@
     "item.notenoughluck.four_leaf_clover": "四叶草",
     "item.notenoughluck.tung_shing": "老黄历",
 
-    "notenoughluck.gui.tung_shing.title": "老黄历"
+    "notenoughluck.gui.tung_shing.title": "老黄历",
+    "notenoughluck.gui.tung_shing.classic.title": "老黄历（经典外观）",
+    "notenoughluck.gui.tung_shing.classic.button.request": "查询",
+    "notenoughluck.gui.tung_shing.classic.unsei.label": "第 %s 天：",
+    "notenoughluck.gui.tung_shing.classic.unsei.value": "（%s）",
+
+    "notenoughluck.unsei.mark.dai": "大",
+    "notenoughluck.unsei.mark.chuu": "中",
+    "notenoughluck.unsei.mark.shou": "小",
+    "notenoughluck.unsei.mark.sue": "末",
+    "notenoughluck.unsei.mark.hei": "平",
+    "notenoughluck.unsei.mark.kichi": "吉",
+    "notenoughluck.unsei.mark.kyou": "凶"
 }

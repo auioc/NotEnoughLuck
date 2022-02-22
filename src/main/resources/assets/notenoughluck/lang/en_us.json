@@ -15,5 +15,17 @@
     "item.notenoughluck.four_leaf_clover": "Four-Leaf Clover",
     "item.notenoughluck.tung_shing": "Tung Shing",
 
-    "notenoughluck.gui.tung_shing.title": "Tung Shing"
+    "notenoughluck.gui.tung_shing.title": "Tung Shing",
+    "notenoughluck.gui.tung_shing.classic.title": "Tung Shing (Classic UI)",
+    "notenoughluck.gui.tung_shing.classic.button.request": "Query",
+    "notenoughluck.gui.tung_shing.classic.unsei.label": "Day %s: ",
+    "notenoughluck.gui.tung_shing.classic.unsei.value": " (%s)",
+
+    "notenoughluck.unsei.mark.dai": "Great ",
+    "notenoughluck.unsei.mark.chuu": "Middle ",
+    "notenoughluck.unsei.mark.shou": "Small ",
+    "notenoughluck.unsei.mark.sue": "Future ",
+    "notenoughluck.unsei.mark.hei": "Common",
+    "notenoughluck.unsei.mark.kichi": "Blessing",
+    "notenoughluck.unsei.mark.kyou": "Curse"
 }
