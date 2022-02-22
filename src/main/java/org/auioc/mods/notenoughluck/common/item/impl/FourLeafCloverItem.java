@@ -37,7 +37,7 @@ public class FourLeafCloverItem extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.SPEAR;
+        return UseAnim.BOW;
     }
 
     @Override
