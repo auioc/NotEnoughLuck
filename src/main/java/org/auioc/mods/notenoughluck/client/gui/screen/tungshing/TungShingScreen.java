@@ -3,17 +3,17 @@ package org.auioc.mods.notenoughluck.client.gui.screen.tungshing;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
+import org.auioc.mods.arnicalib.api.game.screen.HScreen;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.Reference;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TungShingScreen extends Screen {
+public class TungShingScreen extends HScreen {
 
     private static final int DIV_SIZE = 180;
 
@@ -92,7 +92,7 @@ public class TungShingScreen extends Screen {
         RenderSystem.setShaderTexture(0, TEXTURE);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        blit(poseStack, divX, divY, DIV_SIZE);
+        blitSquare(poseStack, divX, divY, DIV_SIZE, TEXTURE_SIZE);
 
         if (unseiArray == null || dayArray == null) {
             super.render(poseStack, mouseX, mouseY, partialTicks);
@@ -109,20 +109,20 @@ public class TungShingScreen extends Screen {
             int offsetX = i == 0 ? LEFT_UNSEI_X_OFFSET : (i == 1 ? CENTER_UNSEI_X_OFFSET : RIGHT_UNSEI_X_OFFSET);
             int offsetY = small ? SIDE_UNSEI_Y_OFFSET : CENTER_UNSEI_Y_OFFSET;
 
-            blit(
+            blitSquare(
                 poseStack,
                 divX + offsetX,
                 divY + offsetY,
                 uv.getLeft().getLeft(), uv.getLeft().getRight(),
-                size
+                size, TEXTURE_SIZE
             );
 
-            blit(
+            blitSquare(
                 poseStack,
                 divX + offsetX + (small ? 0 : BIG_UNSEI_TEXTURE_SIZE),
                 divY + offsetY + (small ? SMALL_UNSEI_TEXTURE_SIZE : 0),
                 uv.getRight().getLeft(), uv.getRight().getRight(),
-                size
+                size, TEXTURE_SIZE
             );
         }
 
@@ -148,19 +148,5 @@ public class TungShingScreen extends Screen {
         this.unseiArray = unseiArray;
         this.editbox.setValue("" + this.dayArray[1]);
     }
-
-    private static int center(int screen, int b) {
-        return (screen - b) / 2;
-    }
-
-    private static void blit(PoseStack poseStack, int x, int y, int size) {
-        blit(poseStack, x, y, 0, 0, size);
-    }
-
-    private static void blit(PoseStack poseStack, int x, int y, int u, int v, int size) {
-        // X, Y, U, V, W, H, TW, TH
-        blit(poseStack, x, y, u, v, size, size, TEXTURE_SIZE, TEXTURE_SIZE);
-    }
-
 
 }
