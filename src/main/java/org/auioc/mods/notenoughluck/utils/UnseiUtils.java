@@ -3,9 +3,12 @@ package org.auioc.mods.notenoughluck.utils;
 import java.util.Random;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
+import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
+import org.auioc.mods.notenoughluck.common.unsei.UnseiFortune;
+import org.auioc.mods.notenoughluck.common.unsei.UnseiPrefix;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -54,6 +57,38 @@ public class UnseiUtils {
 
     public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today) {
         sendUpdateTungShingPacket(player, seed, today, TungShingItem.COOLDOWN);
+    }
+
+    public static Pair<UnseiPrefix, UnseiFortune> getUnseiPair(int unsei) {
+        Validate.isInCloseInterval(0, 36, unsei);
+        if (unsei < 1) {
+            return Pair.of(UnseiPrefix.DAI, UnseiFortune.KICHI);
+        }
+        if (unsei < 3) {
+            return Pair.of(UnseiPrefix.CHUU, UnseiFortune.KICHI);
+        }
+        if (unsei < 7) {
+            return Pair.of(UnseiPrefix.SHOU, UnseiFortune.KICHI);
+        }
+        if (unsei < 15) {
+            return Pair.of(UnseiPrefix.SUE, UnseiFortune.KICHI);
+        }
+        if (unsei < 25) {
+            return Pair.of(UnseiPrefix.HEI, UnseiFortune.HEI);
+        }
+        if (unsei < 31) {
+            return Pair.of(UnseiPrefix.SUE, UnseiFortune.KYOU);
+        }
+        if (unsei < 34) {
+            return Pair.of(UnseiPrefix.SHOU, UnseiFortune.KYOU);
+        }
+        if (unsei < 36) {
+            return Pair.of(UnseiPrefix.CHUU, UnseiFortune.KYOU);
+        }
+        return Pair.of(UnseiPrefix.DAI, UnseiFortune.KYOU);
+
+        // 1   2     4         8                      10                              6                   3          2       1
+        // (0) (1 2) (3 4 5 6) (7 8 9 10 11 12 13 14) (15 16 17 18 19 20 21 22 23 24) (25 26 27 28 29 30) (31 32 33) (34 35) (36)
     }
 
 }
