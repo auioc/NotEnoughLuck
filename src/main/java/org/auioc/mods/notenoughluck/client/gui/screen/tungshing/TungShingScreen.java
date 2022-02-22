@@ -4,10 +4,12 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.api.game.screen.HScreen;
+import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.Reference;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -43,7 +45,7 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
     private int[] unseiArray;
 
     protected TungShingScreen() {
-        super(TungShingScreenUtils.i18n("title"));
+        super(i18n("title"));
     }
 
     @Override
@@ -60,7 +62,7 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
             this.font,
             divX + EDITBOX_X_OFFSET, divY + EDITBOX_Y_OFFSET,
             EDITBOX_WIDTH, EDITBOX_HEIGHT,
-            TungShingScreenUtils.i18n("editbox")
+            i18n("editbox")
         );
         this.editbox.setFilter(TungShingScreenUtils.IS_INTEGER_STRING);
         this.addWidget(this.editbox);
@@ -69,10 +71,9 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
             divX + BUTTON_X_OFFSET, divY + BUTTON_Y_OFFSET,
             (button) -> {
                 String day = this.editbox.getValue();
-                if (day.isEmpty()) {
-                    return;
+                if (!day.isEmpty()) {
+                    TungShingScreenUtils.requestUpdate(this, Integer.valueOf(day));
                 }
-                TungShingScreenUtils.requestUpdate(this, Integer.valueOf(day));
             }
         );
         this.addWidget(this.button);
@@ -155,5 +156,8 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
         return false;
     }
 
+    protected static Component i18n(String key) {
+        return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing." + key));
+    }
 
 }

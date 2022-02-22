@@ -17,7 +17,7 @@ public class TungShingRequestButton extends Button {
     private static final int HOVERED_V = 232;
 
     public TungShingRequestButton(int x, int y, OnPress onPress) {
-        super(x, y, WIDTH, HEIGHT, TungShingScreenUtils.i18n("button"), onPress);
+        super(x, y, WIDTH, HEIGHT, TungShingScreen.i18n("button"), onPress);
     }
 
     @Override

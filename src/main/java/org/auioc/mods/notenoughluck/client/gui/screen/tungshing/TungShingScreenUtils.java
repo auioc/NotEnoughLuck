@@ -2,15 +2,12 @@ package org.auioc.mods.notenoughluck.client.gui.screen.tungshing;
 
 import java.util.function.Predicate;
 import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
-import org.auioc.mods.notenoughluck.Reference;
 import org.auioc.mods.notenoughluck.client.unsei.ClientUnseiCache;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -52,10 +49,6 @@ public class TungShingScreenUtils {
         }
         mc.setScreen(new TungShingScreen());
         return (ClassicTungShingScreen) mc.screen;
-    }
-
-    protected static Component i18n(String key) {
-        return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing." + key));
     }
 
     protected static final Predicate<String> IS_INTEGER_STRING = (string) -> {
