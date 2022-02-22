@@ -13,7 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TungShingScreen extends HScreen {
+public class TungShingScreen extends HScreen implements ITungShingScreen {
 
     private static final int DIV_SIZE = 180;
 
@@ -141,6 +141,7 @@ public class TungShingScreen extends HScreen {
     }
 
 
+    @Override
     public void updateUnsei(int[] dayArray, int[] unseiArray) {
         Validate.isTrue(dayArray.length == 3);
         Validate.isTrue(unseiArray.length == 3);
@@ -148,5 +149,11 @@ public class TungShingScreen extends HScreen {
         this.unseiArray = unseiArray;
         this.editbox.setValue("" + this.dayArray[1]);
     }
+
+    @Override
+    public boolean isClassic() {
+        return false;
+    }
+
 
 }
