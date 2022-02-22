@@ -8,8 +8,9 @@ import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.Reference;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -30,6 +31,10 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
     private static final int BUTTON_X_OFFSET = 71;
     private static final int BUTTON_Y_OFFSET = 104;
 
+    private static final int COOLDOWN_MESSAGE_X_OFFSET = DIV_SIZE / 2;
+    private static final int COOLDOWN_MESSAGE_Y_OFFSET = 190;
+    private static final int COOLDOWN_MESSAGE_DISPLAY_DURATION = 2 * 20;
+
     private static final int BIG_UNSEI_TEXTURE_SIZE = 40;
     private static final int SMALL_UNSEI_TEXTURE_SIZE = 20;
     private static final int SIDE_UNSEI_Y_OFFSET = 125;
@@ -43,6 +48,8 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
 
     private int[] dayArray;
     private int[] unseiArray;
+
+    private int cooldownMessageTimer;
 
     protected TungShingScreen() {
         super(i18n("title"));
@@ -70,6 +77,10 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
         this.button = new TungShingRequestButton(
             divX + BUTTON_X_OFFSET, divY + BUTTON_Y_OFFSET,
             (button) -> {
+                if (TungShingScreenUtils.isOnCooldown()) {
+                    this.cooldownMessageTimer = COOLDOWN_MESSAGE_DISPLAY_DURATION;
+                    return;
+                }
                 String day = this.editbox.getValue();
                 if (!day.isEmpty()) {
                     TungShingScreenUtils.requestUpdate(this, Integer.valueOf(day));
@@ -112,23 +123,32 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
 
             blitSquare(
                 poseStack,
-                divX + offsetX,
-                divY + offsetY,
+                divX + offsetX, divY + offsetY,
                 uv.getLeft().getLeft(), uv.getLeft().getRight(),
                 size, TEXTURE_SIZE
             );
 
             blitSquare(
                 poseStack,
-                divX + offsetX + (small ? 0 : BIG_UNSEI_TEXTURE_SIZE),
-                divY + offsetY + (small ? SMALL_UNSEI_TEXTURE_SIZE : 0),
+                divX + offsetX + (small ? 0 : BIG_UNSEI_TEXTURE_SIZE), divY + offsetY + (small ? SMALL_UNSEI_TEXTURE_SIZE : 0),
                 uv.getRight().getLeft(), uv.getRight().getRight(),
                 size, TEXTURE_SIZE
             );
         }
 
         if (TungShingScreenUtils.isOnCooldown()) {
-            this.button.active = false;
+            if (this.cooldownMessageTimer > 0) {
+                this.cooldownMessageTimer--;
+                this.button.active = false;
+                drawCenteredString(
+                    poseStack, this.font,
+                    i18n("cooldown").withStyle(ChatFormatting.RED, ChatFormatting.BOLD),
+                    divX + COOLDOWN_MESSAGE_X_OFFSET, divY + COOLDOWN_MESSAGE_Y_OFFSET,
+                    0x000000
+                );
+            } else {
+                this.button.active = true;
+            }
             this.editbox.setEditable(false);
         } else {
             this.button.active = true;
@@ -156,7 +176,7 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
         return false;
     }
 
-    protected static Component i18n(String key) {
+    protected static TranslatableComponent i18n(String key) {
         return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing." + key));
     }
 

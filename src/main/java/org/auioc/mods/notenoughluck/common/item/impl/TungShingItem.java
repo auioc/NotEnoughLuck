@@ -28,10 +28,6 @@ public class TungShingItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (player.getCooldowns().isOnCooldown(this)) {
-            return InteractionResultHolder.pass(stack);
-        }
-
         if (level.isClientSide) {
             DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreenUtils::open);
         } else {

@@ -16,6 +16,7 @@
     "item.notenoughluck.tung_shing": "老黄历",
 
     "notenoughluck.gui.tung_shing.title": "老黄历",
+    "notenoughluck.gui.tung_shing.cooldown": "这本老黄历有点年头了，经不起折腾，慢点儿翻。",
     "notenoughluck.gui.tung_shing.classic.title": "老黄历（经典外观）",
     "notenoughluck.gui.tung_shing.classic.button.request": "查询",
     "notenoughluck.gui.tung_shing.classic.unsei.label": "第 %s 天：",

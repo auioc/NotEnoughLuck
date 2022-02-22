@@ -13,6 +13,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public class ClassicTungShingScreen extends SimpleScreen implements ITungShingScreen {
 
@@ -114,11 +115,11 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
         return true;
     }
 
-    protected static Component i18n(String key) {
+    protected static TranslatableComponent i18n(String key) {
         return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing.classic." + key));
     }
 
-    protected static Component i18n(String key, Object... arguments) {
+    protected static TranslatableComponent i18n(String key, Object... arguments) {
         return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing.classic." + key), arguments);
     }
 
