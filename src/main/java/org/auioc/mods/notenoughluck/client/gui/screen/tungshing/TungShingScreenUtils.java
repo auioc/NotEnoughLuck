@@ -21,13 +21,37 @@ public class TungShingScreenUtils {
         Minecraft.getInstance().setScreen(new TungShingScreen());
     }
 
-    public static TungShingScreen open(boolean reuse) {
+    public static void openClassic() {
+        Minecraft.getInstance().setScreen(new ClassicTungShingScreen());
+    }
+
+    public static ITungShingScreen open(boolean reuse, boolean classic) {
         Minecraft mc = Minecraft.getInstance();
-        if (reuse && mc.screen instanceof TungShingScreen) {
-            return (TungShingScreen) mc.screen;
+        if (reuse) {
+            if (classic && mc.screen instanceof ClassicTungShingScreen) {
+                return (ClassicTungShingScreen) mc.screen;
+            }
+            if (mc.screen instanceof TungShingScreen) {
+                return (TungShingScreen) mc.screen;
+            }
+        }
+
+        if (classic) {
+            openClassic();
+        } else {
+            open();
+        }
+
+        return (ITungShingScreen) mc.screen;
+    }
+
+    public static ClassicTungShingScreen openClassic(boolean reuse) {
+        Minecraft mc = Minecraft.getInstance();
+        if (reuse && mc.screen instanceof ClassicTungShingScreen) {
+            return (ClassicTungShingScreen) mc.screen;
         }
         mc.setScreen(new TungShingScreen());
-        return (TungShingScreen) mc.screen;
+        return (ClassicTungShingScreen) mc.screen;
     }
 
     protected static Component i18n(String key) {
@@ -55,7 +79,12 @@ public class TungShingScreenUtils {
     }
 
 
-    protected static void requestUpdate(TungShingScreen screen, int day) {
+    protected static void requestUpdate(ITungShingScreen screen, int day) {
+        if (screen.isClassic()) {
+            NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(day, true));
+            return;
+        }
+
         if (isOnCooldown()) {
             return;
         }
@@ -76,7 +105,7 @@ public class TungShingScreenUtils {
         if (hasCached) {
             screen.updateUnsei(dayArray, unseiArray);
         } else {
-            NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(day));
+            NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(day, false));
         }
     }
 

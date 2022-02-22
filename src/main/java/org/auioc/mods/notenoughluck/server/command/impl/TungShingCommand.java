@@ -17,17 +17,30 @@ public class TungShingCommand {
             .requires(source -> source.hasPermission(3))
             .then(
                 literal("open")
-                    .executes((ctx) -> open(ctx, UnseiUtils.getDay(ctx.getSource().getLevel().getDayTime())))
+                    .executes((ctx) -> open(ctx, getDay(ctx), false))
                     .then(
                         argument("day", IntegerArgumentType.integer(0))
-                            .executes((ctx) -> open(ctx, IntegerArgumentType.getInteger(ctx, "day")))
+                            .executes((ctx) -> open(ctx, IntegerArgumentType.getInteger(ctx, "day"), false))
+                    )
+                    .then(
+                        literal("classic")
+                            .executes((ctx) -> open(ctx, getDay(ctx), true))
+                            .then(
+                                argument("day", IntegerArgumentType.integer(0))
+                                    .executes((ctx) -> open(ctx, IntegerArgumentType.getInteger(ctx, "day"), true))
+                            )
                     )
             )
             .build();
 
-    private static int open(CommandContext<CommandSourceStack> ctx, int day) throws CommandSyntaxException {
-        UnseiUtils.sendUpdateTungShingPacket(ctx.getSource().getPlayerOrException(), ctx.getSource().getLevel().getSeed(), day, 0);
+    private static int open(CommandContext<CommandSourceStack> ctx, int day, boolean classic) throws CommandSyntaxException {
+        UnseiUtils.sendUpdateTungShingPacket(ctx.getSource().getPlayerOrException(), ctx.getSource().getLevel().getSeed(), day, 0, classic);
 
         return Command.SINGLE_SUCCESS;
     }
+
+    private static int getDay(CommandContext<CommandSourceStack> ctx) {
+        return UnseiUtils.getDay(ctx.getSource().getLevel().getDayTime());
+    }
+
 }

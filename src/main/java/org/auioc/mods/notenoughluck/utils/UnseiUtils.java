@@ -41,7 +41,7 @@ public class UnseiUtils {
         );
     }
 
-    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today, int cooldown) {
+    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today, int cooldown, boolean classic) {
         if (cooldown > 0) {
             TungShingItem.addCooldown(player, cooldown);
         } else {
@@ -51,12 +51,16 @@ public class UnseiUtils {
         Pair<int[], int[]> unsei = UnseiUtils.getThreeDaysUnsei(seed, today);
         NELPacketHandler.sendToClient(
             ((ServerPlayer) player),
-            new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight())
+            new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight(), classic)
         );
     }
 
     public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today) {
-        sendUpdateTungShingPacket(player, seed, today, TungShingItem.COOLDOWN);
+        sendUpdateTungShingPacket(player, seed, today, TungShingItem.COOLDOWN, false);
+    }
+
+    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today, boolean classic) {
+        sendUpdateTungShingPacket(player, seed, today, classic ? 0 : TungShingItem.COOLDOWN, classic);
     }
 
     public static Pair<UnseiPrefix, UnseiFortune> getUnseiPair(int unsei) {

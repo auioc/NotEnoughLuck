@@ -12,10 +12,12 @@ public class UpdateTungShingPacket implements IHPacket {
 
     private final int[] day;
     private final int[] unsei;
+    private final boolean classic;
 
-    public UpdateTungShingPacket(int[] day, int[] unsei) {
+    public UpdateTungShingPacket(int[] day, int[] unsei, boolean classic) {
         this.day = day;
         this.unsei = unsei;
+        this.classic = classic;
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -24,17 +26,18 @@ public class UpdateTungShingPacket implements IHPacket {
         for (int i = 0; i < 3; i++) {
             ClientUnseiCache.set(this.day[i], this.unsei[i]);
         }
-        TungShingScreenUtils.open(true).updateUnsei(this.day, this.unsei);
+        TungShingScreenUtils.open(true, classic).updateUnsei(this.day, this.unsei);
     }
 
     @Override
     public void encode(FriendlyByteBuf buffer) {
         buffer.writeVarIntArray(this.day);
         buffer.writeVarIntArray(this.unsei);
+        buffer.writeBoolean(this.classic);
     }
 
     public static UpdateTungShingPacket decode(FriendlyByteBuf buffer) {
-        return new UpdateTungShingPacket(buffer.readVarIntArray(), buffer.readVarIntArray());
+        return new UpdateTungShingPacket(buffer.readVarIntArray(), buffer.readVarIntArray(), buffer.readBoolean());
     }
 
 }
