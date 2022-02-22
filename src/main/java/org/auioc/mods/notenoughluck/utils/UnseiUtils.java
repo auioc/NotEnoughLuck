@@ -1,6 +1,5 @@
 package org.auioc.mods.notenoughluck.utils;
 
-import java.util.Random;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
@@ -14,8 +13,17 @@ import net.minecraft.server.level.ServerPlayer;
 
 public class UnseiUtils {
 
+    /**
+     * @return k, {@code ⌊|seed|^(0.2 + |sin(day)|)⌉ ≡ k (mod 37)}
+     */
     public static int getUnseiValue(long seed, int day) {
-        return new Random(seed + day).nextInt(37);
+        long n = Math.round(Math.pow(Math.abs((double) seed), 0.2D + Math.abs(Math.sin((double) day)))) % 37L;
+        for (int k = 0; k < 37; k++) {
+            if (k % 37 == n) {
+                return k;
+            }
+        }
+        throw new RuntimeException();
     }
 
     public static int getUnseiValue(ServerLevel level) {
