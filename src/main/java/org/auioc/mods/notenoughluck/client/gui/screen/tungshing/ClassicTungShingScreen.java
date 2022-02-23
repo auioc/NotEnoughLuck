@@ -17,6 +17,9 @@ import net.minecraft.network.chat.TranslatableComponent;
 
 public class ClassicTungShingScreen extends SimpleScreen implements ITungShingScreen {
 
+    private static final int DIV_WIDTH = 248;
+    private static final int DIV_HEIGHT = 166;
+
     private static final int UNSEI_LINE_X_OFFSET = 10;
     private static final int UNSEI_LINE_Y_OFFSET = 10;
     private static final int UNSEI_LINE_Y_ADDEND = 10;
@@ -27,7 +30,7 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
     private static final int EDITBOX_Y_OFFSET = 130;
     private static final int BUTTON_WIDTH = 60;
     private static final int BUTTON_HEIGHT = 20;
-    private static final int BUTTON_X_OFFSET = 170;
+    private static final int BUTTON_X_OFFSET = 168;
     private static final int BUTTON_Y_OFFSET = 130;
 
     private EditBox editbox;
@@ -37,13 +40,13 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
     private int[] unseiArray;
 
     public ClassicTungShingScreen() {
-        super(i18n("title"));
+        super(i18n("title"), DIV_WIDTH, DIV_HEIGHT);
     }
 
     @Override
     protected void init() {
-        int divX = center(this.width, BG_WIDTH);
-        int divY = center(this.height, BG_HEIGHT);
+        int divX = center(this.width, DIV_WIDTH);
+        int divY = center(this.height, DIV_HEIGHT);
 
         this.editbox = new EditBox(
             this.font,
