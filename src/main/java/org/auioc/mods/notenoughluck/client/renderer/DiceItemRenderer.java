@@ -56,7 +56,7 @@ public class DiceItemRenderer extends BlockEntityWithoutLevelRenderer {
     public void renderByItem(ItemStack itemStack, TransformType transformType, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
         int pips = 0;
         if (itemStack.getTag() != null) {
-            pips = Mth.clamp(itemStack.getTag().getInt("pips"), 0, 6);
+            pips = Mth.clamp(itemStack.getTag().getInt("Pips"), 0, 6);
         }
 
         BakedModel model;

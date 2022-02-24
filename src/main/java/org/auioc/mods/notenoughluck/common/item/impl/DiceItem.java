@@ -36,8 +36,8 @@ public class DiceItem extends Item {
         if (!player.getCooldowns().isOnCooldown(this)) {
             player.getCooldowns().addCooldown(this, COOLDOWN);
             CompoundTag nbt = stack.getOrCreateTag();
-            nbt.remove("used");
-            nbt.putInt("pips", player.getRandom().nextInt(1, 7));
+            nbt.putBoolean("Disabled", false);
+            nbt.putInt("Pips", player.getRandom().nextInt(1, 7));
         }
         return true;
     }
@@ -50,12 +50,12 @@ public class DiceItem extends Item {
         ServerPlayer player = (ServerPlayer) entity;
         CompoundTag nbt = stack.getTag();
 
-        if (nbt.getBoolean("used")) {
+        if (nbt.getBoolean("Disabled")) {
             return;
         }
-        nbt.putBoolean("used", true);
+        nbt.putBoolean("Disabled", true);
 
-        int pips = nbt.getInt("pips");
+        int pips = nbt.getInt("Pips");
 
         EffectUtils.removeEffect(player, (e) -> e.getEffect() == MobEffects.LUCK || e.getEffect() == MobEffects.UNLUCK);
 
