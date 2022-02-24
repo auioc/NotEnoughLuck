@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Marker;
 import org.auioc.mods.arnicalib.utils.LogUtil;
 import org.auioc.mods.arnicalib.utils.java.VersionUtils;
 import org.auioc.mods.notenoughluck.client.event.NELClientEventHandler;
+import org.auioc.mods.notenoughluck.client.event.NELClientModEventHandler;
 import org.auioc.mods.notenoughluck.common.alchemy.NELPotions;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
@@ -70,7 +71,9 @@ public final class NotEnoughLuck {
             this.forgeEventBus = forgeEventBus;
         }
 
-        public void modSetup() {}
+        public void modSetup() {
+            modEventBus.register(NELClientModEventHandler.class);
+        }
 
         public void forgeSetup() {
             forgeEventBus.register(NELClientEventHandler.class);
