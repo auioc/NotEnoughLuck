@@ -21,6 +21,7 @@ import net.minecraftforge.client.IItemRenderProperties;
 public class DiceItem extends Item {
 
     private static final int EFFECT_DURATION = 60 * 20;
+    private static final int COOLDOWN = 10 * 20;
 
     public DiceItem() {
         super(
@@ -32,9 +33,12 @@ public class DiceItem extends Item {
 
     @Override
     public boolean onDroppedByPlayer(ItemStack stack, Player player) {
-        CompoundTag nbt = stack.getOrCreateTag();
-        nbt.remove("used");
-        nbt.putInt("pips", player.getRandom().nextInt(1, 7));
+        if (!player.getCooldowns().isOnCooldown(this)) {
+            player.getCooldowns().addCooldown(this, COOLDOWN);
+            CompoundTag nbt = stack.getOrCreateTag();
+            nbt.remove("used");
+            nbt.putInt("pips", player.getRandom().nextInt(1, 7));
+        }
         return true;
     }
 
