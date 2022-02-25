@@ -1,4 +1,4 @@
-package org.auioc.mods.notenoughluck.common.item.impl;
+package org.auioc.mods.notenoughluck.common.item.base;
 
 import java.util.function.Consumer;
 import org.auioc.mods.arnicalib.utils.game.EffectUtils;
@@ -13,31 +13,31 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.IItemRenderProperties;
 
-public class DiceItem extends Item {
+public abstract class DiceItem extends Item {
 
-    private static final int EFFECT_DURATION = 60 * 20;
-    private static final int COOLDOWN = 10 * 20;
-
-    public DiceItem() {
+    public DiceItem(Rarity rarity) {
         super(
             new Item.Properties()
                 .tab(NELItemGroups.NELItemGroup)
                 .stacksTo(1)
+                .rarity(rarity)
         );
     }
 
     @Override
     public boolean onDroppedByPlayer(ItemStack stack, Player player) {
         if (!player.getCooldowns().isOnCooldown(this)) {
-            player.getCooldowns().addCooldown(this, COOLDOWN);
+            player.getCooldowns().addCooldown(this, getCooldown());
             CompoundTag nbt = stack.getOrCreateTag();
             nbt.putBoolean("Disabled", false);
             nbt.putInt("Pips", player.getRandom().nextInt(1, 7));
+            beforeDrop(nbt);
         }
         return true;
     }
@@ -58,12 +58,7 @@ public class DiceItem extends Item {
         int pips = nbt.getInt("Pips");
 
         EffectUtils.removeEffect(player, (e) -> e.getEffect() == MobEffects.LUCK || e.getEffect() == MobEffects.UNLUCK);
-
-        if (pips < 4) {
-            player.addEffect(new MobEffectInstance(MobEffects.UNLUCK, EFFECT_DURATION, (4 - pips) - 1));
-        } else {
-            player.addEffect(new MobEffectInstance(MobEffects.LUCK, EFFECT_DURATION, (pips - 3) - 1));
-        }
+        player.addEffect(getEffect(pips, nbt));
     }
 
     @Override
@@ -76,5 +71,11 @@ public class DiceItem extends Item {
             }
         });
     }
+
+    protected abstract int getCooldown();
+
+    protected abstract void beforeDrop(CompoundTag nbt);
+
+    protected abstract MobEffectInstance getEffect(int pips, CompoundTag nbt);
 
 }
