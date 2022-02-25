@@ -8,6 +8,7 @@ import org.auioc.mods.arnicalib.utils.java.VersionUtils;
 import org.auioc.mods.notenoughluck.client.event.NELClientEventHandler;
 import org.auioc.mods.notenoughluck.client.event.NELClientModEventHandler;
 import org.auioc.mods.notenoughluck.common.alchemy.NELPotions;
+import org.auioc.mods.notenoughluck.common.block.NELBlocks;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
@@ -20,7 +21,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(NotEnoughLuck.MOD_ID)
-@SuppressWarnings("unused")
 public final class NotEnoughLuck {
 
     public static final String MOD_ID = "notenoughluck";
@@ -53,6 +53,7 @@ public final class NotEnoughLuck {
     private void modSetup(final IEventBus modEventBus) {
         NELPacketHandler.init();
         NELItems.ITEMS.register(modEventBus);
+        NELBlocks.BLOCKS.register(modEventBus);
         NELPotions.POTIONS.register(modEventBus);
         modEventBus.register(NELPotions.class);
     }
