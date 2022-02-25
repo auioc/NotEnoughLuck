@@ -19,7 +19,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.IItemRenderProperties;
 
-public abstract class DiceItem extends Item {
+public class DiceItem extends Item {
 
     public DiceItem(Rarity rarity) {
         super(
@@ -37,7 +37,7 @@ public abstract class DiceItem extends Item {
             CompoundTag nbt = stack.getOrCreateTag();
             nbt.putBoolean("Disabled", false);
             nbt.putInt("Pips", player.getRandom().nextInt(1, 7));
-            beforeDrop(nbt);
+            beforeDrop(stack, player);
         }
         return true;
     }
@@ -57,6 +57,8 @@ public abstract class DiceItem extends Item {
 
         int pips = nbt.getInt("Pips");
 
+        afterPickup(player, pips);
+
         EffectUtils.removeEffect(player, (e) -> e.getEffect() == MobEffects.LUCK || e.getEffect() == MobEffects.UNLUCK);
         player.addEffect(getEffect(pips, nbt));
     }
@@ -72,10 +74,16 @@ public abstract class DiceItem extends Item {
         });
     }
 
-    protected abstract int getCooldown();
+    protected void beforeDrop(ItemStack stack, Player player) {};
 
-    protected abstract void beforeDrop(CompoundTag nbt);
+    protected void afterPickup(ServerPlayer player, int pips) {};
 
-    protected abstract MobEffectInstance getEffect(int pips, CompoundTag nbt);
+    protected int getCooldown() {
+        return 0;
+    };
+
+    protected MobEffectInstance getEffect(int pips, CompoundTag nbt) {
+        return null;
+    };
 
 }

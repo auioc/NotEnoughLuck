@@ -21,9 +21,6 @@ public class CommonDiceItem extends DiceItem {
     }
 
     @Override
-    protected void beforeDrop(CompoundTag nbt) {}
-
-    @Override
     protected MobEffectInstance getEffect(int pips, CompoundTag nbt) {
         if (pips < 4) {
             return new MobEffectInstance(MobEffects.UNLUCK, EFFECT_DURATION, (4 - pips) - 1);
