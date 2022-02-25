@@ -85,11 +85,18 @@ public class DiceItemBakedModel implements BakedModel {
         return this.existingModel.handlePerspective(cameraTransformType, poseStack);
     }
 
-    public static void register(Map<ResourceLocation, BakedModel> modelRegistry) {
-        ModelResourceLocation location = new ModelResourceLocation(NELItems.COMMON_DICE_ITEM.getId(), "inventory");
+
+    private static void register(Map<ResourceLocation, BakedModel> modelRegistry, ResourceLocation id) {
+        ModelResourceLocation location = new ModelResourceLocation(id, "inventory");
         BakedModel oldModel = modelRegistry.get(location);
         BakedModel newModel = new DiceItemBakedModel(oldModel);
         modelRegistry.put(location, newModel);
+    }
+
+    public static void register(Map<ResourceLocation, BakedModel> modelRegistry) {
+        register(modelRegistry, NELItems.COMMON_DICE_ITEM.getId());
+        register(modelRegistry, NELItems.DICE_OF_TYCHE_ITEM.getId());
+
     }
 
 }

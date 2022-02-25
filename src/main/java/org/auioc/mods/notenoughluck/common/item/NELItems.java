@@ -3,6 +3,7 @@ package org.auioc.mods.notenoughluck.common.item;
 import java.util.function.Supplier;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.common.item.impl.CommonDiceItem;
+import org.auioc.mods.notenoughluck.common.item.impl.DiceOfTycheItem;
 import org.auioc.mods.notenoughluck.common.item.impl.FourLeafCloverItem;
 import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import net.minecraft.world.item.Item;
@@ -23,6 +24,6 @@ public final class NELItems {
     public static final RegistryObject<Item> FOUR_LEAF_CLOVER_ITEM = register("four_leaf_clover", FourLeafCloverItem::new);
     public static final RegistryObject<Item> TUNG_SHING_ITEM = register("tung_shing", TungShingItem::new);
     public static final RegistryObject<Item> COMMON_DICE_ITEM = register("dice", CommonDiceItem::new);
-    public static final RegistryObject<Item> DICE_OF_TYCHE_ITEM = register("dice_of_tyche", CommonDiceItem::new);
+    public static final RegistryObject<Item> DICE_OF_TYCHE_ITEM = register("dice_of_tyche", DiceOfTycheItem::new);
 
 }

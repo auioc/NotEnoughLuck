@@ -22,6 +22,7 @@ public class NELClientModEventHandler {
     @SubscribeEvent
     public static void onModelRegistry(ModelRegistryEvent event) {
         ForgeModelBakery.addSpecialModel(Reference.ResourceId("item/dice_unknown"));
+        ForgeModelBakery.addSpecialModel(Reference.ResourceId("item/dice_of_tyche_unknown"));
     }
 
 }
