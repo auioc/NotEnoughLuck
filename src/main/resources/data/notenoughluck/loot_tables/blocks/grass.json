@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1.0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:survives_explosion"
+                        }
+                    ],
+                    "weight": 1,
+                    "name": "notenoughluck:four_leaf_clover"
+                },
+                {
+                    "type": "minecraft:empty",
+                    "weight": 127
+                }
+            ]
+        }
+    ]
+}

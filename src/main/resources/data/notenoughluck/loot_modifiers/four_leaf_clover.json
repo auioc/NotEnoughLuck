@@ -1,0 +1,6 @@
+{
+    "type": "arnicalib:loot_table_injector",
+    "conditions": [],
+    "strict_parameter": true,
+    "injectors": [{ "target": "minecraft:blocks/grass", "source": "notenoughluck:blocks/grass" }]
+}
