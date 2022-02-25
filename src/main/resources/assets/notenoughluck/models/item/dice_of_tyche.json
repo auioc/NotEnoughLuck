@@ -1,0 +1,7 @@
+{
+    "parent": "notenoughluck:item/dice",
+    "textures": {
+        "0": "notenoughluck:item/dice_of_tyche",
+        "particle": "notenoughluck:item/dice_of_tyche"
+    }
+}
