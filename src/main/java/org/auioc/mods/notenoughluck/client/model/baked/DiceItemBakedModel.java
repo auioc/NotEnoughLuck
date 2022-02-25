@@ -86,7 +86,7 @@ public class DiceItemBakedModel implements BakedModel {
     }
 
     public static void register(Map<ResourceLocation, BakedModel> modelRegistry) {
-        ModelResourceLocation location = new ModelResourceLocation(NELItems.DICE_ITEM.getId(), "inventory");
+        ModelResourceLocation location = new ModelResourceLocation(NELItems.COMMON_DICE_ITEM.getId(), "inventory");
         BakedModel oldModel = modelRegistry.get(location);
         BakedModel newModel = new DiceItemBakedModel(oldModel);
         modelRegistry.put(location, newModel);

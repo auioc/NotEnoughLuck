@@ -61,7 +61,7 @@ public class DiceItemRenderer extends BlockEntityWithoutLevelRenderer {
 
         BakedModel model;
         if (pips > 0) {
-            model = Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(NELItems.DICE_ITEM.getId(), "inventory"));
+            model = Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(NELItems.COMMON_DICE_ITEM.getId(), "inventory"));
         } else {
             model = Minecraft.getInstance().getModelManager().getModel(Reference.ResourceId("item/dice_unknown"));
         }
