@@ -2,6 +2,7 @@ package org.auioc.mods.notenoughluck.common.block;
 
 import java.util.function.Supplier;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
+import org.auioc.mods.notenoughluck.common.block.impl.TungShingBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,5 +15,7 @@ public class NELBlocks {
     private static RegistryObject<Block> register(String id, Supplier<? extends Block> sup) {
         return BLOCKS.register(id, sup);
     }
+
+    public static final RegistryObject<Block> TUNG_SHING_BLOCK = register("tung_shing", TungShingBlock::new);
 
 }
