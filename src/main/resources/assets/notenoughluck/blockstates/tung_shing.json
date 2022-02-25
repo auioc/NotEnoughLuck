@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "notenoughluck:block/tung_shing"
+        },
+        "facing=south": {
+            "model": "notenoughluck:block/tung_shing",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "notenoughluck:block/tung_shing",
+            "y": 270
+        },
+        "facing=east": {
+            "model": "notenoughluck:block/tung_shing",
+            "y": 90
+        }
+    }
+}
