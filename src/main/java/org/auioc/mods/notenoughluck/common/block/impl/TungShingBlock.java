@@ -1,19 +1,29 @@
 package org.auioc.mods.notenoughluck.common.block.impl;
 
 import org.auioc.mods.arnicalib.api.game.block.HBlockMaterial;
+import org.auioc.mods.notenoughluck.client.gui.screen.tungshing.TungShingScreenUtils;
+import org.auioc.mods.notenoughluck.common.item.NELItems;
+import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 
 public class TungShingBlock extends HorizontalDirectionalBlock {
 
@@ -69,6 +79,23 @@ public class TungShingBlock extends HorizontalDirectionalBlock {
                 return Shapes.block();
             }
         }
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (player.getCooldowns().isOnCooldown(NELItems.TUNG_SHING_ITEM.get())) {
+            if (level.isClientSide) {
+                DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreenUtils::showCooldownMessage);
+            }
+            return InteractionResult.PASS;
+        }
+
+        if (level.isClientSide) {
+            DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreenUtils::open);
+        } else {
+            TungShingItem.addCooldown(player, TungShingItem.COOLDOWN);
+        }
+        return InteractionResult.SUCCESS;
     }
 
 }

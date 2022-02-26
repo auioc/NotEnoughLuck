@@ -7,6 +7,7 @@ import org.auioc.mods.notenoughluck.client.unsei.ClientUnseiCache;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mods.notenoughluck.server.network.RequestUpdateTungShingPacket;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -100,6 +101,12 @@ public class TungShingScreenUtils {
         } else {
             NELPacketHandler.sendToServer(new RequestUpdateTungShingPacket(day, false));
         }
+    }
+
+
+    public static void showCooldownMessage() {
+        Minecraft mc = Minecraft.getInstance();
+        mc.gui.setOverlayMessage(TungShingScreen.i18n("cooldown").withStyle(ChatFormatting.RED, ChatFormatting.BOLD), false);
     }
 
 
