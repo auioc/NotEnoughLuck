@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import net.minecraft.nbt.CompoundTag;
@@ -65,6 +66,21 @@ public abstract class MixinAbstractArrow extends Projectile implements IMixinAbs
 
     // ====================================================================== //
     //#region B
+
+    @ModifyVariable(
+        method = "Lnet/minecraft/world/entity/projectile/AbstractArrow;onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V",
+        at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;getOwner()Lnet/minecraft/world/entity/Entity;", ordinal = 0),
+        // at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z", ordinal = 0, shift = Shift.BY, by = -4),
+        index = 4,
+        require = 1,
+        allow = 1
+    )
+    private int modifyHitEntityDamageValue(int i) {
+        if (this.unluck > 0 && !(this.random.nextDouble() < Math.pow(0.8, (double) this.unluck))) {
+            return 0;
+        }
+        return i;
+    }
 
     private int luck = 0;
     private int unluck = 0;
