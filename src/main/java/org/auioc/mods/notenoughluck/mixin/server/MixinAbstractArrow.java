@@ -1,6 +1,7 @@
 package org.auioc.mods.notenoughluck.mixin.server;
 
 import javax.annotation.Nullable;
+import org.auioc.mods.notenoughluck.api.mixin.server.IMixinAbstractArrow;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,14 +17,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 
 @Mixin(value = AbstractArrow.class)
-public abstract class MixinAbstractArrow extends Projectile {
+public abstract class MixinAbstractArrow extends Projectile implements IMixinAbstractArrow {
 
     protected MixinAbstractArrow(EntityType<? extends Projectile> p_37248_, Level p_37249_) {
         super(p_37248_, p_37249_);
     }
 
+    // ====================================================================== //
+    //#region A
 
-    // @org.spongepowered.asm.mixin.Debug(export = true, print = true)
     @Inject(
         method = "Lnet/minecraft/world/entity/projectile/AbstractArrow;onHitBlock(Lnet/minecraft/world/phys/BlockHitResult;)V",
         at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/AbstractArrow;setPierceLevel(B)V", ordinal = 0),
@@ -46,7 +48,6 @@ public abstract class MixinAbstractArrow extends Projectile {
         }
     }
 
-
     @Shadow
     protected abstract byte getPierceLevel();
 
@@ -59,5 +60,25 @@ public abstract class MixinAbstractArrow extends Projectile {
 
     @Shadow
     private AbstractArrow.Pickup pickup;
+
+    //#endregion A
+
+    // ====================================================================== //
+    //#region B
+
+    private int luck = 0;
+    private int unluck = 0;
+
+    @Override
+    public void setLuck(int luck) {
+        this.luck = luck;
+    }
+
+    @Override
+    public void setUnluck(int unluck) {
+        this.unluck = unluck;
+    }
+
+    //#endregion B
 
 }
