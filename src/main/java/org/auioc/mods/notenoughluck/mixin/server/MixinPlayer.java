@@ -11,21 +11,25 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 @Mixin(value = Player.class)
-public abstract class MixinPlayer {
+public abstract class MixinPlayer extends LivingEntity {
+
+    protected MixinPlayer(EntityType<? extends LivingEntity> p_20966_, Level p_20967_) {
+        super(p_20966_, p_20967_);
+    }
+
+    // ====================================================================== //
+    //#region A
 
     // @Inject(
     //     method = "Lnet/minecraft/world/entity/player/Player;attack(Lnet/minecraft/world/entity/Entity;)V",
-    //     at = @At(
-    //         value = "JUMP",
-    //         opcode = Opcodes.IFNE,
-    //         ordinal = 1,
-    //         shift = Shift.AFTER
-    //     ), cancellable = true,
-    //     require = 1,
-    //     allow = 1
+    //     at = @At(value = "JUMP", opcode = Opcodes.IFNE, ordinal = 1, shift = Shift.AFTER),
+    //     cancellable = true, require = 1, allow = 1
     // )
     // private void modifyAttackDamageUnluck(Entity p_36347_, CallbackInfo ci) {
     //     ci.cancel();
@@ -80,5 +84,7 @@ public abstract class MixinPlayer {
 
         return f;
     }
+
+    //#endregion A
 
 }
