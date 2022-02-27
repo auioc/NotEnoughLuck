@@ -1,9 +1,11 @@
 package org.auioc.mods.notenoughluck.mixin.server;
 
+import org.auioc.mods.arnicalib.utils.game.EffectUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 
 @Mixin(value = Player.class)
@@ -37,6 +39,17 @@ public abstract class MixinPlayer {
         allow = 1
     )
     private float modifyAttackDamage(float f) {
+        Player player = (Player) (Object) this;
+
+        if (player.level.isClientSide) {
+            return f;
+        }
+
+        int unluck = EffectUtils.getEffectLevel(player, MobEffects.UNLUCK);
+        if (unluck > 0 && !(player.getRandom().nextDouble() < Math.pow(0.8, (double) unluck))) {
+            return 0.0F;
+        }
+
         return f;
     }
 
