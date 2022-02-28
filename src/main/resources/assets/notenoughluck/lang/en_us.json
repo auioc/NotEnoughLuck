@@ -27,6 +27,8 @@
     "notenoughluck.gui.tung_shing.classic.unsei.label": "Day %s: ",
     "notenoughluck.gui.tung_shing.classic.unsei.value": " (%s)",
 
+    "notenoughluck.command.unsei.clear_server_cache": "Server-side Unsei cache cleared",
+
     "notenoughluck.unsei.prefix.dai": "Great ",
     "notenoughluck.unsei.prefix.chuu": "Middle ",
     "notenoughluck.unsei.prefix.shou": "Small ",

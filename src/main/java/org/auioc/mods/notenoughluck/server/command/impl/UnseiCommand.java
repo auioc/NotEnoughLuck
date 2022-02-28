@@ -12,11 +12,16 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.tree.CommandNode;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.auioc.mods.arnicalib.api.mixin.server.IMixinCommandSourceStack;
+import org.auioc.mods.arnicalib.utils.game.CommandUtils;
+import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.notenoughluck.client.network.ClearClientUnseiCachePacket;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
+import org.auioc.mods.notenoughluck.server.unsei.ServerUnseiCache;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.GameProfileArgument;
+import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.server.players.PlayerList;
 
 public class UnseiCommand {
@@ -25,6 +30,7 @@ public class UnseiCommand {
         literal("unsei")
             .requires(source -> source.hasPermission(3))
             .then(literal("clearClientCache").then(argument("targets", GameProfileArgument.gameProfile()).executes(UnseiCommand::clearClientCache)))
+            .then(literal("clearServerCache").executes(UnseiCommand::clearServerCache))
             .then(literal("test").executes(UnseiCommand::test))
             .build();
 
@@ -39,6 +45,20 @@ public class UnseiCommand {
         return Command.SINGLE_SUCCESS;
     }
 
+    private static int clearServerCache(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        var source = ctx.getSource();
+
+        if ((source.getServer() instanceof DedicatedServer) && !(((IMixinCommandSourceStack) source).getSource() instanceof DedicatedServer)) {
+            throw CommandUtils.NOT_DEDICATED_SERVER_ERROR.create();
+        }
+
+        ServerUnseiCache.clear();
+
+        source.sendSuccess(TextUtils.I18nText("notenoughluck.command.unsei.clear_server_cache"), true);
+
+        return Command.SINGLE_SUCCESS;
+    }
+
     private static int test(CommandContext<CommandSourceStack> ctx) {
         for (int l = 0; l < 100; l++) {
             int[] U = new int[9];
@@ -47,7 +67,7 @@ public class UnseiCommand {
             long seed = (ctx.getSource().getLevel().getSeed() + RandomUtils.nextLong());
 
             for (int x = 0; x < 10000; x++) {
-                int k = UnseiUtils.getUnseiValue(seed, x);
+                int k = UnseiUtils.calcUnseiValue(seed, x);
 
                 V.add(k);
 
