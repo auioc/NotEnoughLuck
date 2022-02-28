@@ -5,6 +5,7 @@ import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.common.item.impl.CommonDiceItem;
 import org.auioc.mods.notenoughluck.common.item.impl.DiceOfTycheItem;
 import org.auioc.mods.notenoughluck.common.item.impl.FourLeafCloverItem;
+import org.auioc.mods.notenoughluck.common.item.impl.IndulgenceItem;
 import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,5 +26,6 @@ public final class NELItems {
     public static final RegistryObject<Item> TUNG_SHING_ITEM = register("tung_shing", TungShingItem::new);
     public static final RegistryObject<Item> COMMON_DICE_ITEM = register("dice", CommonDiceItem::new);
     public static final RegistryObject<Item> DICE_OF_TYCHE_ITEM = register("dice_of_tyche", DiceOfTycheItem::new);
+    public static final RegistryObject<Item> INDULGENCE_ITEM = register("indulgence", IndulgenceItem::new);
 
 }
