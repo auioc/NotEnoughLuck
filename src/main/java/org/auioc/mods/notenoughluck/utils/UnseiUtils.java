@@ -8,6 +8,7 @@ import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiFortune;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiPrefix;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -101,6 +102,22 @@ public class UnseiUtils {
 
         // 1   2     4         8                      10                              6                   3          2       1
         // (0) (1 2) (3 4 5 6) (7 8 9 10 11 12 13 14) (15 16 17 18 19 20 21 22 23 24) (25 26 27 28 29 30) (31 32 33) (34 35) (36)
+    }
+
+    public static CompoundTag serializeNBT(Pair<UnseiPrefix, UnseiFortune> unseiPair) {
+        var nbt = new CompoundTag();
+        nbt.put(
+            "Unsei",
+            unseiPair.getLeft().serializeNBT().merge(
+                unseiPair.getRight().serializeNBT()
+            )
+        );
+        return nbt;
+    }
+
+    public static Pair<UnseiPrefix, UnseiFortune> deserializeNBT(CompoundTag nbt) {
+        var pairNBT = nbt.getCompound("Unsei");
+        return Pair.of(UnseiPrefix.deserializeNBT(pairNBT), UnseiFortune.deserializeNBT(pairNBT));
     }
 
 }
