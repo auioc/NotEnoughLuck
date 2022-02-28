@@ -8,8 +8,8 @@ import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiFortune;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiPrefix;
+import org.auioc.mods.notenoughluck.server.unsei.ServerUnseiCache;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
 public class UnseiUtils {
@@ -17,7 +17,7 @@ public class UnseiUtils {
     /**
      * @return k, {@code ⌊|seed|^(0.2 + |sin(day)|)⌉ ≡ k (mod 37)}
      */
-    public static int getUnseiValue(long seed, int day) {
+    public static int calcUnseiValue(long seed, int day) {
         long n = Math.round(Math.pow(Math.abs((double) seed), 0.2D + Math.abs(Math.sin((double) day)))) % 37L;
         for (int k = 0; k < 37; k++) {
             if (k % 37 == n) {
@@ -27,8 +27,15 @@ public class UnseiUtils {
         throw new RuntimeException();
     }
 
-    public static int getUnseiValue(ServerLevel level) {
-        return getUnseiValue(level.getSeed(), getDay(level.getDayTime()));
+    public static int getUnseiValue(long seed, int day) {
+        int cachedUnsei = ServerUnseiCache.get(day);
+        if (cachedUnsei >= 0) {
+            return cachedUnsei;
+        } else {
+            int newUnsei = calcUnseiValue(seed, day);
+            ServerUnseiCache.set(day, newUnsei);
+            return newUnsei;
+        }
     }
 
     public static int getDay(long dayTime) {
