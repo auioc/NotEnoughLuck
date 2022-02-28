@@ -5,7 +5,9 @@ import org.auioc.mods.arnicalib.server.event.impl.SetEyeOfEnderSurvivableEvent;
 import org.auioc.mods.notenoughluck.server.command.NELServerCommands;
 import org.auioc.mods.notenoughluck.server.event.handler.EatAddEffectHandler;
 import org.auioc.mods.notenoughluck.server.event.handler.SetEyeOfEnderSurvivableHandler;
+import org.auioc.mods.notenoughluck.server.event.handler.WandererTradesHandler;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class NELServerEventHandler {
@@ -13,6 +15,11 @@ public class NELServerEventHandler {
     @SubscribeEvent
     public static void registerCommands(final RegisterCommandsEvent event) {
         NELServerCommands.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public static void onRegisterWandererTrades(final WandererTradesEvent event) {
+        WandererTradesHandler.handle(event);
     }
 
     @SubscribeEvent
