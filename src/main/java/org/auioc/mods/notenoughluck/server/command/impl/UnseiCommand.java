@@ -42,6 +42,8 @@ public class UnseiCommand {
             NELPacketHandler.sendToClient(playerList.getPlayer(gameprofile.getId()), new ClearClientUnseiCachePacket());
         }
 
+        ctx.getSource().sendSuccess(TextUtils.I18nText("notenoughluck.command.unsei.clear_client_cache", targets.size()), true);
+
         return Command.SINGLE_SUCCESS;
     }
 
