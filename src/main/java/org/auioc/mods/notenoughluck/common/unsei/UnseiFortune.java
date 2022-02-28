@@ -8,10 +8,12 @@ public enum UnseiFortune {
 
     HEI("hei"), KICHI("kichi"), KYOU("kyou");
 
+    public final String id;
     public final Component name;
 
-    private UnseiFortune(String name) {
-        this.name = TextUtils.I18nText(Reference.I18nKey("unsei.mark." + name));
+    private UnseiFortune(String id) {
+        this.id = id;
+        this.name = TextUtils.I18nText(Reference.I18nKey("unsei.fortune." + id));
     }
 
 }

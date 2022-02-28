@@ -27,11 +27,12 @@
     "notenoughluck.gui.tung_shing.classic.unsei.label": "第 %s 天：",
     "notenoughluck.gui.tung_shing.classic.unsei.value": "（%s）",
 
-    "notenoughluck.unsei.mark.dai": "大",
-    "notenoughluck.unsei.mark.chuu": "中",
-    "notenoughluck.unsei.mark.shou": "小",
-    "notenoughluck.unsei.mark.sue": "末",
-    "notenoughluck.unsei.mark.hei": "平",
-    "notenoughluck.unsei.mark.kichi": "吉",
-    "notenoughluck.unsei.mark.kyou": "凶"
+    "notenoughluck.unsei.prefix.dai": "大",
+    "notenoughluck.unsei.prefix.chuu": "中",
+    "notenoughluck.unsei.prefix.shou": "小",
+    "notenoughluck.unsei.prefix.sue": "末",
+    "notenoughluck.unsei.prefix.hei": "",
+    "notenoughluck.unsei.fortune.hei": "平",
+    "notenoughluck.unsei.fortune.kichi": "吉",
+    "notenoughluck.unsei.fortune.kyou": "凶"
 }
