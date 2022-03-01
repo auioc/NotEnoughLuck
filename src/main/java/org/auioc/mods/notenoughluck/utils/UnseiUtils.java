@@ -79,7 +79,7 @@ public class UnseiUtils {
         sendUpdateTungShingPacket(player, seed, today, classic ? 0 : TungShingItem.COOLDOWN, classic);
     }
 
-    public static Pair<UnseiPrefix, UnseiFortune> getUnseiPair(int unsei) {
+    public static Pair<UnseiPrefix, UnseiFortune> convertToUnseiPair(int unsei) {
         Validate.isInCloseInterval(0, 36, unsei);
         if (unsei < 1) {
             return Pair.of(UnseiPrefix.DAI, UnseiFortune.KICHI);

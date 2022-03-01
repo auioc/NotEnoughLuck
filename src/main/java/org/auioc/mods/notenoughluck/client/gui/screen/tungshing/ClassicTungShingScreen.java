@@ -82,7 +82,7 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
         for (int i = 0, l = this.unseiArray.length; i < l; i++) {
             int unsei = this.unseiArray[i];
 
-            Pair<UnseiPrefix, UnseiFortune> mark = UnseiUtils.getUnseiPair(unsei);
+            Pair<UnseiPrefix, UnseiFortune> mark = UnseiUtils.convertToUnseiPair(unsei);
             UnseiFortune fortune = mark.getRight();
 
             Component text = TextUtils.EmptyText()

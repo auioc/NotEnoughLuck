@@ -134,7 +134,7 @@ public class TungShingScreenUtils {
 
     /**
      * @return {@code <PrefixU, PrefixV>, <FortuneU, FortuneV>}
-     * @see org.auioc.mods.notenoughluck.utils.UnseiUtils#getUnseiPair(int)
+     * @see org.auioc.mods.notenoughluck.utils.UnseiUtils#convertToUnseiPair(int)
      */
     protected static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiMarkUV(int unsei, boolean small) {
         Validate.isInCloseInterval(0, 36, unsei);
