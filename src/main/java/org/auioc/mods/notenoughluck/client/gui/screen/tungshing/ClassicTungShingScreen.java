@@ -1,18 +1,15 @@
 package org.auioc.mods.notenoughluck.client.gui.screen.tungshing;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.client.gui.screen.SimpleScreen;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
-import org.auioc.mods.notenoughluck.Reference;
+import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiFortune;
-import org.auioc.mods.notenoughluck.common.unsei.UnseiPrefix;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 
 public class ClassicTungShingScreen extends SimpleScreen implements ITungShingScreen {
@@ -82,10 +79,10 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
         for (int i = 0, l = this.unseiArray.length; i < l; i++) {
             int unsei = this.unseiArray[i];
 
-            Pair<UnseiPrefix, UnseiFortune> mark = UnseiUtils.convertToUnseiPair(unsei);
-            UnseiFortune fortune = mark.getRight();
+            var mark = UnseiUtils.convertToUnseiPair(unsei);
+            var fortune = mark.getRight();
 
-            Component text = TextUtils.EmptyText()
+            var text = TextUtils.EmptyText()
                 .append(i18n("unsei.label", this.dayArray[i]))
                 .append(mark.getLeft().name)
                 .append(fortune.name)
@@ -119,11 +116,11 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
     }
 
     protected static TranslatableComponent i18n(String key) {
-        return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing.classic." + key));
+        return TextUtils.I18nText(NotEnoughLuck.i18n("gui.tung_shing.classic." + key));
     }
 
     protected static TranslatableComponent i18n(String key, Object... arguments) {
-        return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing.classic." + key), arguments);
+        return TextUtils.I18nText(NotEnoughLuck.i18n("gui.tung_shing.classic." + key), arguments);
     }
 
 }

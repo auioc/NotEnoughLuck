@@ -24,7 +24,7 @@ public class TungShingScreenUtils {
     }
 
     public static ITungShingScreen open(boolean reuse, boolean classic) {
-        Minecraft mc = Minecraft.getInstance();
+        var mc = Minecraft.getInstance();
         if (reuse) {
             if (classic && mc.screen instanceof ClassicTungShingScreen) {
                 return (ClassicTungShingScreen) mc.screen;
@@ -44,7 +44,7 @@ public class TungShingScreenUtils {
     }
 
     public static ClassicTungShingScreen openClassic(boolean reuse) {
-        Minecraft mc = Minecraft.getInstance();
+        var mc = Minecraft.getInstance();
         if (reuse && mc.screen instanceof ClassicTungShingScreen) {
             return (ClassicTungShingScreen) mc.screen;
         }
@@ -68,7 +68,7 @@ public class TungShingScreenUtils {
 
 
     protected static boolean isOnCooldown() {
-        Minecraft mc = Minecraft.getInstance();
+        var mc = Minecraft.getInstance();
         return mc.player.getCooldowns().isOnCooldown(NELItems.TUNG_SHING_ITEM.get());
     }
 
@@ -105,7 +105,7 @@ public class TungShingScreenUtils {
 
 
     public static void showCooldownMessage() {
-        Minecraft mc = Minecraft.getInstance();
+        var mc = Minecraft.getInstance();
         mc.gui.setOverlayMessage(TungShingScreen.i18n("cooldown").withStyle(ChatFormatting.RED, ChatFormatting.BOLD), false);
     }
 

@@ -7,6 +7,7 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.tree.CommandNode;
+import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.commands.CommandSourceStack;
 
@@ -40,7 +41,7 @@ public class TungShingCommand {
     }
 
     private static int getDay(CommandContext<CommandSourceStack> ctx) {
-        return UnseiUtils.getDay(ctx.getSource().getLevel().getDayTime());
+        return MCTimeUtils.getDay(ctx.getSource().getLevel().getDayTime());
     }
 
 }

@@ -13,6 +13,7 @@ import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mods.notenoughluck.server.event.NELServerEventHandler;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -48,6 +49,14 @@ public final class NotEnoughLuck {
         MAIN_VERSION = version.getLeft();
         FULL_VERSION = version.getRight();
         LOGGER.info(CORE, "Version: " + MAIN_VERSION + " (" + FULL_VERSION + ")");
+    }
+
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
+
+    public static String i18n(String path) {
+        return MOD_ID + "." + path;
     }
 
     private void modSetup(final IEventBus modEventBus) {

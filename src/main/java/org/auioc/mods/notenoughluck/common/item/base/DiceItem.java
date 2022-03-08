@@ -35,7 +35,7 @@ public abstract class DiceItem extends Item {
     public boolean onDroppedByPlayer(ItemStack stack, Player player) {
         if (!player.getCooldowns().isOnCooldown(this)) {
             player.getCooldowns().addCooldown(this, getCooldown());
-            CompoundTag nbt = stack.getOrCreateTag();
+            var nbt = stack.getOrCreateTag();
             nbt.putBoolean("Disabled", false);
             nbt.putInt("Pips", player.getRandom().nextInt(1, 7));
             beforeDrop(stack, player);
@@ -48,8 +48,8 @@ public abstract class DiceItem extends Item {
         if (level.isClientSide || !stack.hasTag() || !(entity instanceof ServerPlayer)) {
             return;
         }
-        ServerPlayer player = (ServerPlayer) entity;
-        CompoundTag nbt = stack.getTag();
+        var player = (ServerPlayer) entity;
+        var nbt = stack.getTag();
 
         if (nbt.getBoolean("Disabled")) {
             return;

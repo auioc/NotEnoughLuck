@@ -4,10 +4,10 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mods.arnicalib.api.game.screen.HScreen;
+import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
-import org.auioc.mods.notenoughluck.Reference;
-import org.auioc.mods.notenoughluck.utils.UnseiUtils;
+import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -20,7 +20,7 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
 
     private static final int DIV_SIZE = 180;
 
-    protected static final ResourceLocation TEXTURE = Reference.ResourceId("textures/gui/tung_shing.png");
+    protected static final ResourceLocation TEXTURE = NotEnoughLuck.id("textures/gui/tung_shing.png");
     protected static final int TEXTURE_SIZE = 256;
 
     private static final int EDITBOX_WIDTH = 20;
@@ -89,7 +89,7 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
         );
         this.addWidget(this.button);
 
-        TungShingScreenUtils.requestUpdate(this, UnseiUtils.getDay(this.minecraft.level.getDayTime()));
+        TungShingScreenUtils.requestUpdate(this, MCTimeUtils.getDay(this.minecraft.level.getDayTime()));
 
         super.init();
     }
@@ -177,7 +177,7 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
     }
 
     protected static TranslatableComponent i18n(String key) {
-        return TextUtils.I18nText(Reference.I18nKey("gui.tung_shing." + key));
+        return TextUtils.I18nText(NotEnoughLuck.i18n("gui.tung_shing." + key));
     }
 
 }

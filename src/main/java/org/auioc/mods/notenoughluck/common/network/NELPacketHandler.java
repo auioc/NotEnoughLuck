@@ -11,10 +11,9 @@ import net.minecraft.server.level.ServerPlayer;
 public class NELPacketHandler {
 
     private static final String PROTOCOL_VERSION = Integer.toString(1);
-    private static HPacketHandler HANDLER;
+    private static final HPacketHandler HANDLER = new HPacketHandler(NotEnoughLuck.MOD_ID, "main", PROTOCOL_VERSION);
 
     public static void init() {
-        HANDLER = new HPacketHandler(NotEnoughLuck.MOD_ID, "main", PROTOCOL_VERSION);
         registerMessage();
     }
 

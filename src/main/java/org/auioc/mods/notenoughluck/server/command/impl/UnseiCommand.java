@@ -22,7 +22,6 @@ import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.GameProfileArgument;
 import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.server.players.PlayerList;
 
 public class UnseiCommand {
 
@@ -35,10 +34,10 @@ public class UnseiCommand {
             .build();
 
     private static int clearClientCache(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
-        PlayerList playerList = ctx.getSource().getServer().getPlayerList();
+        var playerList = ctx.getSource().getServer().getPlayerList();
 
         Collection<GameProfile> targets = GameProfileArgument.getGameProfiles(ctx, "targets");
-        for (GameProfile gameprofile : targets) {
+        for (var gameprofile : targets) {
             NELPacketHandler.sendToClient(playerList.getPlayer(gameprofile.getId()), new ClearClientUnseiCachePacket());
         }
 

@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.client.event;
 
 import java.util.Map;
-import org.auioc.mods.notenoughluck.Reference;
+import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.client.model.baked.DiceItemBakedModel;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
@@ -21,8 +21,8 @@ public class NELClientModEventHandler {
 
     @SubscribeEvent
     public static void onModelRegistry(ModelRegistryEvent event) {
-        ForgeModelBakery.addSpecialModel(Reference.ResourceId("item/dice_unknown"));
-        ForgeModelBakery.addSpecialModel(Reference.ResourceId("item/dice_of_tyche_unknown"));
+        ForgeModelBakery.addSpecialModel(NotEnoughLuck.id("item/dice_unknown"));
+        ForgeModelBakery.addSpecialModel(NotEnoughLuck.id("item/dice_of_tyche_unknown"));
     }
 
 }

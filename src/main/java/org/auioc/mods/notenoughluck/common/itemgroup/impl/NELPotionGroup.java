@@ -33,7 +33,7 @@ public class NELPotionGroup extends CreativeModeTab {
 
     @Override
     public void fillItemList(NonNullList<ItemStack> list) {
-        List<Potion> potions = RegistryUtils.getAllRegistryObjects(NELPotions.class, Potion.class);
+        var potions = RegistryUtils.getAllRegistryObjects(NELPotions.class, Potion.class);
         for (int i = 0, l = potions.size(); i < l; i++) {
             for (Item potionItem : POTION_ITEMS) {
                 list.add(PotionUtils.setPotion(new ItemStack(potionItem), potions.get(i)));

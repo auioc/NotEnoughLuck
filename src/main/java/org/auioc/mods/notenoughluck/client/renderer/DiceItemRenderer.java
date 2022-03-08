@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Quaternion;
 import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mods.notenoughluck.Reference;
+import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,7 +14,6 @@ import net.minecraft.client.renderer.block.model.ItemTransform;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -59,12 +58,12 @@ public class DiceItemRenderer extends BlockEntityWithoutLevelRenderer {
             pips = Mth.clamp(itemStack.getTag().getInt("Pips"), 0, 6);
         }
 
-        ResourceLocation id = itemStack.getItem().getRegistryName();
+        var id = itemStack.getItem().getRegistryName();
         BakedModel model;
         if (pips > 0) {
             model = Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(id, "inventory"));
         } else {
-            model = Minecraft.getInstance().getModelManager().getModel(Reference.ResourceId("item/" + id.getPath() + "_unknown"));
+            model = Minecraft.getInstance().getModelManager().getModel(NotEnoughLuck.id("item/" + id.getPath() + "_unknown"));
         }
 
         poseStack.pushPose();

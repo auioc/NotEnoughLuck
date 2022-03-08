@@ -58,7 +58,7 @@ public class FourLeafCloverItem extends Item {
         if (!(living instanceof ServerPlayer)) {
             return stack;
         }
-        ServerPlayer player = (ServerPlayer) living;
+        var player = (ServerPlayer) living;
 
         if (!canUse(player)) {
             return stack;

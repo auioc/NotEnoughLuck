@@ -1,7 +1,6 @@
 package org.auioc.mods.notenoughluck.utils;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
 import org.auioc.mods.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
@@ -36,10 +35,6 @@ public class UnseiUtils {
             ServerUnseiCache.set(day, newUnsei);
             return newUnsei;
         }
-    }
-
-    public static int getDay(long dayTime) {
-        return (((int) (dayTime % 2147483647L)) - MCTimeUtils.ticksAtMidnight + MCTimeUtils.ticksPerDay) / MCTimeUtils.ticksPerDay;
     }
 
     public static Pair<int[], int[]> getThreeDaysUnsei(long seed, int today) {
