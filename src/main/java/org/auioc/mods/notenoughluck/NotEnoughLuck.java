@@ -8,6 +8,7 @@ import org.auioc.mods.arnicalib.utils.java.VersionUtils;
 import org.auioc.mods.notenoughluck.client.event.NELClientEventHandler;
 import org.auioc.mods.notenoughluck.client.event.NELClientModEventHandler;
 import org.auioc.mods.notenoughluck.common.alchemy.NELPotions;
+import org.auioc.mods.notenoughluck.common.attribute.NELAttributes;
 import org.auioc.mods.notenoughluck.common.block.NELBlocks;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
@@ -64,6 +65,7 @@ public final class NotEnoughLuck {
         NELItems.ITEMS.register(modEventBus);
         NELBlocks.BLOCKS.register(modEventBus);
         NELPotions.POTIONS.register(modEventBus);
+        NELAttributes.ATTRIBUTES.register(modEventBus);
         modEventBus.register(NELPotions.class);
     }
 
