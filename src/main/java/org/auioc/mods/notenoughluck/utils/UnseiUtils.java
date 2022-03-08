@@ -8,7 +8,8 @@ import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiFortune;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiPrefix;
-import net.minecraft.server.level.ServerLevel;
+import org.auioc.mods.notenoughluck.server.unsei.ServerUnseiCache;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 
 public class UnseiUtils {
@@ -16,7 +17,7 @@ public class UnseiUtils {
     /**
      * @return k, {@code ⌊|seed|^(0.2 + |sin(day)|)⌉ ≡ k (mod 37)}
      */
-    public static int getUnseiValue(long seed, int day) {
+    public static int calcUnseiValue(long seed, int day) {
         long n = Math.round(Math.pow(Math.abs((double) seed), 0.2D + Math.abs(Math.sin((double) day)))) % 37L;
         for (int k = 0; k < 37; k++) {
             if (k % 37 == n) {
@@ -26,8 +27,15 @@ public class UnseiUtils {
         throw new RuntimeException();
     }
 
-    public static int getUnseiValue(ServerLevel level) {
-        return getUnseiValue(level.getSeed(), getDay(level.getDayTime()));
+    public static int getUnseiValue(long seed, int day) {
+        int cachedUnsei = ServerUnseiCache.get(day);
+        if (cachedUnsei >= 0) {
+            return cachedUnsei;
+        } else {
+            int newUnsei = calcUnseiValue(seed, day);
+            ServerUnseiCache.set(day, newUnsei);
+            return newUnsei;
+        }
     }
 
     public static int getDay(long dayTime) {
@@ -71,7 +79,7 @@ public class UnseiUtils {
         sendUpdateTungShingPacket(player, seed, today, classic ? 0 : TungShingItem.COOLDOWN, classic);
     }
 
-    public static Pair<UnseiPrefix, UnseiFortune> getUnseiPair(int unsei) {
+    public static Pair<UnseiPrefix, UnseiFortune> convertToUnseiPair(int unsei) {
         Validate.isInCloseInterval(0, 36, unsei);
         if (unsei < 1) {
             return Pair.of(UnseiPrefix.DAI, UnseiFortune.KICHI);
@@ -101,6 +109,22 @@ public class UnseiUtils {
 
         // 1   2     4         8                      10                              6                   3          2       1
         // (0) (1 2) (3 4 5 6) (7 8 9 10 11 12 13 14) (15 16 17 18 19 20 21 22 23 24) (25 26 27 28 29 30) (31 32 33) (34 35) (36)
+    }
+
+    public static CompoundTag serializeNBT(Pair<UnseiPrefix, UnseiFortune> unseiPair) {
+        var nbt = new CompoundTag();
+        nbt.put(
+            "Unsei",
+            unseiPair.getLeft().serializeNBT().merge(
+                unseiPair.getRight().serializeNBT()
+            )
+        );
+        return nbt;
+    }
+
+    public static Pair<UnseiPrefix, UnseiFortune> deserializeNBT(CompoundTag nbt) {
+        var pairNBT = nbt.getCompound("Unsei");
+        return Pair.of(UnseiPrefix.deserializeNBT(pairNBT), UnseiFortune.deserializeNBT(pairNBT));
     }
 
 }

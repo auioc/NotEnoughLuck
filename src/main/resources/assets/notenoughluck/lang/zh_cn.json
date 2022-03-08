@@ -16,6 +16,7 @@
     "item.notenoughluck.tung_shing": "老黄历",
     "item.notenoughluck.dice": "骰子",
     "item.notenoughluck.dice_of_tyche": "堤喀之骰",
+    "item.notenoughluck.indulgence": "赎罪券",
 
     "block.notenoughluck.tung_shing": "老黄历",
 
@@ -26,11 +27,15 @@
     "notenoughluck.gui.tung_shing.classic.unsei.label": "第 %s 天：",
     "notenoughluck.gui.tung_shing.classic.unsei.value": "（%s）",
 
-    "notenoughluck.unsei.mark.dai": "大",
-    "notenoughluck.unsei.mark.chuu": "中",
-    "notenoughluck.unsei.mark.shou": "小",
-    "notenoughluck.unsei.mark.sue": "末",
-    "notenoughluck.unsei.mark.hei": "平",
-    "notenoughluck.unsei.mark.kichi": "吉",
-    "notenoughluck.unsei.mark.kyou": "凶"
+    "notenoughluck.command.unsei.clear_client_cache": "已向 %s 名玩家发出清除客户端侧运势值缓存的请求",
+    "notenoughluck.command.unsei.clear_server_cache": "已清除服务端侧运势值缓存",
+
+    "notenoughluck.unsei.prefix.dai": "大",
+    "notenoughluck.unsei.prefix.chuu": "中",
+    "notenoughluck.unsei.prefix.shou": "小",
+    "notenoughluck.unsei.prefix.sue": "末",
+    "notenoughluck.unsei.prefix.hei": "",
+    "notenoughluck.unsei.fortune.hei": "平",
+    "notenoughluck.unsei.fortune.kichi": "吉",
+    "notenoughluck.unsei.fortune.kyou": "凶"
 }

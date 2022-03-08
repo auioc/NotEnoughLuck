@@ -1,6 +1,7 @@
 package org.auioc.mods.notenoughluck.common.item.base;
 
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import org.auioc.mods.arnicalib.utils.game.EffectUtils;
 import org.auioc.mods.notenoughluck.client.renderer.DiceItemRenderer;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
@@ -19,7 +20,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.IItemRenderProperties;
 
-public class DiceItem extends Item {
+public abstract class DiceItem extends Item {
 
     public DiceItem(Rarity rarity) {
         super(
@@ -60,7 +61,11 @@ public class DiceItem extends Item {
         afterPickup(player, pips);
 
         EffectUtils.removeEffect(player, (e) -> e.getEffect() == MobEffects.LUCK || e.getEffect() == MobEffects.UNLUCK);
-        player.addEffect(getEffect(pips, nbt));
+
+        var effect = getEffect(pips, nbt);
+        if (effect != null) {
+            player.addEffect(effect);
+        }
     }
 
     @Override
@@ -82,8 +87,7 @@ public class DiceItem extends Item {
         return 0;
     };
 
-    protected MobEffectInstance getEffect(int pips, CompoundTag nbt) {
-        return null;
-    };
+    @Nullable
+    protected abstract MobEffectInstance getEffect(int pips, CompoundTag nbt);
 
 }
