@@ -1,30 +1,34 @@
 package org.auioc.mods.notenoughluck.common.unsei;
 
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 
 public enum UnseiPrefix {
 
-    DAI("dai"), CHUU("chuu"), SHOU("shou"), SUE("sue"), HEI("hei");
+    DAI(4, "dai"), CHUU(3, "chuu"), SHOU(2, "shou"), SUE(1, "sue"), HEI(0, "hei");
 
-    public final String id;
+    public final int id;
     public final Component name;
 
-    private UnseiPrefix(String id) {
+    private UnseiPrefix(int id, String name) {
         this.id = id;
-        this.name = TextUtils.I18nText(NotEnoughLuck.i18n("unsei.prefix." + id));
+        this.name = TextUtils.I18nText(NotEnoughLuck.i18n("unsei.prefix." + name));
     }
 
-    public CompoundTag serializeNBT() {
-        var nbt = new CompoundTag();
-        nbt.putString("Prefix", this.id);
-        return nbt;
-    }
+    private static final Map<Integer, UnseiPrefix> ID_MAP = Map.copyOf(new HashMap<Integer, UnseiPrefix>() {
+        {
+            for (var e : EnumSet.allOf(UnseiPrefix.class)) {
+                put(e.id, e);
+            }
+        }
+    });
 
-    public static UnseiPrefix deserializeNBT(CompoundTag nbt) {
-        return valueOf(nbt.getString("Prefix"));
+    public static UnseiPrefix valueOf(int index) {
+        return ID_MAP.get(index);
     }
 
 }

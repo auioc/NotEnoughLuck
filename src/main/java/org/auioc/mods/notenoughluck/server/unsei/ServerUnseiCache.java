@@ -21,12 +21,8 @@ public class ServerUnseiCache {
         CACHE.put(day, unsei);
     }
 
-    public static int get(int day) {
-        Integer r = CACHE.get(day);
-        if (r == null) {
-            return -1;
-        }
-        return r;
+    public static Integer get(int day) {
+        return CACHE.get(day);
     }
 
 }

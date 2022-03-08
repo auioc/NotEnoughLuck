@@ -88,8 +88,8 @@ public class TungShingScreenUtils {
 
         boolean hasCached = true;
         for (int i = 0; i < 3; i++) {
-            int cachedUnsei = ClientUnseiCache.get(dayArray[i]);
-            if (cachedUnsei == -1) {
+            Integer cachedUnsei = ClientUnseiCache.get(dayArray[i]);
+            if (cachedUnsei == null) {
                 hasCached = false;
                 break;
             }
@@ -137,32 +137,35 @@ public class TungShingScreenUtils {
      * @see org.auioc.mods.notenoughluck.utils.UnseiUtils#convertToUnseiPair(int)
      */
     protected static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> getUnseiMarkUV(int unsei, boolean small) {
-        Validate.isInCloseInterval(0, 36, unsei);
-        if (unsei < 1) {
+        Validate.isInCloseInterval(-4, 4, unsei);
+        if (unsei == 4) {
             return getUnseiMarkUV(UnseiMarkTexture.DAI, UnseiMarkTexture.KICHI, small);
         }
-        if (unsei < 3) {
+        if (unsei == 3) {
             return getUnseiMarkUV(UnseiMarkTexture.CHUU, UnseiMarkTexture.KICHI, small);
         }
-        if (unsei < 7) {
+        if (unsei == 2) {
             return getUnseiMarkUV(UnseiMarkTexture.SHOU, UnseiMarkTexture.KICHI, small);
         }
-        if (unsei < 15) {
+        if (unsei == 1) {
             return getUnseiMarkUV(UnseiMarkTexture.SUE, UnseiMarkTexture.KICHI, small);
         }
-        if (unsei < 25) {
+        if (unsei == 0) {
             return getUnseiMarkUV(UnseiMarkTexture.HEI_A, UnseiMarkTexture.HEI_B, small);
         }
-        if (unsei < 31) {
+        if (unsei == -1) {
             return getUnseiMarkUV(UnseiMarkTexture.SUE, UnseiMarkTexture.KYOU, small);
         }
-        if (unsei < 34) {
+        if (unsei == -2) {
             return getUnseiMarkUV(UnseiMarkTexture.SHOU, UnseiMarkTexture.KYOU, small);
         }
-        if (unsei < 36) {
+        if (unsei == -3) {
             return getUnseiMarkUV(UnseiMarkTexture.CHUU, UnseiMarkTexture.KYOU, small);
         }
-        return getUnseiMarkUV(UnseiMarkTexture.DAI, UnseiMarkTexture.KYOU, small);
+        if (unsei == -4) {
+            return getUnseiMarkUV(UnseiMarkTexture.DAI, UnseiMarkTexture.KYOU, small);
+        }
+        return getUnseiMarkUV(UnseiMarkTexture.HEI_A, UnseiMarkTexture.HEI_B, small);
     }
 
 }
