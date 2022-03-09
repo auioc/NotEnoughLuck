@@ -7,7 +7,6 @@
         "server.MixinBowItem",
         "server.MixinCrossbowItem",
         "server.MixinBlock",
-        "common.MixinPiglin",
         "server.MixinPlayer"
     ],
     "client": [],
