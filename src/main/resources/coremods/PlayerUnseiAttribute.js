@@ -97,7 +97,6 @@ function initializeCoreMod() {
 
 //! Transformed method
 /*
-public static boolean isPushable(BlockState p_185646_0_, World p_185646_1_, BlockPos p_185646_2_, Direction p_185646_3_, boolean p_185646_4_, Direction p_185646_5_) {
     public static AttributeSupplier.Builder createAttributes() {
         return LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, 1.0D)
@@ -105,7 +104,7 @@ public static boolean isPushable(BlockState p_185646_0_, World p_185646_1_, Bloc
             .add(Attributes.ATTACK_SPEED)
             .add(Attributes.LUCK)
             .add(net.minecraftforge.common.ForgeMod.REACH_DISTANCE.get())
-+          .add(org.auioc.mods.notenoughluck.common.attribute.NELAttributes.UNSEI.get())
++           .add(org.auioc.mods.notenoughluck.common.attribute.NELAttributes.UNSEI.get())
             ;
     }
 *   ========== ByteCode ==========   *
@@ -126,9 +125,9 @@ public static boolean isPushable(BlockState p_185646_0_, World p_185646_1_, Bloc
     INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
     GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_KNOCKBACK : Lnet/minecraft/world/entity/ai/attributes/Attribute;
     INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-+  GETSTATIC org/auioc/mods/notenoughluck/common/attribute/NELAttributes.UNSEI : Lnet/minecraftforge/registries/RegistryObject;
-+  INVOKEVIRTUAL net/minecraftforge/registries/RegistryObject.get ()Lnet/minecraftforge/registries/IForgeRegistryEntry;
-+  CHECKCAST net/minecraft/world/entity/ai/attributes/Attribute
-+  INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
++   GETSTATIC org/auioc/mods/notenoughluck/common/attribute/NELAttributes.UNSEI : Lnet/minecraftforge/registries/RegistryObject;
++   INVOKEVIRTUAL net/minecraftforge/registries/RegistryObject.get ()Lnet/minecraftforge/registries/IForgeRegistryEntry;
++   CHECKCAST net/minecraft/world/entity/ai/attributes/Attribute
++   INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
     ARETURN
 */

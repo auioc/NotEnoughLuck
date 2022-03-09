@@ -1,1 +1,4 @@
-{ "nel.PlayerUnseiAttribute": "coremods/PlayerUnseiAttribute.js" }
+{
+    "nel.PlayerUnseiAttribute": "coremods/PlayerUnseiAttribute.js",
+    "nel.PiglinBarterWithLuck": "coremods/PiglinBarterWithLuck.js"
+}
