@@ -12,7 +12,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.tree.CommandNode;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;
-import org.auioc.mods.arnicalib.api.mixin.server.IMixinCommandSourceStack;
+import org.auioc.mods.arnicalib.api.mixin.common.IMixinCommandSourceStack;
 import org.auioc.mods.arnicalib.utils.game.CommandUtils;
 import org.auioc.mods.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.notenoughluck.client.network.ClearClientUnseiCachePacket;
