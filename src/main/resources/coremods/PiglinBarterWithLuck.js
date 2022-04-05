@@ -15,7 +15,7 @@ function initializeCoreMod() {
             target: {
                 type: 'METHOD',
                 class: 'net.minecraft.world.entity.monster.piglin.PiglinAi',
-                methodName: 'getBarterResponseItems',
+                methodName: ASMAPI.mapMethod('m_34996_'),
                 methodDesc:
                     '(Lnet/minecraft/world/entity/monster/piglin/Piglin;)Ljava/util/List;',
             },
@@ -27,7 +27,7 @@ function initializeCoreMod() {
                         new FieldInsnNode(
                             Opcodes.GETSTATIC,
                             'net/minecraft/world/entity/ai/attributes/Attributes',
-                            'LUCK',
+                            ASMAPI.mapField('f_22286_'),
                             'Lnet/minecraft/world/entity/ai/attributes/Attribute;'
                         )
                     );
@@ -35,7 +35,7 @@ function initializeCoreMod() {
                         new MethodInsnNode(
                             Opcodes.INVOKEVIRTUAL,
                             'net/minecraft/world/entity/monster/piglin/Piglin',
-                            'getAttributeValue',
+                            ASMAPI.mapMethod('m_21133_'),
                             '(Lnet/minecraft/world/entity/ai/attributes/Attribute;)D'
                         )
                     );
@@ -44,7 +44,7 @@ function initializeCoreMod() {
                         new MethodInsnNode(
                             Opcodes.INVOKEVIRTUAL,
                             'net/minecraft/world/level/storage/loot/LootContext$Builder',
-                            'withLuck',
+                            ASMAPI.mapMethod('m_78963_'),
                             '(F)Lnet/minecraft/world/level/storage/loot/LootContext$Builder;'
                         )
                     );
@@ -54,7 +54,7 @@ function initializeCoreMod() {
                     methodNode,
                     ASMAPI.MethodType.VIRTUAL,
                     'net/minecraft/world/level/storage/loot/LootContext$Builder',
-                    'withRandom',
+                    ASMAPI.mapMethod('m_78977_'),
                     '(Ljava/util/Random;)Lnet/minecraft/world/level/storage/loot/LootContext$Builder;'
                 );
                 methodNode.instructions.insert(at, toInject);
@@ -66,11 +66,20 @@ function initializeCoreMod() {
     };
 }
 
+//! SRG <-> MCP
+/*
+    m_34996_    getBarterResponseItems
+    f_22286_    LUCK
+    m_21133_    getAttribute
+    m_78963_    withLuck
+    m_78977_    withRandom
+*/
+
 //! LocalVariableTable
 /*
-    Slot  Name       Signature
-    0     p_34997_   Lnet/minecraft/world/entity/monster/piglin/Piglin;
-    1     loottable  Lnet/minecraft/world/level/storage/loot/LootTable;
+    Slot    Name        Signature
+    0       p_34997_    Lnet/minecraft/world/entity/monster/piglin/Piglin;
+    1       loottable   Lnet/minecraft/world/level/storage/loot/LootTable;
 */
 
 //! Original method

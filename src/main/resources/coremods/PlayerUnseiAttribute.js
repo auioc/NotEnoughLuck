@@ -1,5 +1,5 @@
 function initializeCoreMod() {
-    // ASMAPI = Java.type('net.minecraftforge.coremod.api.ASMAPI');
+    ASMAPI = Java.type('net.minecraftforge.coremod.api.ASMAPI');
 
     Opcodes = Java.type('org.objectweb.asm.Opcodes');
 
@@ -14,7 +14,7 @@ function initializeCoreMod() {
             target: {
                 type: 'METHOD',
                 class: 'net.minecraft.world.entity.player.Player',
-                methodName: 'createAttributes',
+                methodName: ASMAPI.mapMethod('m_36340_'),
                 methodDesc:
                     '()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;',
             },
@@ -47,7 +47,7 @@ function initializeCoreMod() {
                         new MethodInsnNode(
                             Opcodes.INVOKEVIRTUAL,
                             'net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder',
-                            'add',
+                            ASMAPI.mapMethod('m_22266_'),
                             '(Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;'
                         )
                     );
@@ -62,6 +62,12 @@ function initializeCoreMod() {
         },
     };
 }
+
+//! SRG <-> MCP
+/*
+    m_36340_    createAttributes
+    m_22266_    add
+*/
 
 //! Original method
 /*

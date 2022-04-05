@@ -1,5 +1,5 @@
 function initializeCoreMod() {
-    // ASMAPI = Java.type('net.minecraftforge.coremod.api.ASMAPI');
+    ASMAPI = Java.type('net.minecraftforge.coremod.api.ASMAPI');
 
     Opcodes = Java.type('org.objectweb.asm.Opcodes');
 
@@ -14,7 +14,7 @@ function initializeCoreMod() {
             target: {
                 type: 'METHOD',
                 class: 'net.minecraft.world.entity.monster.piglin.Piglin',
-                methodName: 'createAttributes',
+                methodName: ASMAPI.mapMethod('m_34770_'),
                 methodDesc:
                     '()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;',
             },
@@ -25,7 +25,7 @@ function initializeCoreMod() {
                         new FieldInsnNode(
                             Opcodes.GETSTATIC,
                             'net/minecraft/world/entity/ai/attributes/Attributes',
-                            'LUCK',
+                            ASMAPI.mapField('f_22286_'),
                             'Lnet/minecraft/world/entity/ai/attributes/Attribute;'
                         )
                     );
@@ -33,7 +33,7 @@ function initializeCoreMod() {
                         new MethodInsnNode(
                             Opcodes.INVOKEVIRTUAL,
                             'net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder',
-                            'add',
+                            ASMAPI.mapMethod('m_22266_'),
                             '(Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;'
                         )
                     );
@@ -48,6 +48,13 @@ function initializeCoreMod() {
         },
     };
 }
+
+//! SRG <-> MCP
+/*
+    m_34770_    createAttributes
+    f_22286_    LUCK
+    m_22266_    add
+*/
 
 //! Original method
 /*
