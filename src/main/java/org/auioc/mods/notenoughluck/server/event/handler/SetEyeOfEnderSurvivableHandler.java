@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.server.event.handler;
 
-import org.auioc.mods.arnicalib.server.event.impl.SetEyeOfEnderSurvivableEvent;
-import org.auioc.mods.arnicalib.utils.java.RandomUtils;
+import org.auioc.mcmod.arnicalib.server.event.impl.SetEyeOfEnderSurvivableEvent;
+import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
 import org.auioc.mods.notenoughluck.utils.LuckUtils;
 
 public class SetEyeOfEnderSurvivableHandler {

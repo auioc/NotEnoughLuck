@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.common.network;
 
-import org.auioc.mods.arnicalib.api.game.network.HPacketHandler;
-import org.auioc.mods.arnicalib.api.game.network.IHPacket;
+import org.auioc.mcmod.arnicalib.api.game.network.HPacketHandler;
+import org.auioc.mcmod.arnicalib.api.game.network.IHPacket;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.client.network.ClearClientUnseiCachePacket;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;

@@ -3,7 +3,7 @@ package org.auioc.mods.notenoughluck.common.unsei;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
-import org.auioc.mods.arnicalib.utils.game.TextUtils;
+import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import net.minecraft.network.chat.Component;
 

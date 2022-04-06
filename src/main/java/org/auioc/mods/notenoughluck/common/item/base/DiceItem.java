@@ -2,7 +2,7 @@ package org.auioc.mods.notenoughluck.common.item.base;
 
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.auioc.mods.arnicalib.utils.game.EffectUtils;
+import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
 import org.auioc.mods.notenoughluck.client.renderer.DiceItemRenderer;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;

@@ -1,6 +1,6 @@
 package org.auioc.mods.notenoughluck.mixin.server;
 
-import org.auioc.mods.arnicalib.utils.game.EffectUtils;
+import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
 import org.auioc.mods.notenoughluck.api.mixin.server.IMixinAbstractArrow;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

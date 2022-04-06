@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.utils;
 
-import org.auioc.mods.arnicalib.utils.game.EffectUtils;
-import org.auioc.mods.arnicalib.utils.java.RandomUtils;
+import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
+import org.auioc.mcmod.arnicalib.utils.java.RandomUtils;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;

@@ -1,6 +1,6 @@
 package org.auioc.mods.notenoughluck.common.alchemy;
 
-import org.auioc.mods.arnicalib.api.game.registry.IHRegistry;
+import org.auioc.mcmod.arnicalib.api.game.registry.IHRegistry;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.common.alchemy.impl.IncurableUnluckPotion;
 import org.auioc.mods.notenoughluck.common.alchemy.impl.LuckPotion;

@@ -1,9 +1,9 @@
 package org.auioc.mods.notenoughluck.client.gui.screen.tungshing;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.auioc.mods.arnicalib.client.gui.screen.SimpleScreen;
-import org.auioc.mods.arnicalib.utils.game.TextUtils;
-import org.auioc.mods.arnicalib.utils.java.Validate;
+import org.auioc.mcmod.arnicalib.client.gui.screen.SimpleScreen;
+import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
+import org.auioc.mcmod.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.common.unsei.UnseiFortune;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;

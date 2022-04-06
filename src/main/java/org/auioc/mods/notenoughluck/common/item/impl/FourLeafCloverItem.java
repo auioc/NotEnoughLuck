@@ -2,8 +2,8 @@ package org.auioc.mods.notenoughluck.common.item.impl;
 
 import java.time.LocalDate;
 import java.util.function.Predicate;
-import org.auioc.mods.arnicalib.utils.game.ItemUtils;
-import org.auioc.mods.arnicalib.utils.game.PlayerUtils;
+import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
+import org.auioc.mcmod.arnicalib.utils.game.PlayerUtils;
 import org.auioc.mods.notenoughluck.common.item.NELItems;
 import org.auioc.mods.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.server.level.ServerPlayer;

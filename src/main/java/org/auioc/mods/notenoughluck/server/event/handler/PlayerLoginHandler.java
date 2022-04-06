@@ -1,6 +1,6 @@
 package org.auioc.mods.notenoughluck.server.event.handler;
 
-import org.auioc.mods.arnicalib.utils.game.MCTimeUtils;
+import org.auioc.mcmod.arnicalib.utils.game.MCTimeUtils;
 import org.auioc.mods.notenoughluck.common.attribute.NELAttributes;
 import org.auioc.mods.notenoughluck.utils.UnseiUtils;
 import net.minecraft.server.level.ServerPlayer;

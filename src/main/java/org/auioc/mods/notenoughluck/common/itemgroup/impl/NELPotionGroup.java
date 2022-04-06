@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.common.itemgroup.impl;
 
 import java.util.List;
-import org.auioc.mods.arnicalib.utils.game.RegistryUtils;
+import org.auioc.mcmod.arnicalib.utils.game.RegistryUtils;
 import org.auioc.mods.notenoughluck.NotEnoughLuck;
 import org.auioc.mods.notenoughluck.common.alchemy.NELPotions;
 import org.auioc.mods.notenoughluck.common.item.NELItems;

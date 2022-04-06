@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.server.event;
 
-import org.auioc.mods.arnicalib.server.event.impl.LivingEatAddEffectEvent;
-import org.auioc.mods.arnicalib.server.event.impl.SetEyeOfEnderSurvivableEvent;
+import org.auioc.mcmod.arnicalib.server.event.impl.LivingEatAddEffectEvent;
+import org.auioc.mcmod.arnicalib.server.event.impl.SetEyeOfEnderSurvivableEvent;
 import org.auioc.mods.notenoughluck.server.command.NELServerCommands;
 import org.auioc.mods.notenoughluck.server.event.handler.EatAddEffectHandler;
 import org.auioc.mods.notenoughluck.server.event.handler.PlayerLoginHandler;

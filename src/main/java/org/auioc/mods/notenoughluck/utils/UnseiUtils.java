@@ -1,7 +1,7 @@
 package org.auioc.mods.notenoughluck.utils;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mods.arnicalib.utils.java.Validate;
+import org.auioc.mcmod.arnicalib.utils.java.Validate;
 import org.auioc.mods.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mods.notenoughluck.common.item.impl.TungShingItem;
 import org.auioc.mods.notenoughluck.common.network.NELPacketHandler;
