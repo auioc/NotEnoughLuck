@@ -24,7 +24,7 @@ function initializeCoreMod() {
                     toInject.add(
                         new FieldInsnNode(
                             Opcodes.GETSTATIC,
-                            'org/auioc/mods/notenoughluck/common/attribute/NELAttributes',
+                            'org/auioc/mcmod/notenoughluck/common/attribute/NELAttributes',
                             'UNSEI',
                             'Lnet/minecraftforge/registries/RegistryObject;'
                         )
@@ -110,7 +110,7 @@ function initializeCoreMod() {
             .add(Attributes.ATTACK_SPEED)
             .add(Attributes.LUCK)
             .add(net.minecraftforge.common.ForgeMod.REACH_DISTANCE.get())
-+           .add(org.auioc.mods.notenoughluck.common.attribute.NELAttributes.UNSEI.get())
++           .add(org.auioc.mcmod.notenoughluck.common.attribute.NELAttributes.UNSEI.get())
             ;
     }
 *   ========== ByteCode ==========   *
@@ -131,7 +131,7 @@ function initializeCoreMod() {
     INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
     GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_KNOCKBACK : Lnet/minecraft/world/entity/ai/attributes/Attribute;
     INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-+   GETSTATIC org/auioc/mods/notenoughluck/common/attribute/NELAttributes.UNSEI : Lnet/minecraftforge/registries/RegistryObject;
++   GETSTATIC org/auioc/mcmod/notenoughluck/common/attribute/NELAttributes.UNSEI : Lnet/minecraftforge/registries/RegistryObject;
 +   INVOKEVIRTUAL net/minecraftforge/registries/RegistryObject.get ()Lnet/minecraftforge/registries/IForgeRegistryEntry;
 +   CHECKCAST net/minecraft/world/entity/ai/attributes/Attribute
 +   INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
