@@ -37,5 +37,7 @@
     "notenoughluck.unsei.prefix.hei": "",
     "notenoughluck.unsei.fortune.hei": "Common",
     "notenoughluck.unsei.fortune.kichi": "Blessing",
-    "notenoughluck.unsei.fortune.kyou": "Curse"
+    "notenoughluck.unsei.fortune.kyou": "Curse",
+
+    "affix.champions.jinx": "Jinx"
 }

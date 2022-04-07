@@ -37,5 +37,7 @@
     "notenoughluck.unsei.prefix.hei": "",
     "notenoughluck.unsei.fortune.hei": "平",
     "notenoughluck.unsei.fortune.kichi": "吉",
-    "notenoughluck.unsei.fortune.kyou": "凶"
+    "notenoughluck.unsei.fortune.kyou": "凶",
+
+    "affix.champions.jinx": "灾星"
 }
