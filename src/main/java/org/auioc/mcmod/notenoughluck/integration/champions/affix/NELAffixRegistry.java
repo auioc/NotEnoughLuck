@@ -2,6 +2,7 @@ package org.auioc.mcmod.notenoughluck.integration.champions.affix;
 
 import static org.auioc.mcmod.notenoughluck.NotEnoughLuck.LOGGER;
 import org.auioc.mcmod.notenoughluck.integration.NELIntegration;
+import org.auioc.mcmod.notenoughluck.integration.champions.affix.impl.AcupunctureAffix;
 import org.auioc.mcmod.notenoughluck.integration.champions.affix.impl.DispelAffix;
 import org.auioc.mcmod.notenoughluck.integration.champions.affix.impl.HurricaneAffix;
 import org.auioc.mcmod.notenoughluck.integration.champions.affix.impl.JinxAffix;
@@ -15,6 +16,7 @@ public class NELAffixRegistry {
 
         Champions.API.registerAffixes(
             new JinxAffix(),
+            new AcupunctureAffix(),
             new DispelAffix(),
             new RealityAffix(),
             new HurricaneAffix()
