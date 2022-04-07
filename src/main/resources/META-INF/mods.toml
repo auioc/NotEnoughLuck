@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[39,)"
+loaderVersion="[40,)"
 license="GNU GPLv3"
 issueTrackerURL="https://github.com/auioc/NotEnoughLuck/issues"
 
@@ -19,7 +19,7 @@ Not Enough Luck
 [[dependencies.notenoughluck]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.notenoughluck]]
@@ -31,6 +31,6 @@ Not Enough Luck
 [[dependencies.notenoughluck]]
     modId="arnicalib"
     mandatory=true
-    versionRange="[4.1.7,)"
+    versionRange="[5.2.0,)"
     ordering="NONE"
     side="BOTH"
