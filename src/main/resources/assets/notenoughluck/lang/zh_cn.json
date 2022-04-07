@@ -39,5 +39,7 @@
     "notenoughluck.unsei.fortune.kichi": "吉",
     "notenoughluck.unsei.fortune.kyou": "凶",
 
-    "affix.champions.jinx": "灾星"
+    "affix.champions.jinx": "灾星",
+    "affix.champions.dispel": "驱散",
+    "affix.champions.reality": "现实"
 }

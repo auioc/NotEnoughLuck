@@ -39,5 +39,7 @@
     "notenoughluck.unsei.fortune.kichi": "Blessing",
     "notenoughluck.unsei.fortune.kyou": "Curse",
 
-    "affix.champions.jinx": "Jinx"
+    "affix.champions.jinx": "Jinx",
+    "affix.champions.dispel": "Dispel",
+    "affix.champions.reality": "Reality"
 }
