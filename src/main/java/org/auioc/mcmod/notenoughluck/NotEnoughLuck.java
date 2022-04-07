@@ -13,13 +13,16 @@ import org.auioc.mcmod.notenoughluck.common.block.NELBlocks;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
+import org.auioc.mcmod.notenoughluck.integration.champions.affix.NELAffixRegistry;
 import org.auioc.mcmod.notenoughluck.server.event.NELServerEventHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(NotEnoughLuck.MOD_ID)
@@ -67,6 +70,9 @@ public final class NotEnoughLuck {
         NELPotions.POTIONS.register(modEventBus);
         NELAttributes.ATTRIBUTES.register(modEventBus);
         modEventBus.register(NELPotions.class);
+        modEventBus.addListener((final FMLCommonSetupEvent event) -> {
+            if (ModList.get().isLoaded("champions")) NELAffixRegistry.register();
+        });
     }
 
     private void forgeSetup(final IEventBus forgeEventBus) {
