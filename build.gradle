@@ -65,10 +65,6 @@ repositories {
             password = getVar("GITHUB_TOKEN")
         }
     }
-    maven {
-        name = "CurseMaven"
-        url = "https://www.cursemaven.com"
-    }
 }
 
 dependencies {
@@ -82,8 +78,6 @@ dependencies {
     } else {
         implementation "org.auioc.mcmod:arnicalib:${minecraft_version}-${arnicalib_version}:forgelib"
     }
-    
-    implementation fg.deobf("curse.maven:champions-307152:${champions_cf_file_id}")
 }
 
 mixin {
