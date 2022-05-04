@@ -17,6 +17,7 @@ public class EatAddEffectHandler {
 
     private static final Map<FoodProperties, List<Data>> MAP = new HashMap<FoodProperties, List<Data>>();
 
+    @SuppressWarnings("deprecation")
     public static void handle(final LivingEatAddEffectEvent event) {
         LivingEntity living = event.getEntityLiving();
         Item item = event.getFood().getItem();
@@ -46,6 +47,7 @@ public class EatAddEffectHandler {
         putItem(Items.ROTTEN_FLESH, List.of(new Data(80, -4, 1, 5)));
     }
 
+    @SuppressWarnings("deprecation")
     private static void putItem(Item item, List<Data> dataList) {
         Validate.isTrue(item.isEdible(), "Item %s is not a food item", item);
         Validate.isTrue(item.getFoodProperties().getEffects().size() == dataList.size());

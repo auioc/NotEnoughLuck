@@ -6,12 +6,12 @@ issueTrackerURL="https://github.com/auioc/NotEnoughLuck/issues"
 [[mods]]
 modId="notenoughluck"
 version="${file.jarVersion}"
-updateJSONURL="https://hi.auioc.org/NotEnoughLuck/update/1.18.1.json"
+updateJSONURL="https://hi.auioc.org/NotEnoughLuck/update/1.18.2.json"
 displayName="NotEnoughLuck"
 displayURL="https://hi.auioc.org/NotEnoughLuck/"
 logoFile="icon.png"
 credits="AUIOC"
-authors="WakelssSloth56"
+authors="WakelssSloth56,Libellule505"
 description='''
 Not Enough Luck
 '''
@@ -31,6 +31,6 @@ Not Enough Luck
 [[dependencies.notenoughluck]]
     modId="arnicalib"
     mandatory=true
-    versionRange="[5.2.0,)"
+    versionRange="[5.3.0,)"
     ordering="NONE"
     side="BOTH"

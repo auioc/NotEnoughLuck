@@ -2,7 +2,7 @@ package org.auioc.mcmod.notenoughluck.common.item.impl;
 
 import java.time.LocalDate;
 import java.util.function.Predicate;
-import org.auioc.mcmod.arnicalib.utils.game.ItemUtils;
+import org.auioc.mcmod.arnicalib.utils.game.ContainerUtils;
 import org.auioc.mcmod.arnicalib.utils.game.PlayerUtils;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
@@ -66,7 +66,7 @@ public class FourLeafCloverItem extends Item {
 
         if (!player.getAbilities().instabuild) {
             int i = lengthOfYear();
-            if (ItemUtils.clearItem(player.getInventory(), IS_PAPER, i, true) != i) {
+            if (ContainerUtils.clearItem(player.getInventory(), IS_PAPER, i, true) != i) {
                 return stack;
             }
 
@@ -83,7 +83,7 @@ public class FourLeafCloverItem extends Item {
     }
 
     private static boolean canUse(Player player) {
-        return player.getAbilities().instabuild || ItemUtils.countItem(player.getInventory(), IS_PAPER) >= lengthOfYear();
+        return player.getAbilities().instabuild || ContainerUtils.countItem(player.getInventory(), IS_PAPER) >= lengthOfYear();
     }
 
 }
