@@ -3,10 +3,13 @@ package org.auioc.mcmod.notenoughluck.common.item.base;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
+import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
 import org.auioc.mcmod.notenoughluck.client.renderer.DiceItemRenderer;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -67,6 +70,15 @@ public abstract class DiceItem extends Item {
         if (effect != null) {
             player.addEffect(effect);
         }
+    }
+
+    @Override
+    public Component getName(ItemStack stack) {
+        int pips = getPips(stack);
+        if (pips > 0) {
+            return ((TranslatableComponent) super.getName(stack)).append(TextUtils.getStringText(" (" + pips + ")"));
+        }
+        return super.getName(stack);
     }
 
     @Override
