@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Quaternion;
 import org.apache.commons.lang3.tuple.Pair;
 import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
+import org.auioc.mcmod.notenoughluck.common.item.base.DiceItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,7 +15,6 @@ import net.minecraft.client.renderer.block.model.ItemTransform;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -53,10 +53,7 @@ public class DiceItemRenderer extends BlockEntityWithoutLevelRenderer {
 
     @Override
     public void renderByItem(ItemStack itemStack, TransformType transformType, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
-        int pips = 0;
-        if (itemStack.getTag() != null) {
-            pips = Mth.clamp(itemStack.getTag().getInt("Pips"), 0, 6);
-        }
+        int pips = DiceItem.getPips(itemStack);
 
         var id = itemStack.getItem().getRegistryName();
         BakedModel model;

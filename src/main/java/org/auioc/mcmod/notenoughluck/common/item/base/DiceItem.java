@@ -8,6 +8,7 @@ import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -89,5 +90,16 @@ public abstract class DiceItem extends Item {
 
     @Nullable
     protected abstract MobEffectInstance getEffect(int pips, CompoundTag nbt);
+
+    public static int getPips(ItemStack stack) {
+        if (stack.getItem() instanceof DiceItem) {
+            if (stack.hasTag()) {
+                return Mth.clamp(stack.getTag().getInt("Pips"), 0, 6);
+            }
+            return 0;
+        } else {
+            throw new UnsupportedOperationException("Can only get pips of a dice item");
+        }
+    }
 
 }
