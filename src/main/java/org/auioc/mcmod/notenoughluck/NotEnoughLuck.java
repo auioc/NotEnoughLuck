@@ -10,6 +10,7 @@ import org.auioc.mcmod.notenoughluck.client.event.NELClientModEventHandler;
 import org.auioc.mcmod.notenoughluck.common.alchemy.NELPotions;
 import org.auioc.mcmod.notenoughluck.common.attribute.NELAttributes;
 import org.auioc.mcmod.notenoughluck.common.block.NELBlocks;
+import org.auioc.mcmod.notenoughluck.common.effect.NELMobEffects;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
@@ -66,6 +67,7 @@ public final class NotEnoughLuck {
         NELBlocks.BLOCKS.register(modEventBus);
         NELPotions.POTIONS.register(modEventBus);
         NELAttributes.ATTRIBUTES.register(modEventBus);
+        NELMobEffects.MOB_EFFECTS.register(modEventBus);
         modEventBus.register(NELPotions.class);
     }
 
