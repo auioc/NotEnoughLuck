@@ -16,6 +16,6 @@ public final class NELMobEffects {
         return MOB_EFFECTS.register(id, sup);
     }
 
-    public static final RegistryObject<MobEffect> ICON_ITEM = register("redemption", RedemptionEffect.REGISTRY_ENTRY_SUPPLIER);
+    public static final RegistryObject<MobEffect> ICON_ITEM = register("redemption", () -> new RedemptionEffect());
 
 }
