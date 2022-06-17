@@ -1,5 +1,6 @@
 package org.auioc.mcmod.notenoughluck.common.item.impl;
 
+import java.util.ArrayList;
 import org.auioc.mcmod.notenoughluck.common.effect.NELMobEffects;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.server.level.ServerPlayer;
@@ -47,7 +48,9 @@ public class IndulgenceItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
         if (living instanceof ServerPlayer player) {
-            player.addEffect(new MobEffectInstance(NELMobEffects.REDEMPTION.get(), REDEMPTION_DURATION));
+            var redemptionEffect = new MobEffectInstance(NELMobEffects.REDEMPTION.get(), REDEMPTION_DURATION);
+            redemptionEffect.setCurativeItems(new ArrayList<ItemStack>());
+            player.addEffect(redemptionEffect);
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);
             }
