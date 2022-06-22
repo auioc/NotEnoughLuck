@@ -20,7 +20,7 @@ public class RequestUpdateTungShingPacket implements IHPacket {
     @Override
     public void handle(Context ctx) {
         ServerPlayer player = ctx.getSender();
-        UnseiUtils.sendUpdateTungShingPacket(player, player.getLevel().getSeed(), this.day, this.classic);
+        UnseiUtils.sendUpdateTungShingPacket(player, this.day, this.classic);
     }
 
     @Override

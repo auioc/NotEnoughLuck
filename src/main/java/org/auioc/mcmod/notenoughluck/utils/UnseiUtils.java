@@ -1,6 +1,8 @@
 package org.auioc.mcmod.notenoughluck.utils;
 
+import java.util.function.IntSupplier;
 import org.apache.commons.lang3.tuple.Pair;
+import org.auioc.mcmod.arnicalib.utils.game.MCTimeUtils;
 import org.auioc.mcmod.arnicalib.utils.java.Validate;
 import org.auioc.mcmod.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mcmod.notenoughluck.common.item.impl.TungShingItem;
@@ -9,9 +11,15 @@ import org.auioc.mcmod.notenoughluck.common.unsei.UnseiFortune;
 import org.auioc.mcmod.notenoughluck.common.unsei.UnseiPrefix;
 import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiCache;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.server.ServerLifecycleHooks;
 
 public class UnseiUtils {
+
+    public static final ServerLevel OVERWORLD = ServerLifecycleHooks.getCurrentServer().overworld();
+    public static final long SEED = OVERWORLD.getSeed();
+    public static final IntSupplier TODAY = () -> MCTimeUtils.getDay(OVERWORLD.dayTime());
 
     /**
      * @return k, {@code ⌊|seed|^(0.2 + |sin(day)|)⌉ ≡ k (mod 37)}
@@ -35,6 +43,14 @@ public class UnseiUtils {
             ServerUnseiCache.set(day, newUnsei);
             return newUnsei;
         }
+    }
+
+    public static int getUnseiValue(int day) {
+        return getUnseiValue(SEED, day);
+    }
+
+    public static int getUnseiValue() {
+        return getUnseiValue(SEED, TODAY.getAsInt());
     }
 
     public static int requantifyUnseiValue(int unsei) {
@@ -85,6 +101,10 @@ public class UnseiUtils {
         );
     }
 
+    public static Pair<int[], int[]> getThreeDaysUnsei(int today) {
+        return getThreeDaysUnsei(SEED, today);
+    }
+
     public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today, int cooldown, boolean classic) {
         if (cooldown > 0) {
             TungShingItem.addCooldown(player, cooldown);
@@ -99,12 +119,8 @@ public class UnseiUtils {
         );
     }
 
-    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today) {
-        sendUpdateTungShingPacket(player, seed, today, TungShingItem.COOLDOWN, false);
-    }
-
-    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today, boolean classic) {
-        sendUpdateTungShingPacket(player, seed, today, classic ? 0 : TungShingItem.COOLDOWN, classic);
+    public static void sendUpdateTungShingPacket(ServerPlayer player, int today, boolean classic) {
+        sendUpdateTungShingPacket(player, SEED, today, classic ? 0 : TungShingItem.COOLDOWN, classic);
     }
 
     public static Pair<UnseiPrefix, UnseiFortune> convertToUnseiPair(int unsei) {
