@@ -53,6 +53,10 @@ public class UnseiUtils {
         return getUnseiValue(SEED, TODAY.getAsInt());
     }
 
+    public static Pair<UnseiPrefix, UnseiFortune> getUnseiPair() {
+        return convertToUnseiPair(getUnseiValue());
+    }
+
     public static int requantifyUnseiValue(int unsei) {
         Validate.isInCloseInterval(0, 36, unsei);
         if (unsei < 1) {

@@ -56,6 +56,7 @@ public class NELServerEventHandler {
         PotionAddedHandler.handle(event);
     }
 
+    @SubscribeEvent
     public static void onServerTick(final ServerTickEvent event) {
         if (event.phase == Phase.START) {
             ServerTickHandler.handleStartPhase();
