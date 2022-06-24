@@ -12,19 +12,23 @@ public class PotionAddedHandler {
     public static void handle(final PotionAddedEvent event) {
         if (event.getEntityLiving() instanceof ServerPlayer player) {
             var newEffect = event.getPotionEffect();
-            if (
-                newEffect.getEffect() == MobEffects.UNLUCK
-                    && newEffect.getAmplifier() > 0
-            ) {
+            if (newEffect.getEffect() == MobEffects.UNLUCK) {
                 var redemptionEffect = player.getEffect(NELMobEffects.REDEMPTION.get());
                 if (redemptionEffect != null) {
-                    int newUnluckAmplifier = newEffect.getAmplifier() - (redemptionEffect.getAmplifier() + 1);
-                    ObfuscationReflectionHelper.setPrivateValue(
-                        MobEffectInstance.class,
-                        newEffect,
-                        Math.max(newUnluckAmplifier, 0),
-                        "f_19504_" // amplifier
-                    );
+                    if (newEffect.getAmplifier() > 0) {
+                        int newUnluckAmplifier = newEffect.getAmplifier() - (redemptionEffect.getAmplifier() + 1);
+                        ObfuscationReflectionHelper.setPrivateValue(
+                            MobEffectInstance.class, newEffect,
+                            Math.max(newUnluckAmplifier, 0),
+                            "f_19504_" // amplifier
+                        );
+                    } else {
+                        ObfuscationReflectionHelper.setPrivateValue(
+                            MobEffectInstance.class, newEffect,
+                            1,
+                            "f_19503_" // duration
+                        );
+                    }
                 }
             }
         }
