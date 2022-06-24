@@ -16,6 +16,12 @@ public class NELServerConfig {
     public static final IntValue IndulgenceVillagerXp;
     public static final DoubleValue IndulgencePriceMultiplier;
 
+    public static final IntValue CloverEmeraldCost;
+    public static final IntValue CloverSaleCount;
+    public static final IntValue CloverMaxTrades;
+    public static final IntValue CloverVillagerXp;
+    public static final DoubleValue CloverPriceMultiplier;
+
     static {
         ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
 
@@ -31,6 +37,15 @@ public class NELServerConfig {
 
         {
             b.push("trade");
+            {
+                b.push("clover");
+                CloverEmeraldCost = b.defineInRange("emerald_cost", 7, 1, 64);
+                CloverSaleCount = b.defineInRange("sale_count", 1, 1, 64);
+                CloverMaxTrades = b.defineInRange("max_trades", 1, 1, Integer.MAX_VALUE);
+                CloverVillagerXp = b.defineInRange("villager_xp", 1, 0, Integer.MAX_VALUE);
+                CloverPriceMultiplier = b.defineInRange("price_multiplier", 0.05D, 0.0D, Double.MAX_VALUE);
+                b.pop();
+            }
             {
                 b.push("indulgence");
                 IndulgenceEmeraldCost = b.defineInRange("emerald_cost", 32, 1, 64);
