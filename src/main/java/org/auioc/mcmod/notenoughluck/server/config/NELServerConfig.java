@@ -10,6 +10,11 @@ public class NELServerConfig {
 
     public static final IntValue UnseiEffectInterval;
 
+    public static final IntValue EyeOfEnderSurvivableChance;
+    public static final IntValue EyeOfEnderSurvivableChanceLuckMultiplier;
+    public static final IntValue EyeOfEnderSurvivableChanceUnluckMultiplier;
+    public static final IntValue EyeOfEnderSurvivableChanceBonusMultiplier;
+
     public static final IntValue IndulgenceEmeraldCost;
     public static final IntValue IndulgenceSaleCount;
     public static final IntValue IndulgenceMaxTrades;
@@ -32,6 +37,15 @@ public class NELServerConfig {
                 UnseiEffectInterval = b.defineInRange("interval", 120, 1, Integer.MAX_VALUE);
                 b.pop();
             }
+            b.pop();
+        }
+
+        {
+            b.push("end_of_eye_survivable_chance");
+            EyeOfEnderSurvivableChance = b.defineInRange("default", 80, 0, 100);
+            EyeOfEnderSurvivableChanceLuckMultiplier = b.defineInRange("luck_multiplier", 1, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            EyeOfEnderSurvivableChanceUnluckMultiplier = b.defineInRange("unluck_multiplier", -4, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            EyeOfEnderSurvivableChanceBonusMultiplier = b.defineInRange("bonus_multiplier", 5, Integer.MIN_VALUE, Integer.MAX_VALUE);
             b.pop();
         }
 
