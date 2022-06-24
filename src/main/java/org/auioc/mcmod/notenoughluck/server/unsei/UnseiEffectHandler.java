@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 public class UnseiEffectHandler {
 
     public static final int INTERVAL = 10 * 20;
+    public static final int DURATION = INTERVAL + 5;
 
     public static void handle(MinecraftServer server) {
         var unseiPair = UnseiUtils.getUnseiPair();
@@ -33,7 +34,7 @@ public class UnseiEffectHandler {
         System.err.println(effect.getDescriptionId() + " " + amplifier);
 
         for (var player : server.getPlayerList().getPlayers()) {
-            player.addEffect(new MobEffectInstance(effect, INTERVAL, amplifier, true, true));
+            player.addEffect(new MobEffectInstance(effect, DURATION, amplifier, true, true));
         }
     }
 
