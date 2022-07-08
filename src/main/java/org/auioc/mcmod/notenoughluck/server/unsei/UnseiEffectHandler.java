@@ -31,8 +31,6 @@ public class UnseiEffectHandler {
 
         int amplifier = unseiPair.getLeft().id - 1;
 
-        System.err.println(effect.getDescriptionId() + " " + amplifier);
-
         for (var player : server.getPlayerList().getPlayers()) {
             player.addEffect(new MobEffectInstance(effect, DURATION, amplifier, true, true));
         }
