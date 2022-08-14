@@ -1,4 +1,7 @@
 {
     "replace": false,
-    "entries": ["notenoughluck:four_leaf_clover"]
+    "entries": [
+        "notenoughluck:four_leaf_clover",
+        "notenoughluck:minecraft/chests"
+    ]
 }

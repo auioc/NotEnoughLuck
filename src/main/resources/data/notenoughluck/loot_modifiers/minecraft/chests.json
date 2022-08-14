@@ -1,0 +1,79 @@
+{
+    "type": "arnicalib:loot_table_injector",
+    "conditions": [],
+    "strict_parameter": true,
+    "injectors": [
+        {
+            "target": "minecraft:chests/abandoned_mineshaft",
+            "source": "notenoughluck:injection_sources/minecraft/chests/abandoned_mineshaft"
+        },
+        {
+            "target": "minecraft:chests/bastion_hoglin_stable",
+            "source": "notenoughluck:injection_sources/minecraft/chests/bastion_hoglin_stable"
+        },
+        {
+            "target": "minecraft:chests/bastion_other",
+            "source": "notenoughluck:injection_sources/minecraft/chests/bastion_other"
+        },
+        {
+            "target": "minecraft:chests/bastion_treasure",
+            "source": "notenoughluck:injection_sources/minecraft/chests/bastion_treasure"
+        },
+        {
+            "target": "minecraft:chests/buried_treasure",
+            "source": "notenoughluck:injection_sources/minecraft/chests/buried_treasure"
+        },
+        {
+            "target": "minecraft:chests/desert_pyramid",
+            "source": "notenoughluck:injection_sources/minecraft/chests/desert_pyramid"
+        },
+        {
+            "target": "minecraft:chests/end_city_treasure",
+            "source": "notenoughluck:injection_sources/minecraft/chests/end_city_treasure"
+        },
+        {
+            "target": "minecraft:chests/igloo_chest",
+            "source": "notenoughluck:injection_sources/minecraft/chests/igloo_chest"
+        },
+        {
+            "target": "minecraft:chests/jungle_temple",
+            "source": "notenoughluck:injection_sources/minecraft/chests/jungle_temple"
+        },
+        {
+            "target": "minecraft:chests/nether_bridge",
+            "source": "notenoughluck:injection_sources/minecraft/chests/nether_bridge"
+        },
+        {
+            "target": "minecraft:chests/pillager_outpost",
+            "source": "notenoughluck:injection_sources/minecraft/chests/pillager_outpost"
+        },
+        {
+            "target": "minecraft:chests/ruined_portal",
+            "source": "notenoughluck:injection_sources/minecraft/chests/ruined_portal"
+        },
+        {
+            "target": "minecraft:chests/shipwreck_treasure",
+            "source": "notenoughluck:injection_sources/minecraft/chests/shipwreck_treasure"
+        },
+        {
+            "target": "minecraft:chests/simple_dungeon",
+            "source": "notenoughluck:injection_sources/minecraft/chests/simple_dungeon"
+        },
+        {
+            "target": "minecraft:chests/stronghold_corridor",
+            "source": "notenoughluck:injection_sources/minecraft/chests/stronghold_corridor"
+        },
+        {
+            "target": "minecraft:chests/underwater_ruin_big",
+            "source": "notenoughluck:injection_sources/minecraft/chests/underwater_ruin_big"
+        },
+        {
+            "target": "minecraft:chests/underwater_ruin_small",
+            "source": "notenoughluck:injection_sources/minecraft/chests/underwater_ruin_small"
+        },
+        {
+            "target": "minecraft:chests/woodland_mansion",
+            "source": "notenoughluck:injection_sources/minecraft/chests/woodland_mansion"
+        }
+    ]
+}
