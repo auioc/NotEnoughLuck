@@ -14,13 +14,16 @@ import org.auioc.mcmod.notenoughluck.common.effect.NELMobEffects;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
+import org.auioc.mcmod.notenoughluck.server.config.NELServerConfig;
 import org.auioc.mcmod.notenoughluck.server.event.NELServerEventHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(NotEnoughLuck.MOD_ID)
@@ -35,6 +38,8 @@ public final class NotEnoughLuck {
     private static final Marker CORE = LogUtil.getMarker("CORE");
 
     public NotEnoughLuck() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, NELServerConfig.CONFIG);
+
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         final IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
