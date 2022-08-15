@@ -1,0 +1,43 @@
+{
+    "notenoughluck.title": "より多い幸運",
+
+    "itemGroup.notenoughluck": "より多い幸運",
+
+    "item.minecraft.potion.effect.unluck": "不幸のポーション",
+    "item.minecraft.splash_potion.effect.unluck": "不幸のスプラッシュポーション",
+    "item.minecraft.lingering_potion.effect.unluck": "不幸の残留ポーション",
+    "item.minecraft.tipped_arrow.effect.unluck": "不幸の矢",
+    "item.minecraft.potion.effect.incurable_unluck": "回復不能型不幸ポーション",
+    "item.minecraft.splash_potion.effect.incurable_unluck": "回復不能の不幸のスプラッシュポーション",
+    "item.minecraft.lingering_potion.effect.incurable_unluck": "回復不能型不幸の残留ポーション",
+    "item.minecraft.tipped_arrow.effect.incurable_unluck": "回復不能型不幸の矢",
+
+    "item.notenoughluck.four_leaf_clover": "四つ葉のクローバー",
+    "item.notenoughluck.tung_shing": "古い日めくり",
+    "item.notenoughluck.dice": "サイコロ",
+    "item.notenoughluck.dice_of_tyche": "チチェのサイコロ",
+    "item.notenoughluck.indulgence": "贖罪のチケット",
+
+    "block.notenoughluck.tung_shing": "古い日めくり",
+
+    "effect.notenoughluck.redemption": "救い",
+
+    "notenoughluck.gui.tung_shing.title": "古い日めくり",
+    "notenoughluck.gui.tung_shing.cooldown": "この日めくりはちょっと古すぎたから、破れないようにゆっくり開きましょう。",
+    "notenoughluck.gui.tung_shing.classic.title": "古い日めくり（クラシックスキン）",
+    "notenoughluck.gui.tung_shing.classic.button.request": "検索",
+    "notenoughluck.gui.tung_shing.classic.unsei.label": "第 %s 日：",
+    "notenoughluck.gui.tung_shing.classic.unsei.value": "（%s）",
+
+    "notenoughluck.command.unsei.clear_client_cache": " %s 人のプレイヤーにクライアント側の運の値キャッシュのクリアを申請をしました。",
+    "notenoughluck.command.unsei.clear_server_cache": "サーバー側の運の値キャッシュのクリアが既に完了しました。",
+
+    "notenoughluck.unsei.prefix.dai": "大",
+    "notenoughluck.unsei.prefix.chuu": "中",
+    "notenoughluck.unsei.prefix.shou": "小",
+    "notenoughluck.unsei.prefix.sue": "末",
+    "notenoughluck.unsei.prefix.hei": "",
+    "notenoughluck.unsei.fortune.hei": "平",
+    "notenoughluck.unsei.fortune.kichi": "吉",
+    "notenoughluck.unsei.fortune.kyou": "凶"
+}
