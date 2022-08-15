@@ -7,17 +7,18 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        // classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
 group = 'org.auioc.mcmod'
 archivesBaseName = "notenoughluck"
-version = "${minecraft_version}-${notenoughluck_version}"
+project.ext.modVersion= "${notenoughluck_version}"
+apply from: 'gradle/version.gradle'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -83,74 +84,12 @@ dependencies {
 mixin {
     add sourceSets.main, 'notenoughluck.mixin-refmap.json'
 }
+apply from: 'gradle/tasks.gradle'
 
-ext {
-    manifest_attributes = [
-        "Specification-Title": 'notenoughluck',
-        "Specification-Vendor": 'AUIOC',
-        "Specification-Version": '1',
-        "Implementation-Title": project.name,
-        "Implementation-Version": "${notenoughluck_version}",
-        "Implementation-Vendor" :'AUIOC',
-        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-        "TweakClass": 'org.spongepowered.asm.launch.MixinTweaker',
-        "TweakOrder": 0,
-        "MixinConfigs": 'notenoughluck.mixin.json',
-        "NotEnoughLuck-Version": "${archivesBaseName}-${version}-${getVar('CI_VERSION')}"
-    ]
-}
+apply from: 'gradle/artifacts.gradle'
 
-jar {
-    manifest {attributes(manifest_attributes)}
-}
-jar.finalizedBy('reobfJar')
-
-task forgelibJar(type: Jar) {
-    from sourceSets.main.output
-    from sourceSets.main.allJava
-    classifier = 'forgelib'
-    manifest {attributes(manifest_attributes)}
-}
-artifacts {
-    archives forgelibJar
-}
-
-tasks.build.dependsOn('forgelibJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            groupId project.group
-            artifactId project.archivesBaseName
-            version project.version
-            from components.java
-            artifact forgelibJar {
-                classifier 'forgelib'
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = 'McmodsRepo'
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
-
-task genUpdateJson() {
-    doFirst {
-        def j = [
-            'homepage': 'https://github.com/auioc/NotEnoughLuck/releases',
-            'promos': [
-                    "${minecraft_version}-latest": "${notenoughluck_version}",
-                    "${minecraft_version}-recommended": "${notenoughluck_version}",
-            ]
-        ]
-        println(groovy.json.JsonOutput.toJson(j))
-        File file = file("tmp/${minecraft_version}.json")
-        file.write(groovy.json.JsonOutput.toJson(j))
-    }
-}
+apply from: 'gradle/publishing.gradle'
+// apply from: 'gradle/signing.gradle'
 
 
 def getVar(String var_name) {
