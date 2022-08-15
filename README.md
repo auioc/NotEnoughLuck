@@ -3,8 +3,10 @@
 <div align="center">
 
 [![GitHub license](https://img.shields.io/github/license/auioc/NotEnoughLuck?style=flat-square)](/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/auioc/NotEnoughLuck/dev-build?style=flat-square)](https://github.com/auioc/NotEnoughLuck/actions/workflows/dev-build.yml)
-&nbsp;
+[![GitHub release](https://img.shields.io/github/v/release/auioc/NotEnoughLuck?style=flat-square)](https://github.com/auioc/NotEnoughLuck/releases/latest)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/auioc/NotEnoughLuck/auto-release?label=release%20build&style=flat-square)](https://github.com/auioc/NotEnoughLuck/actions/workflows/auto-release.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/auioc/NotEnoughLuck/dev-build?label=dev%20build&style=flat-square)](https://github.com/auioc/NotEnoughLuck/actions/workflows/dev-build.yml)
+<br/>
 ![Minecraft](https://img.shields.io/static/v1?label=Minecraft&message=1.18.2&color=00aa00&style=flat-square)
 [![Forge](https://img.shields.io/static/v1?label=Forge&message=40.1.0&color=e04e14&logo=Conda-Forge&style=flat-square)](http://files.minecraftforge.net/net/minecraftforge/forge/index_1.18.2.html)
 [![AdoptiumOpenJDK](https://img.shields.io/static/v1?label=AdoptiumOpenJDK&message=17.0.4%2B8&color=brightgreen&logo=java&style=flat-square)](https://adoptium.net/?variant=openjdk17&jvmVariant=hotspot)
