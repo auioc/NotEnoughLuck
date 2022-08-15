@@ -89,7 +89,7 @@ apply from: 'gradle/tasks.gradle'
 apply from: 'gradle/artifacts.gradle'
 
 apply from: 'gradle/publishing.gradle'
-// apply from: 'gradle/signing.gradle'
+apply from: 'gradle/signing.gradle'
 
 
 def getVar(String var_name) {
