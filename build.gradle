@@ -18,6 +18,8 @@ apply plugin: 'org.spongepowered.mixin'
 group = 'org.auioc.mcmod'
 archivesBaseName = "notenoughluck"
 project.ext.modVersion= "${notenoughluck_version}"
+project.ext.modName = 'NotEnoughLuck'
+project.ext.modId = 'notenoughluck'
 apply from: 'gradle/version.gradle'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -32,7 +34,7 @@ minecraft {
             property 'user.language', 'en'
             property 'log4j.configurationFile', 'log4j2.xml'
             property 'mixin.debug', 'true'
-            arg '-mixin.config=notenoughluck.mixin.json'
+            arg "-mixin.config=${project.modId}.mixin.json"
             mods {
                 notenoughluck {
                     source sourceSets.main
@@ -46,7 +48,7 @@ minecraft {
             property 'user.language', 'en'
             property 'log4j.configurationFile', 'log4j2.xml'
             property 'mixin.debug', 'true'
-            arg '-mixin.config=notenoughluck.mixin.json'
+            arg "-mixin.config=${project.modId}.mixin.json"
             mods {
                 notenoughluck {
                     source sourceSets.main
@@ -62,8 +64,8 @@ repositories {
     maven {
         url "https://maven.pkg.github.com/auioc/arnicalib-mcmod"
         credentials {
-            username = getVar("GITHUB_ACTOR") ? getVar("GITHUB_ACTOR") : getVar("GITHUB_USERNAME")
-            password = getVar("GITHUB_TOKEN")
+            username = System.getenv("GITHUB_ACTOR") ? System.getenv("GITHUB_ACTOR") : System.getenv("GITHUB_USERNAME")
+            password = System.getenv("GITHUB_TOKEN")
         }
     }
 }
@@ -82,16 +84,12 @@ dependencies {
 }
 
 mixin {
-    add sourceSets.main, 'notenoughluck.mixin-refmap.json'
+    add sourceSets.main, "${project.modId}.mixin-refmap.json"
 }
+
 apply from: 'gradle/tasks.gradle'
 
 apply from: 'gradle/artifacts.gradle'
 
 apply from: 'gradle/publishing.gradle'
 apply from: 'gradle/signing.gradle'
-
-
-def getVar(String var_name) {
-    return System.getenv(var_name)
-}
