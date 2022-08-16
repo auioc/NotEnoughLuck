@@ -12,11 +12,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.fml.DistExecutor;
 
 public class TungShingItem extends BlockItem {
-
-    public static final int COOLDOWN = 10 * 20;
 
     public TungShingItem() {
         super(
@@ -34,10 +34,14 @@ public class TungShingItem extends BlockItem {
         if (level.isClientSide) {
             DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreenUtils::open);
         } else {
-            addCooldown(player, COOLDOWN);
+            addCooldown(player, getCooldown());
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+    }
+
+    public static int getCooldown() {
+        return Config.cooldown.get() * 20;
     }
 
     public static void addCooldown(Player player, int cooldown) {
@@ -46,6 +50,14 @@ public class TungShingItem extends BlockItem {
 
     public static void removeCooldown(Player player) {
         player.getCooldowns().removeCooldown(NELItems.TUNG_SHING_ITEM.get());
+    }
+
+    public static class Config {
+        public static IntValue cooldown;
+
+        public static void build(final ForgeConfigSpec.Builder b) {
+            cooldown = b.defineInRange("cooldown", 3, 0, Integer.MAX_VALUE);
+        }
     }
 
 }

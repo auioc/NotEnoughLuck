@@ -1,10 +1,14 @@
 package org.auioc.mcmod.notenoughluck.server.config;
 
+import java.util.function.Consumer;
+import org.auioc.mcmod.notenoughluck.common.item.impl.CommonDiceItem;
+import org.auioc.mcmod.notenoughluck.common.item.impl.DiceOfTycheItem;
+import org.auioc.mcmod.notenoughluck.common.item.impl.TungShingItem;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 
-public class NELServerConfig {
+public final class NELServerConfig {
 
     public static final ForgeConfigSpec CONFIG;
 
@@ -28,7 +32,7 @@ public class NELServerConfig {
     public static final DoubleValue CloverPriceMultiplier;
 
     static {
-        ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
+        final ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
 
         {
             b.push("unsei");
@@ -69,6 +73,22 @@ public class NELServerConfig {
                 IndulgencePriceMultiplier = b.defineInRange("price_multiplier", 0.25D, 0.0D, Double.MAX_VALUE);
                 b.pop();
             }
+            b.pop();
+        }
+
+        {
+            b.push("item");
+
+            {
+                b.push("dice");
+                {
+                    push(b, "common", CommonDiceItem.Config::build);
+                    push(b, "tyche", DiceOfTycheItem.Config::build);
+                }
+                b.pop();
+            }
+
+            push(b, "tung_shing", TungShingItem.Config::build);
 
             b.pop();
         }
@@ -76,5 +96,10 @@ public class NELServerConfig {
         CONFIG = b.build();
     }
 
+    private static void push(ForgeConfigSpec.Builder builder, String path, Consumer<ForgeConfigSpec.Builder> subBuilder) {
+        builder.push(path);
+        subBuilder.accept(builder);
+        builder.pop();
+    }
 
 }

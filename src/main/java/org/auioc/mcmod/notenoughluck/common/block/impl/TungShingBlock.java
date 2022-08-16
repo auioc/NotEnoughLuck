@@ -93,7 +93,7 @@ public class TungShingBlock extends HorizontalDirectionalBlock {
         if (level.isClientSide) {
             DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TungShingScreenUtils::open);
         } else {
-            TungShingItem.addCooldown(player, TungShingItem.COOLDOWN);
+            TungShingItem.addCooldown(player, TungShingItem.getCooldown());
         }
         return InteractionResult.SUCCESS;
     }

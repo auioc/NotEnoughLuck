@@ -124,7 +124,7 @@ public class UnseiUtils {
     }
 
     public static void sendUpdateTungShingPacket(ServerPlayer player, int today, boolean classic) {
-        sendUpdateTungShingPacket(player, SEED, today, classic ? 0 : TungShingItem.COOLDOWN, classic);
+        sendUpdateTungShingPacket(player, SEED, today, classic ? 0 : TungShingItem.getCooldown(), classic);
     }
 
     public static Pair<UnseiPrefix, UnseiFortune> convertToUnseiPair(int unsei) {

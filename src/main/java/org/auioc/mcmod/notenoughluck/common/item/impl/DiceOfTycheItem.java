@@ -7,11 +7,12 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Rarity;
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 
 public class DiceOfTycheItem extends DiceItem {
 
     private static final int EFFECT_DURATION = 2 * 60 * 20;
-    private static final int COOLDOWN = 10 * 20;
 
     public DiceOfTycheItem() {
         super(Rarity.RARE);
@@ -19,7 +20,7 @@ public class DiceOfTycheItem extends DiceItem {
 
     @Override
     protected int getCooldown() {
-        return COOLDOWN;
+        return Config.cooldown.get() * 20;
     }
 
     @Override
@@ -39,6 +40,14 @@ public class DiceOfTycheItem extends DiceItem {
         } else {
             nbt.putInt("Bonus", bonus + 1);
             return null;
+        }
+    }
+
+    public static class Config {
+        public static IntValue cooldown;
+
+        public static void build(final ForgeConfigSpec.Builder b) {
+            cooldown = b.defineInRange("cooldown", 15 * 60, 0, Integer.MAX_VALUE);
         }
     }
 
