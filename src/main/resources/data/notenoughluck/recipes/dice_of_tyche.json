@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "notenoughluck",
+    "pattern": ["CCC", "CDC", "CCC"],
+    "key": {
+        "D": { "item": "notenoughluck:dice" },
+        "C": { "item": "notenoughluck:four_leaf_clover" }
+    },
+    "result": {
+        "item": "notenoughluck:dice_of_tyche",
+        "count": 1
+    }
+}
