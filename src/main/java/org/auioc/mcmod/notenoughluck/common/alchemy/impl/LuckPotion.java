@@ -1,7 +1,9 @@
 package org.auioc.mcmod.notenoughluck.common.alchemy.impl;
 
+import org.auioc.mcmod.arnicalib.api.game.alchemy.HPotion;
 import org.auioc.mcmod.notenoughluck.common.alchemy.NELPotions;
 import org.auioc.mcmod.notenoughluck.common.alchemy.base.NELPotion;
+import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
@@ -12,6 +14,14 @@ public class LuckPotion extends NELPotion {
 
     protected LuckPotion(int duration, int amplifier) {
         super("luck", MobEffects.LUCK, duration, amplifier);
+    }
+
+    public static class Common {
+
+        public static boolean registerBrewingRecipe() {
+            return HPotion.registerBrewingRecipe(Potions.AWKWARD, NELItems.FOUR_LEAF_CLOVER_ITEM.get(), Potions.LUCK);
+        }
+
     }
 
     public static class Long extends LuckPotion {

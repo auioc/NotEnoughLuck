@@ -21,7 +21,6 @@ public class NELPotions implements IHRegistry {
         event.enqueueWork(NELPotions::registerBrewingRecipes);
     }
 
-
     public static final RegistryObject<Potion> LONG_LUCK = LuckPotion.Long.register();
     public static final RegistryObject<Potion> STRONG_LUCK = LuckPotion.Strong.register();
     public static final RegistryObject<Potion> UNLUCK = UnluckPotion.Common.register();
@@ -32,6 +31,7 @@ public class NELPotions implements IHRegistry {
     public static final RegistryObject<Potion> INCURABLE_STRONG_UNLUCK = IncurableUnluckPotion.Strong.register();
 
     private static void registerBrewingRecipes() {
+        LuckPotion.Common.registerBrewingRecipe();
         LuckPotion.Long.registerBrewingRecipe();
         LuckPotion.Strong.registerBrewingRecipe();
         UnluckPotion.Common.registerBrewingRecipe();
