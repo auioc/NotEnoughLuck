@@ -1,7 +1,7 @@
 package org.auioc.mcmod.notenoughluck.server.network;
 
 import org.auioc.mcmod.arnicalib.api.game.network.IHPacket;
-import org.auioc.mcmod.notenoughluck.utils.UnseiUtils;
+import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiUtils;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent.Context;
@@ -20,7 +20,7 @@ public class RequestUpdateTungShingPacket implements IHPacket {
     @Override
     public void handle(Context ctx) {
         ServerPlayer player = ctx.getSender();
-        UnseiUtils.sendUpdateTungShingPacket(player, this.day, this.classic);
+        ServerUnseiUtils.sendUpdateTungShingPacket(player, this.day, this.classic);
     }
 
     @Override

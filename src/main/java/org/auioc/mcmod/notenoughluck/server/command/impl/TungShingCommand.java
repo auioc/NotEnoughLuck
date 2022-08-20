@@ -3,7 +3,7 @@ package org.auioc.mcmod.notenoughluck.server.command.impl;
 import static net.minecraft.commands.Commands.argument;
 import static net.minecraft.commands.Commands.literal;
 import org.auioc.mcmod.arnicalib.utils.game.MCTimeUtils;
-import org.auioc.mcmod.notenoughluck.utils.UnseiUtils;
+import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiUtils;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -35,7 +35,7 @@ public class TungShingCommand {
             .build();
 
     private static int open(CommandContext<CommandSourceStack> ctx, int day, boolean classic) throws CommandSyntaxException {
-        UnseiUtils.sendUpdateTungShingPacket(ctx.getSource().getPlayerOrException(), day, classic);
+        ServerUnseiUtils.sendUpdateTungShingPacket(ctx.getSource().getPlayerOrException(), day, classic);
 
         return Command.SINGLE_SUCCESS;
     }

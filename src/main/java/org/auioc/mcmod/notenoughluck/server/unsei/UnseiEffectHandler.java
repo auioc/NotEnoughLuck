@@ -1,7 +1,6 @@
 package org.auioc.mcmod.notenoughluck.server.unsei;
 
 import org.auioc.mcmod.notenoughluck.server.config.NELServerConfig;
-import org.auioc.mcmod.notenoughluck.utils.UnseiUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,7 +12,7 @@ public class UnseiEffectHandler {
     public static final int DURATION = INTERVAL + 5;
 
     public static void handle(MinecraftServer server) {
-        var unseiPair = UnseiUtils.getUnseiPair();
+        var unseiPair = ServerUnseiUtils.getUnseiPair();
 
         MobEffect effect;
         switch (unseiPair.getRight()) {
