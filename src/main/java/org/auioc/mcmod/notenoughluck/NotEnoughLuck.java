@@ -5,26 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.auioc.mcmod.arnicalib.base.log.LogUtil;
 import org.auioc.mcmod.arnicalib.base.version.VersionUtils;
-import org.auioc.mcmod.notenoughluck.client.event.NELClientEventHandler;
-import org.auioc.mcmod.notenoughluck.client.event.NELClientModEventHandler;
-import org.auioc.mcmod.notenoughluck.common.alchemy.NELPotions;
-import org.auioc.mcmod.notenoughluck.common.attribute.NELAttributes;
-import org.auioc.mcmod.notenoughluck.common.block.NELBlocks;
-import org.auioc.mcmod.notenoughluck.common.effect.NELMobEffects;
-import org.auioc.mcmod.notenoughluck.common.item.NELItems;
-import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
-import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
-import org.auioc.mcmod.notenoughluck.server.config.NELServerConfig;
-import org.auioc.mcmod.notenoughluck.server.event.NELServerEventHandler;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(NotEnoughLuck.MOD_ID)
 public final class NotEnoughLuck {
@@ -38,17 +20,7 @@ public final class NotEnoughLuck {
     private static final Marker CORE = LogUtil.getMarker("CORE");
 
     public NotEnoughLuck() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, NELServerConfig.CONFIG);
-
-        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        final IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
-
-        modSetup(modEventBus);
-        forgeSetup(forgeEventBus);
-
-        final ClientSideOnlySetup ClientSideOnlySetup = new ClientSideOnlySetup(modEventBus, forgeEventBus);
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientSideOnlySetup::modSetup);
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientSideOnlySetup::forgeSetup);
+        Initialization.init();
     }
 
     static {
@@ -64,39 +36,6 @@ public final class NotEnoughLuck {
 
     public static String i18n(String path) {
         return MOD_ID + "." + path;
-    }
-
-    private void modSetup(final IEventBus modEventBus) {
-        NELPacketHandler.init();
-        NELItems.ITEMS.register(modEventBus);
-        NELBlocks.BLOCKS.register(modEventBus);
-        NELPotions.POTIONS.register(modEventBus);
-        NELAttributes.ATTRIBUTES.register(modEventBus);
-        NELMobEffects.MOB_EFFECTS.register(modEventBus);
-        modEventBus.register(NELPotions.class);
-    }
-
-    private void forgeSetup(final IEventBus forgeEventBus) {
-        forgeEventBus.register(NELServerEventHandler.class);
-        NELItemGroups.init();
-    }
-
-    private class ClientSideOnlySetup {
-        private final IEventBus modEventBus;
-        private final IEventBus forgeEventBus;
-
-        public ClientSideOnlySetup(final IEventBus modEventBus, final IEventBus forgeEventBus) {
-            this.modEventBus = modEventBus;
-            this.forgeEventBus = forgeEventBus;
-        }
-
-        public void modSetup() {
-            modEventBus.register(NELClientModEventHandler.class);
-        }
-
-        public void forgeSetup() {
-            forgeEventBus.register(NELClientEventHandler.class);
-        }
     }
 
 }

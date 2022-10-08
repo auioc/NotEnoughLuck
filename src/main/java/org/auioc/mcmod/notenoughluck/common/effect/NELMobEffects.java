@@ -1,9 +1,10 @@
 package org.auioc.mcmod.notenoughluck.common.effect;
 
 import java.util.function.Supplier;
+import org.auioc.mcmod.hulsealib.game.effect.HMobEffect;
 import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
-import org.auioc.mcmod.notenoughluck.common.effect.impl.RedemptionEffect;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -16,6 +17,6 @@ public final class NELMobEffects {
         return MOB_EFFECTS.register(id, sup);
     }
 
-    public static final RegistryObject<MobEffect> REDEMPTION = register("redemption", () -> new RedemptionEffect());
+    public static final RegistryObject<MobEffect> REDEMPTION = register("redemption", () -> new HMobEffect(MobEffectCategory.BENEFICIAL, 3381504));
 
 }

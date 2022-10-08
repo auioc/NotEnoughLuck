@@ -56,29 +56,7 @@ function initializeCoreMod() {
     m_22266_    add
 */
 
-//! Original method
-/*
-    public static AttributeSupplier.Builder createAttributes() {
-         return Monster.createMonsterAttributes()
-            .add(Attributes.MAX_HEALTH, 16.0D)
-            .add(Attributes.MOVEMENT_SPEED, (double)0.35F)
-            .add(Attributes.ATTACK_DAMAGE, 5.0D);
-    }
-*   ========== ByteCode ==========   *
-    INVOKESTATIC net/minecraft/world/entity/monster/Monster.createMonsterAttributes ()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.MAX_HEALTH : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    LDC 16.0
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    LDC 0.3499999940395355
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_DAMAGE : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    LDC 5.0
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    ARETURN
-*/
-
-//! Transformed method
+//! Code
 /*
     public static AttributeSupplier.Builder createAttributes() {
          return Monster.createMonsterAttributes()

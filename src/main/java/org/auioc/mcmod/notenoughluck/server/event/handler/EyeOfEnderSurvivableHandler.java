@@ -5,7 +5,7 @@ import org.auioc.mcmod.hulsealib.game.event.server.EyeOfEnderSurvivableEvent;
 import org.auioc.mcmod.notenoughluck.server.config.NELServerConfig;
 import org.auioc.mcmod.notenoughluck.utils.LuckUtils;
 
-public class SetEyeOfEnderSurvivableHandler {
+public class EyeOfEnderSurvivableHandler {
 
     public static void handle(final EyeOfEnderSurvivableEvent event) {
         int chance = LuckUtils.getChance(

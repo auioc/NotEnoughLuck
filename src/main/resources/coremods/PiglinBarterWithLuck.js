@@ -82,46 +82,7 @@ function initializeCoreMod() {
     1       loottable   Lnet/minecraft/world/level/storage/loot/LootTable;
 */
 
-//! Original method
-/*
-    private static List<ItemStack> getBarterResponseItems(Piglin p_34997_) {
-        LootTable loottable = p_34997_.level.getServer().getLootTables().get(BuiltInLootTables.PIGLIN_BARTERING);
-        return loottable.getRandomItems(
-            (new LootContext.Builder((ServerLevel)p_34997_.level))
-            .withParameter(LootContextParams.THIS_ENTITY, p_34997_)
-            .withRandom(p_34997_.level.random)
-            .create(LootContextParamSets.PIGLIN_BARTER)
-        );
-    }
-*   ========== ByteCode ==========   *
-    ALOAD 0
-    GETFIELD net/minecraft/world/entity/monster/piglin/Piglin.level : Lnet/minecraft/world/level/Level;
-    INVOKEVIRTUAL net/minecraft/world/level/Level.getServer ()Lnet/minecraft/server/MinecraftServer;
-    INVOKEVIRTUAL net/minecraft/server/MinecraftServer.getLootTables ()Lnet/minecraft/world/level/storage/loot/LootTables;
-    GETSTATIC net/minecraft/world/level/storage/loot/BuiltInLootTables.PIGLIN_BARTERING : Lnet/minecraft/resources/ResourceLocation;
-    INVOKEVIRTUAL net/minecraft/world/level/storage/loot/LootTables.get (Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/level/storage/loot/LootTable;
-    ASTORE 1
-    ALOAD 1
-    NEW net/minecraft/world/level/storage/loot/LootContext$Builder
-    DUP
-    ALOAD 0
-    GETFIELD net/minecraft/world/entity/monster/piglin/Piglin.level : Lnet/minecraft/world/level/Level;
-    CHECKCAST net/minecraft/server/level/ServerLevel
-    INVOKESPECIAL net/minecraft/world/level/storage/loot/LootContext$Builder.<init> (Lnet/minecraft/server/level/ServerLevel;)V
-    GETSTATIC net/minecraft/world/level/storage/loot/parameters/LootContextParams.THIS_ENTITY : Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;
-    ALOAD 0
-    INVOKEVIRTUAL net/minecraft/world/level/storage/loot/LootContext$Builder.withParameter (Lnet/minecraft/world/level/storage/loot/parameters/LootContextParam;Ljava/lang/Object;)Lnet/minecraft/world/level/storage/loot/LootContext$Builder;
-    ALOAD 0
-    GETFIELD net/minecraft/world/entity/monster/piglin/Piglin.level : Lnet/minecraft/world/level/Level;
-    GETFIELD net/minecraft/world/level/Level.random : Ljava/util/Random;
-    INVOKEVIRTUAL net/minecraft/world/level/storage/loot/LootContext$Builder.withRandom (Ljava/util/Random;)Lnet/minecraft/world/level/storage/loot/LootContext$Builder;
-    GETSTATIC net/minecraft/world/level/storage/loot/parameters/LootContextParamSets.PIGLIN_BARTER : Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet;
-    INVOKEVIRTUAL net/minecraft/world/level/storage/loot/LootContext$Builder.create (Lnet/minecraft/world/level/storage/loot/parameters/LootContextParamSet;)Lnet/minecraft/world/level/storage/loot/LootContext;
-    INVOKEVIRTUAL net/minecraft/world/level/storage/loot/LootTable.getRandomItems (Lnet/minecraft/world/level/storage/loot/LootContext;)Ljava/util/List;
-    ARETURN
-*/
-
-//! Transformed method
+//! Code
 /*
     private static List<ItemStack> getBarterResponseItems(Piglin p_34997_) {
         LootTable loottable = p_34997_.level.getServer().getLootTables().get(BuiltInLootTables.PIGLIN_BARTERING);

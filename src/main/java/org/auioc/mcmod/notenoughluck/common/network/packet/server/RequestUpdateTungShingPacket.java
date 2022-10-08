@@ -1,4 +1,4 @@
-package org.auioc.mcmod.notenoughluck.server.network;
+package org.auioc.mcmod.notenoughluck.common.network.packet.server;
 
 import org.auioc.mcmod.arnicalib.game.network.IHPacket;
 import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiUtils;

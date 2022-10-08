@@ -6,7 +6,7 @@ import org.auioc.mcmod.arnicalib.base.validate.Validate;
 import org.auioc.mcmod.notenoughluck.client.unsei.ClientUnseiCache;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
-import org.auioc.mcmod.notenoughluck.server.network.RequestUpdateTungShingPacket;
+import org.auioc.mcmod.notenoughluck.common.network.packet.server.RequestUpdateTungShingPacket;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;

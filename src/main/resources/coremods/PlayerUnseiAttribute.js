@@ -69,39 +69,7 @@ function initializeCoreMod() {
     m_22266_    add
 */
 
-//! Original method
-/*
-    public static AttributeSupplier.Builder createAttributes() {
-        return LivingEntity.createLivingAttributes()
-            .add(Attributes.ATTACK_DAMAGE, 1.0D)
-            .add(Attributes.MOVEMENT_SPEED, (double) 0.1F)
-            .add(Attributes.ATTACK_SPEED)
-            .add(Attributes.LUCK)
-            .add(net.minecraftforge.common.ForgeMod.REACH_DISTANCE.get())
-            .add(Attributes.ATTACK_KNOCKBACK);
-    }
-*   ========== ByteCode ==========   *
-    INVOKESTATIC net/minecraft/world/entity/LivingEntity.createLivingAttributes ()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_DAMAGE : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    DCONST_1
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.MOVEMENT_SPEED : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    LDC 0.10000000149011612
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;D)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_SPEED : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.LUCK : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraftforge/common/ForgeMod.REACH_DISTANCE : Lnet/minecraftforge/registries/RegistryObject;
-    INVOKEVIRTUAL net/minecraftforge/registries/RegistryObject.get ()Lnet/minecraftforge/registries/IForgeRegistryEntry;
-    CHECKCAST net/minecraft/world/entity/ai/attributes/Attribute
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    GETSTATIC net/minecraft/world/entity/ai/attributes/Attributes.ATTACK_KNOCKBACK : Lnet/minecraft/world/entity/ai/attributes/Attribute;
-    INVOKEVIRTUAL net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add (Lnet/minecraft/world/entity/ai/attributes/Attribute;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
-    ARETURN
-*/
-
-//! Transformed method
+//! Code
 /*
     public static AttributeSupplier.Builder createAttributes() {
         return LivingEntity.createLivingAttributes()

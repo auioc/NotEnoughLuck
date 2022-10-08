@@ -4,10 +4,10 @@ import org.auioc.mcmod.hulsealib.game.event.server.EyeOfEnderSurvivableEvent;
 import org.auioc.mcmod.hulsealib.game.event.server.LivingEatAddEffectEvent;
 import org.auioc.mcmod.notenoughluck.server.command.NELServerCommands;
 import org.auioc.mcmod.notenoughluck.server.event.handler.EatAddEffectHandler;
+import org.auioc.mcmod.notenoughluck.server.event.handler.EyeOfEnderSurvivableHandler;
 import org.auioc.mcmod.notenoughluck.server.event.handler.PlayerLoginHandler;
 import org.auioc.mcmod.notenoughluck.server.event.handler.PotionAddedHandler;
 import org.auioc.mcmod.notenoughluck.server.event.handler.ServerTickHandler;
-import org.auioc.mcmod.notenoughluck.server.event.handler.SetEyeOfEnderSurvivableHandler;
 import org.auioc.mcmod.notenoughluck.server.event.handler.VillagerTradesHandler;
 import org.auioc.mcmod.notenoughluck.server.event.handler.WandererTradesHandler;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -43,7 +43,7 @@ public class NELServerEventHandler {
 
     @SubscribeEvent
     public static void onSetEyeOfEnderSurvivable(final EyeOfEnderSurvivableEvent event) {
-        SetEyeOfEnderSurvivableHandler.handle(event);
+        EyeOfEnderSurvivableHandler.handle(event);
     }
 
     @SubscribeEvent

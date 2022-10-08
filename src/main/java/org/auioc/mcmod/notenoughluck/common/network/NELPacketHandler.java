@@ -3,9 +3,9 @@ package org.auioc.mcmod.notenoughluck.common.network;
 import org.auioc.mcmod.arnicalib.game.network.HPacketHandler;
 import org.auioc.mcmod.arnicalib.game.network.IHPacket;
 import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
-import org.auioc.mcmod.notenoughluck.client.network.ClearClientUnseiCachePacket;
-import org.auioc.mcmod.notenoughluck.client.network.UpdateTungShingPacket;
-import org.auioc.mcmod.notenoughluck.server.network.RequestUpdateTungShingPacket;
+import org.auioc.mcmod.notenoughluck.common.network.packet.client.ClearClientUnseiCachePacket;
+import org.auioc.mcmod.notenoughluck.common.network.packet.client.UpdateTungShingPacket;
+import org.auioc.mcmod.notenoughluck.common.network.packet.server.RequestUpdateTungShingPacket;
 import net.minecraft.server.level.ServerPlayer;
 
 public class NELPacketHandler {

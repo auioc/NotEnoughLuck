@@ -1,4 +1,4 @@
-package org.auioc.mcmod.notenoughluck.client.network;
+package org.auioc.mcmod.notenoughluck.common.network.packet.client;
 
 import org.auioc.mcmod.arnicalib.game.network.IHPacket;
 import org.auioc.mcmod.notenoughluck.client.unsei.ClientUnseiCache;
