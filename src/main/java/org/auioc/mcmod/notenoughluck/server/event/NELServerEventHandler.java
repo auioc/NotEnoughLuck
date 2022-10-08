@@ -1,7 +1,7 @@
 package org.auioc.mcmod.notenoughluck.server.event;
 
-import org.auioc.mcmod.arnicalib.server.event.impl.LivingEatAddEffectEvent;
-import org.auioc.mcmod.arnicalib.server.event.impl.SetEyeOfEnderSurvivableEvent;
+import org.auioc.mcmod.hulsealib.game.event.server.EyeOfEnderSurvivableEvent;
+import org.auioc.mcmod.hulsealib.game.event.server.LivingEatAddEffectEvent;
 import org.auioc.mcmod.notenoughluck.server.command.NELServerCommands;
 import org.auioc.mcmod.notenoughluck.server.event.handler.EatAddEffectHandler;
 import org.auioc.mcmod.notenoughluck.server.event.handler.PlayerLoginHandler;
@@ -42,7 +42,7 @@ public class NELServerEventHandler {
     }
 
     @SubscribeEvent
-    public static void onSetEyeOfEnderSurvivable(final SetEyeOfEnderSurvivableEvent event) {
+    public static void onSetEyeOfEnderSurvivable(final EyeOfEnderSurvivableEvent event) {
         SetEyeOfEnderSurvivableHandler.handle(event);
     }
 

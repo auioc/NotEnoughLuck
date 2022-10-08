@@ -1,6 +1,6 @@
 package org.auioc.mcmod.notenoughluck.server.network;
 
-import org.auioc.mcmod.arnicalib.api.game.network.IHPacket;
+import org.auioc.mcmod.arnicalib.game.network.IHPacket;
 import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiUtils;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;

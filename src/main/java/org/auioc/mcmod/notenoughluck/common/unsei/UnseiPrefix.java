@@ -3,7 +3,7 @@ package org.auioc.mcmod.notenoughluck.common.unsei;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
-import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
+import org.auioc.mcmod.arnicalib.game.chat.TextUtils;
 import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
 import net.minecraft.network.chat.Component;
 
@@ -16,7 +16,7 @@ public enum UnseiPrefix {
 
     private UnseiPrefix(int id, String name) {
         this.id = id;
-        this.name = TextUtils.I18nText(NotEnoughLuck.i18n("unsei.prefix." + name));
+        this.name = TextUtils.translatable(NotEnoughLuck.i18n("unsei.prefix." + name));
     }
 
     private static final Map<Integer, UnseiPrefix> ID_MAP = Map.copyOf(new HashMap<Integer, UnseiPrefix>() {

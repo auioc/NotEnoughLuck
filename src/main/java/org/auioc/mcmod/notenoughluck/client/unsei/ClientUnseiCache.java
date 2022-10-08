@@ -4,7 +4,7 @@ import static org.auioc.mcmod.notenoughluck.NotEnoughLuck.LOGGER;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.logging.log4j.Marker;
-import org.auioc.mcmod.arnicalib.utils.LogUtil;
+import org.auioc.mcmod.arnicalib.base.log.LogUtil;
 
 public class ClientUnseiCache {
 

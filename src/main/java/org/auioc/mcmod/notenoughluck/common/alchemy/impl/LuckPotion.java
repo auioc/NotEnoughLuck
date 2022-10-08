@@ -1,6 +1,6 @@
 package org.auioc.mcmod.notenoughluck.common.alchemy.impl;
 
-import org.auioc.mcmod.arnicalib.api.game.alchemy.HPotion;
+import org.auioc.mcmod.hulsealib.game.alchemy.HPotion;
 import org.auioc.mcmod.notenoughluck.common.alchemy.NELPotions;
 import org.auioc.mcmod.notenoughluck.common.alchemy.base.NELPotion;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;

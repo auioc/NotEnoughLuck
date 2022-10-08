@@ -1,8 +1,8 @@
 package org.auioc.mcmod.notenoughluck.server.command;
 
 import static net.minecraft.commands.Commands.literal;
-import org.auioc.mcmod.arnicalib.common.command.impl.VersionCommand;
-import org.auioc.mcmod.arnicalib.server.command.AHServerCommands;
+import org.auioc.mcmod.arnicalib.game.command.AHCommands;
+import org.auioc.mcmod.arnicalib.game.command.node.VersionCommand;
 import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
 import org.auioc.mcmod.notenoughluck.server.command.impl.TungShingCommand;
 import org.auioc.mcmod.notenoughluck.server.command.impl.UnseiCommand;
@@ -20,7 +20,7 @@ public class NELServerCommands {
         NODE.addChild(UnseiCommand.NODE);
         NODE.addChild(TungShingCommand.NODE);
 
-        AHServerCommands.getAHNode(dispatcher).addChild(NODE);
+        AHCommands.getServerNode(dispatcher).addChild(NODE);
         dispatcher.register(literal("nel").redirect(NODE));
     }
 

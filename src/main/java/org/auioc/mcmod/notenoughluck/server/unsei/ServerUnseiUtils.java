@@ -2,7 +2,7 @@ package org.auioc.mcmod.notenoughluck.server.unsei;
 
 import java.util.function.IntSupplier;
 import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mcmod.arnicalib.utils.game.MCTimeUtils;
+import org.auioc.mcmod.arnicalib.game.world.MCTimeUtils;
 import org.auioc.mcmod.notenoughluck.client.network.UpdateTungShingPacket;
 import org.auioc.mcmod.notenoughluck.common.item.impl.TungShingItem;
 import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;

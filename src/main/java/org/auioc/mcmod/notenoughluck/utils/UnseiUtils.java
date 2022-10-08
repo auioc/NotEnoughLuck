@@ -1,7 +1,7 @@
 package org.auioc.mcmod.notenoughluck.utils;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mcmod.arnicalib.utils.java.Validate;
+import org.auioc.mcmod.arnicalib.base.validate.Validate;
 import org.auioc.mcmod.notenoughluck.common.unsei.UnseiFortune;
 import org.auioc.mcmod.notenoughluck.common.unsei.UnseiPrefix;
 import net.minecraft.nbt.CompoundTag;

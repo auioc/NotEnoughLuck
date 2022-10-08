@@ -2,9 +2,9 @@ package org.auioc.mcmod.notenoughluck.common.item.impl;
 
 import java.time.LocalDate;
 import java.util.function.Predicate;
-import org.auioc.mcmod.arnicalib.api.game.item.UsableItem;
-import org.auioc.mcmod.arnicalib.utils.game.ContainerUtils;
-import org.auioc.mcmod.arnicalib.utils.game.PlayerUtils;
+import org.auioc.mcmod.arnicalib.game.entity.player.PlayerUtils;
+import org.auioc.mcmod.arnicalib.game.world.ContainerUtils;
+import org.auioc.mcmod.hulsealib.game.item.UsableItem;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.server.level.ServerPlayer;

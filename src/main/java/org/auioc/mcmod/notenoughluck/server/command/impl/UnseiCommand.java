@@ -5,20 +5,20 @@ import static net.minecraft.commands.Commands.literal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.auioc.mcmod.arnicalib.game.chat.TextUtils;
+import org.auioc.mcmod.arnicalib.game.command.CommandExceptions;
+import org.auioc.mcmod.arnicalib.mod.mixinapi.common.IMixinCommandSourceStack;
+import org.auioc.mcmod.notenoughluck.client.network.ClearClientUnseiCachePacket;
+import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
+import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiCache;
+import org.auioc.mcmod.notenoughluck.utils.UnseiUtils;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.tree.CommandNode;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.RandomUtils;
-import org.auioc.mcmod.arnicalib.api.mixin.common.IMixinCommandSourceStack;
-import org.auioc.mcmod.arnicalib.utils.game.CommandUtils;
-import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
-import org.auioc.mcmod.notenoughluck.client.network.ClearClientUnseiCachePacket;
-import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
-import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiCache;
-import org.auioc.mcmod.notenoughluck.utils.UnseiUtils;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.GameProfileArgument;
 import net.minecraft.server.dedicated.DedicatedServer;
@@ -41,7 +41,7 @@ public class UnseiCommand {
             NELPacketHandler.sendToClient(playerList.getPlayer(gameprofile.getId()), new ClearClientUnseiCachePacket());
         }
 
-        ctx.getSource().sendSuccess(TextUtils.I18nText("notenoughluck.command.unsei.clear_client_cache", targets.size()), true);
+        ctx.getSource().sendSuccess(TextUtils.translatable("notenoughluck.command.unsei.clear_client_cache", targets.size()), true);
 
         return Command.SINGLE_SUCCESS;
     }
@@ -50,12 +50,12 @@ public class UnseiCommand {
         var source = ctx.getSource();
 
         if ((source.getServer() instanceof DedicatedServer) && !(((IMixinCommandSourceStack) source).getSource() instanceof DedicatedServer)) {
-            throw CommandUtils.NOT_DEDICATED_SERVER_ERROR.create();
+            throw CommandExceptions.NOT_DEDICATED_SERVER_ERROR.create();
         }
 
         ServerUnseiCache.clear();
 
-        source.sendSuccess(TextUtils.I18nText("notenoughluck.command.unsei.clear_server_cache"), true);
+        source.sendSuccess(TextUtils.translatable("notenoughluck.command.unsei.clear_server_cache"), true);
 
         return Command.SINGLE_SUCCESS;
     }

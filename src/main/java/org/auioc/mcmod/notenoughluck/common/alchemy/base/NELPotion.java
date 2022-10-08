@@ -1,7 +1,7 @@
 package org.auioc.mcmod.notenoughluck.common.alchemy.base;
 
 import java.util.function.Supplier;
-import org.auioc.mcmod.arnicalib.api.game.alchemy.HPotion;
+import org.auioc.mcmod.hulsealib.game.alchemy.HPotion;
 import org.auioc.mcmod.notenoughluck.common.alchemy.NELPotions;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.alchemy.Potion;

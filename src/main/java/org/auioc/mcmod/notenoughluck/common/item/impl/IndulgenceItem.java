@@ -1,7 +1,7 @@
 package org.auioc.mcmod.notenoughluck.common.item.impl;
 
-import org.auioc.mcmod.arnicalib.api.game.item.UsableItem;
-import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.hulsealib.game.item.UsableItem;
 import org.auioc.mcmod.notenoughluck.common.effect.NELMobEffects;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.server.level.ServerPlayer;

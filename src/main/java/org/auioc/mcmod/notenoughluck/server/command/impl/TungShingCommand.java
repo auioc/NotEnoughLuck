@@ -2,7 +2,7 @@ package org.auioc.mcmod.notenoughluck.server.command.impl;
 
 import static net.minecraft.commands.Commands.argument;
 import static net.minecraft.commands.Commands.literal;
-import org.auioc.mcmod.arnicalib.utils.game.MCTimeUtils;
+import org.auioc.mcmod.arnicalib.game.world.MCTimeUtils;
 import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiUtils;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;

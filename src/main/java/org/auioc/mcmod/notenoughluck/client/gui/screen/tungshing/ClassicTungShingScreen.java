@@ -1,12 +1,12 @@
 package org.auioc.mcmod.notenoughluck.client.gui.screen.tungshing;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import org.auioc.mcmod.arnicalib.client.gui.screen.SimpleScreen;
-import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
-import org.auioc.mcmod.arnicalib.utils.java.Validate;
+import org.auioc.mcmod.arnicalib.base.validate.Validate;
+import org.auioc.mcmod.arnicalib.game.chat.TextUtils;
+import org.auioc.mcmod.arnicalib.game.gui.screen.SimpleScreen;
 import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
 import org.auioc.mcmod.notenoughluck.common.unsei.UnseiFortune;
 import org.auioc.mcmod.notenoughluck.utils.UnseiUtils;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
@@ -82,7 +82,7 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
             var mark = UnseiUtils.convertToUnseiPair(unsei);
             var fortune = mark.getRight();
 
-            var text = TextUtils.EmptyText()
+            var text = TextUtils.empty()
                 .append(i18n("unsei.label", this.dayArray[i]))
                 .append(mark.getLeft().name)
                 .append(fortune.name)
@@ -116,11 +116,11 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
     }
 
     protected static TranslatableComponent i18n(String key) {
-        return TextUtils.I18nText(NotEnoughLuck.i18n("gui.tung_shing.classic." + key));
+        return TextUtils.translatable(NotEnoughLuck.i18n("gui.tung_shing.classic." + key));
     }
 
     protected static TranslatableComponent i18n(String key, Object... arguments) {
-        return TextUtils.I18nText(NotEnoughLuck.i18n("gui.tung_shing.classic." + key), arguments);
+        return TextUtils.translatable(NotEnoughLuck.i18n("gui.tung_shing.classic." + key), arguments);
     }
 
 }

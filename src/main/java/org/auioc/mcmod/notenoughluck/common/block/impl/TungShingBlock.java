@@ -1,6 +1,6 @@
 package org.auioc.mcmod.notenoughluck.common.block.impl;
 
-import org.auioc.mcmod.arnicalib.api.game.block.HBlockMaterial;
+import org.auioc.mcmod.hulsealib.game.block.HBlockMaterial;
 import org.auioc.mcmod.notenoughluck.client.gui.screen.tungshing.TungShingScreenUtils;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.item.impl.TungShingItem;

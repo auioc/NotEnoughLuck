@@ -2,8 +2,8 @@ package org.auioc.mcmod.notenoughluck.common.item.base;
 
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.auioc.mcmod.arnicalib.utils.game.EffectUtils;
-import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
+import org.auioc.mcmod.arnicalib.game.chat.TextUtils;
+import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
 import org.auioc.mcmod.notenoughluck.client.renderer.DiceItemRenderer;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -76,7 +76,7 @@ public abstract class DiceItem extends Item {
     public Component getName(ItemStack stack) {
         int pips = getPips(stack);
         if (pips > 0) {
-            return ((TranslatableComponent) super.getName(stack)).append(TextUtils.getStringText(" (" + pips + ")"));
+            return ((TranslatableComponent) super.getName(stack)).append(TextUtils.literal(" (" + pips + ")"));
         }
         return super.getName(stack);
     }

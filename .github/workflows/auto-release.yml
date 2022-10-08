@@ -19,9 +19,9 @@ jobs:
             - run: |
                   prop() { grep -P "^\s*[^#]?${1}=.*$" './gradle.properties' | cut -d'=' -f2; }
                   echo "GIT_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-                  echo "NEL_VERSION=`echo $(prop "notenoughluck_version")`" >> $GITHUB_ENV
+                  echo "MOD_VERSION=`echo $(prop "mod_version")`" >> $GITHUB_ENV
 
-            - run: if [ "${{env.GIT_TAG}}" != "v${{env.NEL_VERSION}}" ];then exit 1;fi
+            - run: if [ "${{env.GIT_TAG}}" != "v${{env.MOD_VERSION}}" ];then exit 1;fi
 
     second:
         name: Build and publish
@@ -34,19 +34,24 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: Set up Gradle and clean
-              run: |
-                  chmod +x ./gradlew
-                  rm -rf tmp
-                  mkdir tmp
+            - name: Set up JDK 17
+              uses: actions/setup-java@v2
+              with:
+                  java-version: '17'
+                  distribution: 'temurin'
+                  architecture: x64
 
-            - name: Build and publish package with Gradle
+            - name: Build and publish with Gradle
               env:
                   IS_RELEASE: true
                   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
                   ORG_GRADLE_PROJECT_signingKey: ${{secrets.RELEASE_SIGNING_GPG_PRIVATE_KEY}}
                   ORG_GRADLE_PROJECT_signingPassword: ${{secrets.RELEASE_SIGNING_GPG_PASSPHRASE}}
-              run: ./gradlew clean build publish genUpdateJson outputProjectFullName
+                  AUIOC_MAVEN_USERNAME: ${{secrets.AUIOC_MAVEN_USERNAME}}
+                  AUIOC_MAVEN_TOKEN: ${{secrets.AUIOC_MAVEN_TOKEN}}
+              run: |
+                  chmod +x ./gradlew
+                  ./gradlew build publish genUpdateJson
 
             - name: Update update JSON
               uses: JamesIves/github-pages-deploy-action@4.1.5

@@ -1,6 +1,5 @@
 package org.auioc.mcmod.notenoughluck.common.alchemy;
 
-import org.auioc.mcmod.arnicalib.api.game.registry.IHRegistry;
 import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
 import org.auioc.mcmod.notenoughluck.common.alchemy.impl.IncurableUnluckPotion;
 import org.auioc.mcmod.notenoughluck.common.alchemy.impl.LuckPotion;
@@ -12,7 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class NELPotions implements IHRegistry {
+public class NELPotions {
 
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, NotEnoughLuck.MOD_ID);
 

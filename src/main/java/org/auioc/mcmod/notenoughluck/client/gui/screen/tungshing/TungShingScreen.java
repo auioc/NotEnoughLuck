@@ -1,13 +1,13 @@
 package org.auioc.mcmod.notenoughluck.client.gui.screen.tungshing;
 
+import org.apache.commons.lang3.tuple.Pair;
+import org.auioc.mcmod.arnicalib.base.validate.Validate;
+import org.auioc.mcmod.arnicalib.game.chat.TextUtils;
+import org.auioc.mcmod.arnicalib.game.gui.screen.HScreen;
+import org.auioc.mcmod.arnicalib.game.world.MCTimeUtils;
+import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mcmod.arnicalib.api.game.screen.HScreen;
-import org.auioc.mcmod.arnicalib.utils.game.MCTimeUtils;
-import org.auioc.mcmod.arnicalib.utils.game.TextUtils;
-import org.auioc.mcmod.arnicalib.utils.java.Validate;
-import org.auioc.mcmod.notenoughluck.NotEnoughLuck;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -177,7 +177,7 @@ public class TungShingScreen extends HScreen implements ITungShingScreen {
     }
 
     protected static TranslatableComponent i18n(String key) {
-        return TextUtils.I18nText(NotEnoughLuck.i18n("gui.tung_shing." + key));
+        return TextUtils.translatable(NotEnoughLuck.i18n("gui.tung_shing." + key));
     }
 
 }

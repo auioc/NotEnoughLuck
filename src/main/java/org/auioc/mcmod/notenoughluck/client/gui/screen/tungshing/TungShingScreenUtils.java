@@ -2,7 +2,7 @@ package org.auioc.mcmod.notenoughluck.client.gui.screen.tungshing;
 
 import java.util.function.Predicate;
 import org.apache.commons.lang3.tuple.Pair;
-import org.auioc.mcmod.arnicalib.utils.java.Validate;
+import org.auioc.mcmod.arnicalib.base.validate.Validate;
 import org.auioc.mcmod.notenoughluck.client.unsei.ClientUnseiCache;
 import org.auioc.mcmod.notenoughluck.common.item.NELItems;
 import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
