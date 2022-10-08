@@ -19,30 +19,19 @@ public class ServerUnseiUtils {
     public static final long SEED = OVERWORLD.getSeed();
     public static final IntSupplier TODAY = () -> MCTimeUtils.getDay(OVERWORLD.dayTime());
 
-    public static int getUnseiValue(long seed, int day) {
-        Integer cachedUnsei = ServerUnseiCache.get(day);
-        if (cachedUnsei != null) {
-            return cachedUnsei;
-        } else {
-            int newUnsei = UnseiUtils.requantifyUnseiValue(UnseiUtils.calcUnseiValue(seed, day));
-            ServerUnseiCache.set(day, newUnsei);
-            return newUnsei;
-        }
-    }
-
     public static int getUnseiValue(int day) {
-        return getUnseiValue(SEED, day);
+        return ServerUnseiCache.get(day);
     }
 
     public static int getUnseiValue() {
-        return getUnseiValue(SEED, TODAY.getAsInt());
+        return getUnseiValue(TODAY.getAsInt());
     }
 
     public static Pair<UnseiPrefix, UnseiFortune> getUnseiPair() {
         return UnseiUtils.convertToUnseiPair(getUnseiValue());
     }
 
-    public static Pair<int[], int[]> getThreeDaysUnsei(long seed, int today) {
+    public static Pair<int[], int[]> getThreeDaysUnsei(int today) {
         return Pair.of(
             new int[] {
                 today - 1,
@@ -50,25 +39,21 @@ public class ServerUnseiUtils {
                 today + 1
             },
             new int[] {
-                getUnseiValue(seed, today - 1),
-                getUnseiValue(seed, today),
-                getUnseiValue(seed, today + 1)
+                getUnseiValue(today - 1),
+                getUnseiValue(today),
+                getUnseiValue(today + 1)
             }
         );
     }
 
-    public static Pair<int[], int[]> getThreeDaysUnsei(int today) {
-        return getThreeDaysUnsei(SEED, today);
-    }
-
-    public static void sendUpdateTungShingPacket(ServerPlayer player, long seed, int today, int cooldown, boolean classic) {
+    public static void sendUpdateTungShingPacket(ServerPlayer player, int today, int cooldown, boolean classic) {
         if (cooldown > 0) {
             TungShingItem.addCooldown(player, cooldown);
         } else {
             TungShingItem.removeCooldown(player);
         }
 
-        Pair<int[], int[]> unsei = getThreeDaysUnsei(seed, today);
+        Pair<int[], int[]> unsei = getThreeDaysUnsei(today);
         NELPacketHandler.sendToClient(
             ((ServerPlayer) player),
             new UpdateTungShingPacket(unsei.getLeft(), unsei.getRight(), classic)
@@ -76,7 +61,7 @@ public class ServerUnseiUtils {
     }
 
     public static void sendUpdateTungShingPacket(ServerPlayer player, int today, boolean classic) {
-        sendUpdateTungShingPacket(player, SEED, today, classic ? 0 : TungShingItem.getCooldown(), classic);
+        sendUpdateTungShingPacket(player, today, classic ? 0 : TungShingItem.getCooldown(), classic);
     }
 
 }
