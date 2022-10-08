@@ -12,10 +12,10 @@ public class PotionAddedHandler {
         if (event.getEntityLiving() instanceof ServerPlayer player) {
             var newEffect = event.getPotionEffect();
             if (newEffect.getEffect() == MobEffects.UNLUCK) {
-                var redemptionEffect = player.getEffect(NELMobEffects.REDEMPTION.get());
-                if (redemptionEffect != null) {
+                int redemption = EffectUtils.getEffectLevel(player, NELMobEffects.REDEMPTION.get());
+                if (redemption > 0) {
                     if (newEffect.getAmplifier() > 0) {
-                        int newUnluckAmplifier = newEffect.getAmplifier() - (redemptionEffect.getAmplifier() + 1);
+                        int newUnluckAmplifier = newEffect.getAmplifier() - redemption;
                         EffectUtils.setAmplifier(newEffect, Math.max(newUnluckAmplifier, 0));
                     } else {
                         EffectUtils.setDuration(newEffect, 1);

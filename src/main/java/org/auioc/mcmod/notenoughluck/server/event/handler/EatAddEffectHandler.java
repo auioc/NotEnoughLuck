@@ -19,18 +19,14 @@ public class EatAddEffectHandler {
 
     @SuppressWarnings("deprecation")
     public static void handle(final LivingEatAddEffectEvent event) {
-        LivingEntity living = event.getEntityLiving();
-        Item item = event.getFood().getItem();
-        List<MobEffectInstance> effects = event.getEffects();
+        var living = event.getEntityLiving();
+        var item = event.getFood().getItem();
+        var effects = event.getEffects();
 
-        if (!item.isEdible()) {
-            return;
-        }
+        if (!item.isEdible()) return;
 
         FoodProperties food = item.getFoodProperties();
-        if (!MAP.containsKey(food)) {
-            return;
-        }
+        if (!MAP.containsKey(food)) return;
 
         effects.clear();
         List<Data> dataList = MAP.get(food);
