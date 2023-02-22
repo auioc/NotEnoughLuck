@@ -4,6 +4,7 @@ bin
 .metadata
 .classpath
 .project
+.factorypath
 .vscode
 tmp
 
@@ -22,6 +23,7 @@ run
 forge*changelog.txt
 
 test*.*
-libs
 
 mcmodsrepo
+
+src/generated

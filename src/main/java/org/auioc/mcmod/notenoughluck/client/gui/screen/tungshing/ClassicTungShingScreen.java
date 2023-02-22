@@ -41,13 +41,10 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
     }
 
     @Override
-    protected void init() {
-        int divX = center(this.width, DIV_WIDTH);
-        int divY = center(this.height, DIV_HEIGHT);
-
+    protected void subInit() {
         this.editbox = new EditBox(
             this.font,
-            divX + EDITBOX_X_OFFSET, divY + EDITBOX_Y_OFFSET,
+            boxX1 + EDITBOX_X_OFFSET, boxY1 + EDITBOX_Y_OFFSET,
             EDITBOX_WIDTH, EDITBOX_HEIGHT,
             i18n("editbox")
         );
@@ -55,7 +52,7 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
         this.addWidget(this.editbox);
 
         this.button = new Button(
-            divX + BUTTON_X_OFFSET, divY + BUTTON_Y_OFFSET,
+            boxX1 + BUTTON_X_OFFSET, boxY1 + BUTTON_Y_OFFSET,
             BUTTON_WIDTH, BUTTON_HEIGHT,
             i18n("button.request"),
             (button) -> {
@@ -93,7 +90,7 @@ public class ClassicTungShingScreen extends SimpleScreen implements ITungShingSc
             this.font.drawShadow(
                 poseStack,
                 text,
-                this.divX + UNSEI_LINE_X_OFFSET, this.divY + UNSEI_LINE_Y_OFFSET + (i + 1) * UNSEI_LINE_Y_ADDEND,
+                boxX1 + UNSEI_LINE_X_OFFSET, boxY1 + UNSEI_LINE_Y_OFFSET + (i + 1) * UNSEI_LINE_Y_ADDEND,
                 0x000000
             );
         }

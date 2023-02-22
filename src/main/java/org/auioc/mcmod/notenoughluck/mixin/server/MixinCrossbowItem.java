@@ -1,6 +1,6 @@
 package org.auioc.mcmod.notenoughluck.mixin.server;
 
-import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectUtils;
 import org.auioc.mcmod.notenoughluck.api.mixin.server.IMixinAbstractArrow;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -33,8 +33,8 @@ public abstract class MixinCrossbowItem {
     ) {
         if (p_40916_ instanceof ServerPlayer) {
             IMixinAbstractArrow mixinabstractarrow = ((IMixinAbstractArrow) abstractarrow);
-            mixinabstractarrow.setLuck(EffectUtils.getEffectLevel(p_40916_, MobEffects.LUCK));
-            mixinabstractarrow.setUnluck(EffectUtils.getEffectLevel(p_40916_, MobEffects.UNLUCK));
+            mixinabstractarrow.setLuck(MobEffectUtils.getLevel(p_40916_, MobEffects.LUCK));
+            mixinabstractarrow.setUnluck(MobEffectUtils.getLevel(p_40916_, MobEffects.UNLUCK));
         }
     }
 

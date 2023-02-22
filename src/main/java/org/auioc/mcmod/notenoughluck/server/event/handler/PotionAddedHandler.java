@@ -1,6 +1,6 @@
 package org.auioc.mcmod.notenoughluck.server.event.handler;
 
-import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectUtils;
 import org.auioc.mcmod.notenoughluck.common.effect.NELMobEffects;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
@@ -12,13 +12,13 @@ public class PotionAddedHandler {
         if (event.getEntityLiving() instanceof ServerPlayer player) {
             var newEffect = event.getPotionEffect();
             if (newEffect.getEffect() == MobEffects.UNLUCK) {
-                int redemption = EffectUtils.getEffectLevel(player, NELMobEffects.REDEMPTION.get());
+                int redemption = MobEffectUtils.getLevel(player, NELMobEffects.REDEMPTION.get());
                 if (redemption > 0) {
                     if (newEffect.getAmplifier() > 0) {
                         int newUnluckAmplifier = newEffect.getAmplifier() - redemption;
-                        EffectUtils.setAmplifier(newEffect, Math.max(newUnluckAmplifier, 0));
+                        MobEffectUtils.setAmplifier(newEffect, Math.max(newUnluckAmplifier, 0));
                     } else {
-                        EffectUtils.setDuration(newEffect, 1);
+                        MobEffectUtils.setDuration(newEffect, 1);
                     }
                 }
             }

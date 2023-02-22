@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Function;
 import org.apache.commons.lang3.tuple.Triple;
 import org.auioc.mcmod.arnicalib.base.random.RandomUtils;
-import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.At.Shift;
@@ -65,12 +65,12 @@ public abstract class MixinPlayer extends LivingEntity {
             return f;
         }
 
-        int unluck = EffectUtils.getEffectLevel(player, MobEffects.UNLUCK);
+        int unluck = MobEffectUtils.getLevel(player, MobEffects.UNLUCK);
         if (unluck > 0 && !(player.getRandom().nextDouble() < Math.pow(0.8, (double) unluck))) {
             return 0.0F;
         }
 
-        int luck = EffectUtils.getEffectLevel(player, MobEffects.LUCK);
+        int luck = MobEffectUtils.getLevel(player, MobEffects.LUCK);
         if (luck > 0) {
             Triple<Integer, Function<Integer, Float>, Function<Integer, Float>> bonusTriple =
                 ATTACK_LUCK_BONUS_MAP.get(Math.min(luck - 1, ATTACK_LUCK_BONUS_MAP.size() - 1));

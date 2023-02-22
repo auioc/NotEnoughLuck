@@ -1,7 +1,7 @@
 package org.auioc.mcmod.notenoughluck.utils;
 
 import org.auioc.mcmod.arnicalib.base.random.RandomUtils;
-import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectUtils;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,11 +10,11 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public class LuckUtils {
 
     public static int getLuckEffectLevel(LivingEntity living) {
-        return EffectUtils.getEffectLevel(living, MobEffects.LUCK);
+        return MobEffectUtils.getLevel(living, MobEffects.LUCK);
     }
 
     public static int getUnluckEffectLevel(LivingEntity living) {
-        return EffectUtils.getEffectLevel(living, MobEffects.UNLUCK);
+        return MobEffectUtils.getLevel(living, MobEffects.UNLUCK);
     }
 
     public static int getLuckValueByEffect(LivingEntity living) {

@@ -3,7 +3,7 @@ package org.auioc.mcmod.notenoughluck.common.item.base;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.auioc.mcmod.arnicalib.game.chat.TextUtils;
-import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectUtils;
 import org.auioc.mcmod.notenoughluck.client.renderer.DiceItemRenderer;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -64,7 +64,7 @@ public abstract class DiceItem extends Item {
 
         afterPickup(player, pips);
 
-        EffectUtils.removeEffect(player, (e) -> e.getEffect() == MobEffects.LUCK || e.getEffect() == MobEffects.UNLUCK);
+        MobEffectUtils.remove(player, (e) -> e.getEffect() == MobEffects.LUCK || e.getEffect() == MobEffects.UNLUCK);
 
         var effect = getEffect(pips, nbt);
         if (effect != null) {

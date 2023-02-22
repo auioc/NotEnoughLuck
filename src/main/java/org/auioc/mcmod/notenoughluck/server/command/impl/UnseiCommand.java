@@ -9,7 +9,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.auioc.mcmod.arnicalib.game.chat.TextUtils;
 import org.auioc.mcmod.arnicalib.game.command.CommandExceptions;
-import org.auioc.mcmod.arnicalib.mod.mixinapi.common.IMixinCommandSourceStack;
+import org.auioc.mcmod.arnicalib.game.command.CommandSourceUtils;
 import org.auioc.mcmod.notenoughluck.common.network.NELPacketHandler;
 import org.auioc.mcmod.notenoughluck.common.network.packet.client.ClearClientUnseiCachePacket;
 import org.auioc.mcmod.notenoughluck.server.unsei.ServerUnseiCache;
@@ -49,7 +49,8 @@ public class UnseiCommand {
     private static int clearServerCache(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         var source = ctx.getSource();
 
-        if ((source.getServer() instanceof DedicatedServer) && !(((IMixinCommandSourceStack) source).getSource() instanceof DedicatedServer)) {
+
+        if (!(CommandSourceUtils.getRealSource(source) instanceof DedicatedServer)) {
             throw CommandExceptions.NOT_DEDICATED_SERVER_ERROR.create();
         }
 

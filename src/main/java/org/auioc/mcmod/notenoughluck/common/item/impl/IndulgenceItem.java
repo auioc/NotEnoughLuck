@@ -1,6 +1,6 @@
 package org.auioc.mcmod.notenoughluck.common.item.impl;
 
-import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectUtils;
 import org.auioc.mcmod.hulsealib.game.item.UsableItem;
 import org.auioc.mcmod.notenoughluck.common.effect.NELMobEffects;
 import org.auioc.mcmod.notenoughluck.common.itemgroup.NELItemGroups;
@@ -33,7 +33,7 @@ public class IndulgenceItem extends UsableItem {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity living) {
         if (living instanceof ServerPlayer player) {
             player.addEffect(
-                EffectUtils.makeIncurable(
+                MobEffectUtils.makeIncurable(
                     new MobEffectInstance(NELMobEffects.REDEMPTION.get(), REDEMPTION_DURATION)
                 )
             );

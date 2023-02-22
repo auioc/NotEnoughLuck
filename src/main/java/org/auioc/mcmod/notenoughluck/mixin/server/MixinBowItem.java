@@ -1,6 +1,6 @@
 package org.auioc.mcmod.notenoughluck.mixin.server;
 
-import org.auioc.mcmod.arnicalib.game.effect.EffectUtils;
+import org.auioc.mcmod.arnicalib.game.effect.MobEffectUtils;
 import org.auioc.mcmod.notenoughluck.api.mixin.server.IMixinAbstractArrow;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,8 +36,8 @@ public abstract class MixinBowItem {
         Player player, boolean flag, ItemStack itemstack, int i, float f, boolean flag1, ArrowItem arrowitem, AbstractArrow abstractarrow, int j, int k
     ) {
         IMixinAbstractArrow mixinabstractarrow = ((IMixinAbstractArrow) abstractarrow);
-        mixinabstractarrow.setLuck(EffectUtils.getEffectLevel(player, MobEffects.LUCK));
-        mixinabstractarrow.setUnluck(EffectUtils.getEffectLevel(player, MobEffects.UNLUCK));
+        mixinabstractarrow.setLuck(MobEffectUtils.getLevel(player, MobEffects.LUCK));
+        mixinabstractarrow.setUnluck(MobEffectUtils.getLevel(player, MobEffects.UNLUCK));
     }
 
 }

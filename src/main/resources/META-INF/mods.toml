@@ -19,24 +19,24 @@ Not Enough Luck
 [[dependencies.notenoughluck]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[40.2.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.notenoughluck]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1,1.19)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.notenoughluck]]
     modId="arnicalib"
     mandatory=true
-    versionRange="[5.6.3,)"
+    versionRange="[5.7.3,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.notenoughluck]]
     modId="hulsealib"
     mandatory=true
-    versionRange="[1.0.1,)"
+    versionRange="[1.1.1,)"
     ordering="NONE"
     side="BOTH"
