@@ -61,6 +61,7 @@ public final class Initialization {
             NELAttributes.ATTRIBUTES.register(modEventBus);
             NELMobEffects.MOB_EFFECTS.register(modEventBus);
             modEventBus.register(NELPotions.class);
+            modEventBus.addListener(NELAttributes::onEntityAttributeModification);
         }
 
         private void forgeSetup() {
